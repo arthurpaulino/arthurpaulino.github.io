@@ -1,6 +1,6 @@
 # Site settings
-title: Simples Ser | Diligência, Progresso e Verdade
-description: "Diligência, Progresso e Verdade"
+title: simplesmente | Diligência, Progresso e Verdade
+description: "Site pessoal de Arthut Paulino"
 url: "https://arthurpaulino.github.io"
 author:
   name: "Arthur Paulino"
@@ -26,7 +26,7 @@ defaults:
       layout: "post"
 
 # Plugins
-gems:
+plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
