@@ -1,6 +1,12 @@
 ---
 layout: default
 ---
+<!-- Intro -->
+{% for page in site.pages %}
+  {% if page.layout == "intro" %}
+	<p>{{ page.content | markdownify }}</p>
+  {% endif %}
+{% endfor %}
 <!-- Posts -->
 <ul id="posts">
 
