@@ -3,7 +3,7 @@ layout: page
 title: Frentes
 order: 1
 ---
-## Frentes
+# Frentes
 * [Zen](zen)
 * [Yoga](yoga)
 * [Livros](livros)

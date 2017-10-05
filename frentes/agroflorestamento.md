@@ -2,7 +2,7 @@
 layout: page
 title: Agroflorestamento
 ---
-## Agroflorestamento
+# Agroflorestamento
 É impossível separar a saúde do nosso planeta da nossa própria saúde. À medida que a Terra adoece, nós adoecemos.
 
 As práticas de agropecuária extensiva e de monocultura em grande escala estão empobrecendo nossos solos em uma velocidade vertiginosa. Além disso, nossas sementes estão sendo controladas por grandes corporações mal intencionadas, que não vislumbram a prosperidade da humanidade como um todo e visam apenas o lucro.
