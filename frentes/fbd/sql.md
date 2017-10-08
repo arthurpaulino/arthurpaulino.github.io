@@ -6,7 +6,7 @@ title: SQL
 
 ## Definindo os tipos
 
-Consideremos os tipos fundamentais representados por `t`, onde `t` pode ser `num` ou `str`. Definamos então o tipo `coluna<t>` para que possamos construir o tipo `tabela< coluna1, coluna2, ... >`, que é o tipo básico da [SQL](https://pt.wikipedia.org/wiki/SQL){:target="_blank"}. Ou seja, o tipo `tabela` é composto por uma sequência de tipos `coluna`, cada um com seu próprio tipo fundamental.
+Consideremos os tipos fundamentais representados por `t`, onde `t` pode ser `num` ou `str`. Definamos então o tipo `coluna<t>` para que possamos construir o tipo `tabela< coluna<t1>, coluna<t2>, ... >`, que é o tipo básico da [SQL](https://pt.wikipedia.org/wiki/SQL){:target="_blank"}. Ou seja, o tipo `tabela` é composto por uma sequência de tipos `coluna`, cada um com seu próprio tipo fundamental.
 
 * Exemplos:
 
@@ -214,6 +214,10 @@ Os nomes das colunas da tabela resultante são os nomes das colunas da primeira 
 * Exemplos:
 
 ## Condições
+
+### `=`, `<>` ou`!=`, `>`, `>=`, `<` e `<=`
+
+### `in`
 
 ## Funções de agregação
 
