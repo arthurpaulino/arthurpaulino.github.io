@@ -440,3 +440,7 @@ Mas nós podemos utilizar `group by` para que os resultados das funções de agr
 		| 3 | 1 | 900 | 900 | 900 | 900
 		| 2 | 1 | 925 | 925 | 925 | 925
 		| 1 | 2 | 950 | 975 | 1925 | 962.5
+
+## Links recomendados
+* [w3schools](https://www.w3schools.com/sql/){:target="_blank"}
+* [Wikipédia](https://pt.wikipedia.org/wiki/SQL){:target="_blank"}
