@@ -29,7 +29,7 @@ Consideremos os tipos fundamentais representados por `t`, onde `t` pode ser `num
 	* Seja `empregados` a `tabela< coluna<num>, coluna<str>, coluna<num>, coluna<num> >`
 
 		| empregados.id | empregados.nome | empregados.idade | empregados.salário | empregados.departamento
-		|:-:|:-:|:-:|:-:
+		|:-:|:-:|:-:|:-:|:-:
 		| 1 | zé | 26 | 900 | 3
 		| 2 | sá | 25 | 925 | 2
 		| 3 | jó | 27 | 950 | 1
@@ -59,7 +59,7 @@ Se a cláusula `where` for omitida, todas as linhas de `tab` farão parte de `re
 		where empregados.idade > 25
 		~~~
 	
-		resulta na `tabela<[ coluna<str> ]>`
+		resulta na `tabela< coluna<str> >`
 
 		| empregados.nome
 		|:-:
@@ -73,7 +73,7 @@ Se a cláusula `where` for omitida, todas as linhas de `tab` farão parte de `re
 		from empregados
 		~~~
 	
-		resulta na `tabela<[ coluna<str> ]>`
+		resulta na `tabela< coluna<str> >`
 
 		| empregados.nome
 		|:-:
@@ -96,7 +96,7 @@ O escopo de uma consulta é definido na cláusula `from`. Desta forma, podemos i
 		where e.idade = 25
 		~~~
 
-		resulta na `tabela<[ coluna<str> ]>`
+		resulta na `tabela< coluna<str> >`
 
 		| e.nome
 		|:-:
@@ -212,6 +212,59 @@ O operador `union` requer que as tabelas fornecidas sejam do mesmo tipo, ou seja
 Os nomes das colunas da tabela resultante são os nomes das colunas da primeira tabela.
 
 * Exemplos:
+
+	* A consulta
+
+		~~~
+		select empregados.nome, empregados.salário
+		from empregados
+		union
+		select departamentos.nome, departamentos.campus
+		from departamentos
+		~~~
+	
+		resulta na `tabela< coluna<str>, coluna<num> >`
+
+		| empregados.nome | empregados.salário
+		|:-:|:-:
+		| zé | 900
+		| sá | 925
+		| jó | 950
+		| pi | 975
+		| computação | 1
+		| biologia | 1
+		| letras | 2
+	
+	* A consulta
+		
+		~~~
+		select *
+		from (
+			select c.id, c.nome
+			from campi c
+			union
+			select d.id, d.nome
+			from departamentos d
+			union
+			select e.id, e.nome
+			from empregados e
+		)
+		~~~
+		
+		resulta na `tabela< coluna<num>, coluna<str> >`
+		
+		| c.id | c.nome
+		|:-:|:-:
+		| 1 | pici
+		| 2 | benfica
+		| 3 | porangabussu
+		| 1 | computação
+		| 2 | biologia
+		| 3 | letras
+		| 1 | zé
+		| 2 | sá
+		| 3 | jó
+		| 4 | pi
 
 ## Condições
 
