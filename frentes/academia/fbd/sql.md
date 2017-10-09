@@ -163,9 +163,9 @@ A análise semântica é a mesma do produto cartesiano.
 
 ### `left join` e `right join`
 
-Se quisermos que a tabela resultante contenha todas as linhas de uma das tabelas do `join` mesmo que não haja correspondência para satisfazer a condição de emparelhamento, utilizamos `left join` ou `right join`.
+Se quisermos que a tabela resultante contenha todas as linhas de uma das tabelas do `join` mesmo que não haja correspondência para satisfazer a condição de emparelhamento, utilizamos `left join` ou `right join`. As células sem elementos correspondentes são preenchidas com objetos nulos.
 
-Sintaxes e análises semânticas análogas ao `inner join`
+Sintaxes e análises semânticas análogas ao `inner join`.
 
 * Exemplos:
 
@@ -223,7 +223,7 @@ Os nomes das colunas da tabela resultante são os nomes das colunas da primeira 
 		from departamentos
 		~~~
 	
-		resulta na `tabela< coluna<str>, coluna<num> >`
+		resulta na `tabela< coluna<str>, coluna<num> >` **sem consistência interpretativa**
 
 		| empregados.nome | empregados.salário
 		|:-:|:-:
@@ -248,12 +248,12 @@ Os nomes das colunas da tabela resultante são os nomes das colunas da primeira 
 			union
 			select e.id, e.nome
 			from empregados e
-		)
+		) dados
 		~~~
 		
 		resulta na `tabela< coluna<num>, coluna<str> >`
 		
-		| c.id | c.nome
+		| dados.id | dados.nome
 		|:-:|:-:
 		| 1 | pici
 		| 2 | benfica
@@ -270,12 +270,173 @@ Os nomes das colunas da tabela resultante são os nomes das colunas da primeira 
 
 ### `=`, `<>` ou`!=`, `>`, `>=`, `<` e `<=`
 
+Operadores utilizados para fazermos comparações entre objetos do mesmo tipo básico. No tipo `str`, a magnitude considerada é a ordem alfabética.
+
 ### `in`
+
+Retorna `true` se um objeto pertence à lista em questão.
+
+* Exemplo:
+
+	* A consulta
+
+		~~~
+		select e.nome
+		from empregados e inner join departamentos d on e.departamento = d.id
+		where d.departamento in ('computação', 'letras')
+		~~~
+	
+		resulta na `tabela< coluna<str> >`
+
+		| e.nome
+		|:-:
+		| sá
+		| jó
+		| pi
+
+Se uma `<tabela>` possui apenas uma coluna, ela pode ser utilizada como uma lista.
+
+* Exemplo:
+
+	* A consulta
+
+		~~~
+		select departamentos.nome
+		from departamentos
+		where departamentos.id in (
+			select empregados.departamento
+			from empregados
+			where empregados.salário < 950
+		)
+		~~~
+	
+		resulta na `tabela< coluna<str> >`
+
+		| departamentos.nome
+		|:-:
+		| biologia
+		| letras
+
+A negação de `in` é `not in`.
 
 ## Funções de agregação
 
+Para melhorar a legibilidade das consultas que incluem funções de agregação, nós daremos nomes fictícios às colunas resultantes com o auxílio da palavra-chave `as`.
+
 ### `count`
 
-### `sum`, `min`, `max` e `avg`
+Computa a quantidade de objetos não nulos da coluna escolhida. Um cuidado extra é requerido para usar `count` em tabelas provenientes de `left join` ou `right join`.
+
+* Exemplos:
+
+	* A consulta
+
+		~~~
+		select count(empregados.id) as quantidade
+		from empregados
+		where empregados.salário > 900
+		~~~
+	
+		resulta na `tabela< coluna<num> >` **de nome indeterminado**
+
+		| quantidade
+		|:-:
+		| 3
+	
+	* A consulta
+
+		~~~
+		select *
+		from (
+			select count(empregados.id) as quantidade
+			from empregados
+			where empregados.salário > 900
+		) resultado
+		
+		~~~
+	
+		resulta na `tabela< coluna<num> >` **cujo nome é `resultado`**
+
+		| resultado.quantidade
+		|:-:
+		| 3
+
+Caso não importe se a tabela tenha ou não objetos nulos, podemos utilizar `count(*)`.
+
+* Exemplo:
+
+	* A consulta
+
+		~~~
+		select *
+		from (
+			select count(*) as quantidade
+			from empregados
+			where empregados.salário > 900
+		) resultado
+		
+		~~~
+	
+		resulta na `tabela< coluna<num> >`
+
+		| resultado.quantidade
+		|:-:
+		| 3
+
+### `min` e `max`
+
+Computam respectivamente o mínimo e o máximo valor de uma coluna. Em colunas cujo tipo básico é `str`, a magnitude considerada é a ordem alfabética.
+
+### `sum` e `avg`
+
+Funções utilizadas exclusivamente em colunas cujo tipo básico é `num`. Elas computam respectivamente a soma e a média dos valores da coluna.
 
 ### `group by`
+
+As funções de agregação normalmente são utilizadas para gerar tabelas com apenas uma linha.
+
+* Exemplo:
+	
+	* A consulta
+
+		~~~
+		select *
+		from (
+			select count(*) as quantidade, min(e.salário) as min_sal, max(e.salário) as max_sal,
+				sum(e.salário) as sum_sal, avg(e.salário) as avg_sal
+			from empregados e
+		) resultado
+		
+		~~~
+	
+		resulta na `tabela< coluna<num>, coluna<num>, coluna<num>, coluna<num>, coluna<num> >`
+
+		| resultado.quantidade | resultado.min_sal | resultado.max_sal | resultado.sum_sal | resultado.avg_sal
+		|:-:|:-:|:-:|:-:|:-:
+		| 3 | 900 | 975 | 3750 | 937.5
+
+Mas nós podemos utilizar `group by` para que os resultados das funções de agregação sejam computados em blocos isolados. Para isto, à exceção da coluna elegida para o `group by`, todas as outras colunas mencionadas na cláusula `select` devem gerar **apenas uma linha**, como é o caso das funções de agregação.
+
+* Exemplo:
+	
+	* A consulta
+
+		~~~
+		select *
+		from (
+			select e.departamento, count(*) as quantidade, min(e.salário) as min_sal,
+				max(e.salário) as max_sal, sum(e.salário) as sum_sal, avg(e.salário) as avg_sal
+			from empregados e
+			group by e.departamento
+		) resultado
+		
+		~~~
+	
+		|resulta na
+		|`tabela< coluna<num>, coluna<num>, coluna<num>, coluna<num>, coluna<num>, coluna<num> >`
+
+		| resultado.departamento | resultado.quantidade | resultado.min_sal | resultado.max_sal | resultado.sum_sal | resultado.avg_sal
+		|:-:|:-:|:-:|:-:|:-:|:-:
+		| 3 | 1 | 900 | 900 | 900 | 900
+		| 2 | 1 | 925 | 925 | 925 | 925
+		| 1 | 2 | 950 | 975 | 1925 | 962.5
