@@ -17,3 +17,5 @@ Ciência da Computação na [Universidade Federal do Ceará](http://www.ufc.br/)
 Ciência da Computação pelo programa do [MDCC](http://www.mdcc.ufc.br/){:target="_blank"}.
 * Pesquisa: Neuroevolução e Cultura sob a orientação do [Prof. João Paulo Pordeus Gomes](http://lattes.cnpq.br/9553770402705512){:target="_blank"}
 * Estágio em Docência: [Fundamentos de Banco de Dados (2017)](fbd) sob a orientação da [Profa. Vania Maria Ponte Vidal](http://lattes.cnpq.br/9431229866203038){:target="_blank"}
+* Códigos úteis:
+	* [PyStochastic](https://github.com/arthurpaulino/PyStochastic){:target="_blank"}
