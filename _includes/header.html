@@ -1,13 +1,11 @@
 <header id="header" class="parent justify-spaceBetween">
-  <div class="inner w100 relative">
-    <span class="f-left">  
+  <div style="text-align: center;">
+    <span id="nav-links" class="center">
       <a href="/">
         <h1>
           <i>simples</i>mente
         </h1>
       </a>
-    </span>
-    <span id="nav-links" class="absolute right bottom">
       <!-- Nav pages -->
         {% assign sorted_pages = site.pages | sort:"order" %}
 	    {% for page in sorted_pages %}

@@ -3,7 +3,7 @@ layout: default
 ---
 <!-- Intro -->
 {% for page in site.pages %}
-  {% if page.layout == "intro" %}
+  {% if page.layout == "about" %}
 	<p>{{ page.content | markdownify }}</p>
   {% endif %}
 {% endfor %}

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Academia
+order: 1
 ---
 # Academia
 ## Graduação
