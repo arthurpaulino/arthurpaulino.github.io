@@ -26,6 +26,7 @@ $background-color: #FFFFFF;
 $text-color: #333333;
 $text-light-color: rgba(0,0,0,0.6);
 $text-dark-color: #000000;
+$text-link-color: #000055;
 
 /*- Base settings -*/
 
@@ -47,12 +48,12 @@ body {
 
 /*- Link -*/
 a {
-	color: $text-color;
+	color: $text-link-color;
 	text-decoration: none;
 	font-weight: 700;
 	&:hover,
 	&:focus {
-		color: darken($text-color, 5%);
+		color: darken($text-link-color, 5%);
 	}
 }
 
