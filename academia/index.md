@@ -6,8 +6,8 @@ order: 1
 # Academia
 ## Graduação
 Ciência da Computação na [Universidade Federal do Ceará](http://www.ufc.br/){:target="_blank"}.
-* Iniciação Científica junto ao [ParGO](http://www.lia.ufc.br/~pargo/){:target="_blank"} sob a orientação do [Prof. Manoel Campelo](http://lia.ufc.br/~mcampelo/){:target="_blank"}
-	* Tema: Árvores Geradoras Mínimas com Restrição de Grau Mínimo
+* Iniciação Científica junto ao [ParGO](http://www.lia.ufc.br/~pargo/){:target="_blank"} sob a orientação do [Prof. Manoel Campêlo](http://lia.ufc.br/~mcampelo/){:target="_blank"}
+	* Tema: [Árvores Geradoras Mínimas com Restrição de Grau Mínimo](ic)
 * Monitoria na disciplina Matemática Discreta sob a orientação do [Prof. Rudini Menezes Sampaio](http://www.lia.ufc.br/~rudini/){:target="_blank"}
 * Códigos úteis:
     * [heap](https://github.com/arthurpaulino/heap){:target="_blank"}
