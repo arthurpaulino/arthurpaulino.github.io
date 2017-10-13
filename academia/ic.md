@@ -2,6 +2,7 @@
 layout: page
 title: Árvores Geradoras Mínimas com Restrição de Grau Mínimo
 ---
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 # Árvores Geradoras Mínimas com Restrição de Grau Mínimo
 ## Descrição do problema
 Dados um grafo $$G=(V,E)$$ com pesos atribuídos às arestas, $$C \subset V$$, $$\vert C \vert \geq 1$$, $$T = V \setminus C$$, $$\vert T \vert \geq 2$$ e um número inteiro $$d>0$$, encontrar uma árvore geradora de $$G$$ cuja soma dos pesos de suas arestas seja a menor possível e que atenda às restrições:
