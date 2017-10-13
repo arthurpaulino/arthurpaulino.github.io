@@ -25,7 +25,7 @@ A ideia é considerar um vértice central $$r$$ como raiz e abstrair um fluxo qu
 
 A função objetivo é
 
-\begin{equation}min \sum_{e \in E} y_e w_e\end{equation}
+|\begin{equation}min \sum_{e \in E} y_e w_e\end{equation}
 
 e as restrições são:
 
