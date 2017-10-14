@@ -1,8 +1,5 @@
 <nav {% if site.reverse == true %}id="nav-left"{% else %}id="nav"{% endif %}>
 	<div id="nav-list">
-		<a href="/">
-		  <i>simples</i>mente
-		</a>
 		<!-- Nav pages -->
 	    {% assign sorted_pages = site.pages | sort:"order" %}
 	    {% for page in sorted_pages %}
