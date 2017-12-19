@@ -35,9 +35,17 @@ h6 {
 }
 
 a {
+  @include transition(all 0.2s ease-out);
   color: $blue;
   text-decoration: none;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
 }
+
+
 
 blockquote {
   border-left: 0.25rem solid $grey-2;

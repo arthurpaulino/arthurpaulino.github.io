@@ -9,14 +9,15 @@
         <a href="{{ site.baseurl }}/">
           <h1 class="nav-title">{{ site.title }}</h1>
         </a>
+        <a href="{{site.baseurl}}/academia"><i class="fa fa-graduation-cap"></i></a>
+        <a href="{{site.baseurl}}/Verdade"><i class="fa fa-heart"></i></a>
         <ul>
-          <li><a href="{{site.baseurl}}/academia"><i class="fa fa-graduation-cap"></i></a></li>
-          <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="blank"><i class="fa fa-linkedin"></i></a></li>
-          <li><a href="https://github.com/{{ site.github_username }}" target="blank"><i class="fa fa-github"></i></a></li>
-          <li><a href="https://www.facebook.com/{{ site.facebook_username }}" target="blank"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="https://twitter.com/{{ site.twitter_username }}" target="blank"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="{{site.baseurl}}/Verdade"><i class="fa fa-heart"></i></a></li>
+          <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="https://github.com/{{ site.github_username }}" target="_blank"><i class="fa fa-github"></i></a></li>
+          <li><a href="https://www.facebook.com/{{ site.facebook_username }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
         </ul>
+      </div>
     </nav>
 
     <main>
@@ -25,9 +26,11 @@
 
     <footer>
       <span>
-        Feito com <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> usando o tema <a href="https://github.com/chesterhow/tale/" target="_blank">Tale</a>.</br>
         &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }}.
+        Site feito com <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>.
       </span>
     </footer>
+
+    <a href="#" class="topfloat"><i class="fa fa-level-up my-float"></i></a>
   </body>
 </html>

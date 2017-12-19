@@ -3,7 +3,6 @@ permalink:      /:year-:month-:day/:title
 
 # Setup
 title:          Arthur Paulino
-paginate:       5
 baseurl:        ""
 url:            "https://arthurpaulino.github.io"
 
