@@ -1,36 +1,31 @@
-# Site settings
-title: simplesmente
-description: "diligência, progresso e Verdade"
-url: "https://arthurpaulino.github.io"
-author:
-  name: "Arthur Paulino"
-  email: "arthurleonardo.ap@gmail.com"
-  url: "https://github.com/arthurpaulino"
+# Permalinks
+permalink:      /:year-:month-:day/:title
+
+# Setup
+title:          Arthur Paulino
+paginate:       5
+baseurl:        ""
+url:            "https://arthurpaulino.github.io"
+
+# Assets
+sass:
+  sass_dir:     _sass
+  style:        :compressed
 
 # Build settings
-baseurl: / # Change this to your relative path (ex: /blog/), or leave just a /
-markdown: kramdown
-source: .
-destination: ./_site
-permalink: /:title
-paginate: 8
-paginate_path: /page:num/
+markdown:       kramdown
 
-# Default values
-defaults:
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
+# About
+author:
+  name:         Arthur Paulino
+  email:        arthurleonardo.ap@gmail.com
 
-# Plugins
+# Gems
 plugins:
   - jekyll-paginate
-  - jekyll-sitemap
 
-# Custom variables
-
-# Options
-reverse: false
+# Accounts
+twitter_username:     arthurleonardop
+github_username:      arthurpaulino
+linkedin_username:    arthur-paulino
+facebook_username:    arthurleonardoap

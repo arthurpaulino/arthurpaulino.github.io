@@ -1,68 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
-{% include head.html %}
+  {% include head.html %}
 
-<body>
-	<div id="wrap">
-	  	
-	  	<!-- Navigation -->
-	  	{% include menu.html %}
-    
-    <!-- Icon menu -->
-	  <a {% if site.reverse == true %}id="nav-menu-left"{% else %}id="nav-menu"{% endif %}>
-	  	<div id="menu"></div>
-	  </a>
+  <body>
+    <nav class="nav">
+      <div class="nav-container">
+        <a href="{{ site.baseurl }}/">
+          <h1 class="nav-title">{{ site.title }}</h1>
+        </a>
+        <ul>
+          <li><a href="{{site.baseurl}}/academia"><i class="fa fa-graduation-cap"></i></a></li>
+          <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="blank"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="https://github.com/{{ site.github_username }}" target="blank"><i class="fa fa-github"></i></a></li>
+          <li><a href="https://www.facebook.com/{{ site.facebook_username }}" target="blank"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://twitter.com/{{ site.twitter_username }}" target="blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="{{site.baseurl}}/Verdade"><i class="fa fa-heart"></i></a></li>
+        </ul>
+    </nav>
 
-      <!-- Header -->
-      {% include header.html %}
+    <main>
+      {{ content }}
+    </main>
 
-    <!-- Main content -->
-	  <div id="container">
-		  
-		<main>
-
-			{{ content }}
-
-	  </main>
-		
-		  <!-- Pagination links -->
-      {% if paginator.total_pages > 1 %}
-        <div class="pagination">
-          {% if paginator.previous_page == 1 %}
-            <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="page-item">&laquo;</a>
-          {% elsif paginator.previous_page%}
-            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="page-item">&laquo;</a>
-          {% else %}
-            <span class="page-item">&laquo;</span>
-          {% endif %}
-        
-          {% for page in (1..paginator.total_pages) %}
-            {% if page == paginator.page %}
-              <span class="page-item">{{ page }}</span>
-            {% elsif page == 1 %}
-              <a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="page-item">{{ page }}</a>
-            {% else %}
-              <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="page-item">{{ page }}</a>
-            {% endif %}
-          {% endfor %}
-        
-          {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="page-item">&raquo;</a>
-          {% else %}
-            <span class="page-item">&raquo;</span>
-          {% endif %}
-        </div>
-        {% endif %}
-
-	  </div>
-	    
-	    <!-- Footer -->
-	    {% include footer.html %}
-
-	    <!-- Script -->
-      {% include script.html %}
-
-	</div>
-</body>
+    <footer>
+      <span>
+        Feito com <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> usando o tema <a href="https://github.com/chesterhow/tale/" target="_blank">Tale</a>.</br>
+        &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }}.
+      </span>
+    </footer>
+  </body>
 </html>
