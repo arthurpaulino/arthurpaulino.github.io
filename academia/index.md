@@ -22,5 +22,5 @@ Ciência da Computação pelo programa do [MDCC](http://www.mdcc.ufc.br/){:targe
 * Tema: Neuroevolução de Topologias Aumentantes com Melhorias Culturais
 * Estágio em Docência: [Fundamentos de Banco de Dados (2017)](fbd) sob a orientação da [Profa. Vania Maria Ponte Vidal](http://lattes.cnpq.br/9431229866203038){:target="\_blank"}
 * Legado:
-  * [PyStochastic](https://github.com/arthurpaulino/PyStochastic){:target="\_blank"}
-  * [neat_gym](https://github.com/arthurpaulino/neat_gym){:target="\_blank"}
+	* [PyStochastic](https://github.com/arthurpaulino/PyStochastic){:target="\_blank"}
+	* [neat_gym](https://github.com/arthurpaulino/neat_gym){:target="\_blank"}
