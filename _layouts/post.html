@@ -2,13 +2,9 @@
 layout: default
 ---
 
-<script>
-  function goBack() {
-      window.history.back()
-  }
-</script>
-
-<a onclick="goBack()" href="#" class="top-left-float-1"><i class="fa fa-long-arrow-left my-float"></i></a>
+<a onclick="window.history.back()" href="#" class="top-left-float-1">
+  <i class="fa fa-long-arrow-left my-float"></i>
+</a>
 
 <div class="text">
   <h1 class="text-title">{{ page.title }}</h1>
