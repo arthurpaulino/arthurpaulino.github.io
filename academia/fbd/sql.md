@@ -5,7 +5,7 @@ title: Um breve mergulho na semântica SQL
 
 # Definindo os tipos
 
-Consideremos os tipos fundamentais representados por `t`, onde `t` pode ser `num` ou `str`. Definamos então o tipo `coluna<t>` para que possamos construir o tipo `tabela< coluna<t1>, coluna<t2>, ... >`, que é o tipo básico da [SQL](https://pt.wikipedia.org/wiki/SQL){:target="_blank"}. Ou seja, o tipo `tabela` é composto por uma sequência de tipos `coluna`, cada um com seu próprio tipo fundamental.
+Consideremos os tipos fundamentais representados por `t`, onde `t` pode ser `num` ou `str`. Definamos então o tipo `coluna<t>` para que possamos construir o tipo `tabela< coluna<t1>, coluna<t2>, ... >`, que é o tipo básico da [SQL](https://pt.wikipedia.org/wiki/SQL){:target="\_blank"}. Ou seja, o tipo `tabela` é composto por uma sequência de tipos `coluna`, cada um com seu próprio tipo fundamental.
 
 * Exemplos:
 
@@ -27,12 +27,12 @@ Consideremos os tipos fundamentais representados por `t`, onde `t` pode ser `num
 
 	* Seja `empregados` a `tabela< coluna<num>, coluna<str>, coluna<num>, coluna<num> >`
 
-		| empregados.id | empregados.nome | empregados.idade | empregados.salário | empregados.departamento
-		|:-:|:-:|:-:|:-:|:-:
-		| 1 | zé | 26 | 900 | 3
-		| 2 | sá | 25 | 925 | 2
-		| 3 | jó | 27 | 950 | 1
-		| 4 | pi | 25 | 975 | 1
+	| empregados.id | empregados.nome | empregados.idade | empregados.salário | empregados.departamento
+	|:-:|:-:|:-:|:-:|:-:
+	| 1 | zé | 26 | 900 | 3
+	| 2 | sá | 25 | 925 | 2
+	| 3 | jó | 27 | 950 | 1
+	| 4 | pi | 25 | 975 | 1
 
 # Consultas
 
@@ -52,26 +52,26 @@ Se a cláusula `where` for omitida, todas as linhas de `tab` farão parte de `re
 
 	* A consulta
 
-		~~~
+		```
 		select empregados.nome
 		from empregados
 		where empregados.idade > 25
-		~~~
-	
+		```
+
 		resulta na `tabela< coluna<str> >`
 
 		| empregados.nome
 		|:-:
 		| zé
 		| jó
-	
+
 	* A consulta
 
-		~~~
+		```
 		select empregados.nome
 		from empregados
-		~~~
-	
+		```
+
 		resulta na `tabela< coluna<str> >`
 
 		| empregados.nome
@@ -89,11 +89,11 @@ O escopo de uma consulta é definido na cláusula `from`. Desta forma, podemos i
 
 	* A consulta
 
-		~~~
+		```
 		select e.nome
 		from empregados e
 		where e.idade = 25
-		~~~
+		```
 
 		resulta na `tabela< coluna<str> >`
 
@@ -113,14 +113,14 @@ Sejam as tabelas `A` do tipo `tabela< colunaA1, ... >` e `B` do tipo `tabela< co
 * Exemplo:
 
 	* A consulta
-		
-		~~~
+
+		```
 		select *
 		from departamentos d, campi c
-		~~~
-		
+		```
+
 		resulta na `tabela< coluna<num>, coluna<str>, coluna<num>, coluna<num>, coluna<str> >`
-		
+
 		| d.id | d.nome | d.campus | c.id | c.nome
 		|:-:|:-:|:-:|:-:|:-:
 		| 1 | computação | 1 | 1 | pici
@@ -133,7 +133,7 @@ Sejam as tabelas `A` do tipo `tabela< colunaA1, ... >` e `B` do tipo `tabela< co
 		| 3 | letras | 2 | 2 | benfica
 		| 3 | letras | 2 | 3 | porangabussu
 
-À medida que encadeamos produtos cartesianos, o custo de memória aumenta muito rapidamente. Isto ocorre porque o produto cartesiano normalmente gera muitas linhas desinteressantes. Embora nós possamos filtrar as linhas que importam com a cláusula `where`, a memória do servidor já foi drasticamente consumida pelo [SGBD](https://pt.wikipedia.org/wiki/Sistema_de_gerenciamento_de_banco_de_dados){:target='_blank'}. Devido a este fato, uma boa prática é utilizar o
+À medida que encadeamos produtos cartesianos, o custo de memória aumenta muito rapidamente. Isto ocorre porque o produto cartesiano normalmente gera muitas linhas desinteressantes. Embora nós possamos filtrar as linhas que importam com a cláusula `where`, a memória do servidor já foi drasticamente consumida pelo [SGBD](https://pt.wikipedia.org/wiki/Sistema_de_gerenciamento_de_banco_de_dados){:target="\_blank"}. Devido a este fato, uma boa prática é utilizar o
 
 ## `inner join`
 
@@ -146,14 +146,14 @@ A análise semântica é a mesma do produto cartesiano.
 * Exemplo:
 
 	* A consulta
-		
-		~~~
+
+		```
 		select *
 		from departamentos d inner join campi c on d.campus = c.id
-		~~~
-		
+		```
+
 		resulta na `tabela< coluna<num>, coluna<str>, coluna<num>, coluna<num>, coluna<str> >`
-		
+
 		| d.id | d.nome | d.campus | c.id | c.nome
 		|:-:|:-:|:-:|:-:|:-:
 		| 1 | computação | 1 | 1 | pici
@@ -169,30 +169,30 @@ Sintaxes e análises semânticas análogas ao `inner join`.
 * Exemplos:
 
 	* A consulta
-		
-		~~~
+
+		```
 		select *
 		from campi c left join departamentos d on d.campus = c.id
-		~~~
-		
+		```
+
 		resulta na `tabela< coluna<num>, coluna<str>, coluna<num>, coluna<str>, coluna<num> >`
-		
+
 		| c.id | c.nome | d.id | d.nome | d.campus
 		|:-:|:-:|:-:|:-:|:-:
 		| 1 | pici | 1 | computação | 1
 		| 1 | pici | 2 | biologia | 1
 		| 2 | benfica | 3 | letras | 2
-		| 3 | porangabussu |  |  | 
-	
+		| 3 | porangabussu |  |  |
+
 	* A consulta
-		
-		~~~
+
+		```
 		select *
 		from departamentos d right join campi c on d.campus = c.id
-		~~~
-		
+		```
+
 		resulta na `tabela< coluna<num>, coluna<str>, coluna<num>, coluna<num>, coluna<str> >`
-		
+
 		| d.id | d.nome | d.campus | c.id | c.nome
 		|:-:|:-:|:-:|:-:|:-:
 		| 1 | computação | 1 | 1 | pici
@@ -214,14 +214,14 @@ Os nomes das colunas da tabela resultante são os nomes das colunas da primeira 
 
 	* A consulta
 
-		~~~
+		```
 		select empregados.nome, empregados.salário
 		from empregados
 		union
 		select departamentos.nome, departamentos.campus
 		from departamentos
-		~~~
-	
+		```
+
 		resulta na `tabela< coluna<str>, coluna<num> >` **sem consistência interpretativa**
 
 		| empregados.nome | empregados.salário
@@ -233,10 +233,10 @@ Os nomes das colunas da tabela resultante são os nomes das colunas da primeira 
 		| computação | 1
 		| biologia | 1
 		| letras | 2
-	
+
 	* A consulta
-		
-		~~~
+
+		```
 		select *
 		from (
 			select c.id, c.nome
@@ -248,10 +248,10 @@ Os nomes das colunas da tabela resultante são os nomes das colunas da primeira 
 			select e.id, e.nome
 			from empregados e
 		) dados
-		~~~
-		
+		```
+
 		resulta na `tabela< coluna<num>, coluna<str> >`
-		
+
 		| dados.id | dados.nome
 		|:-:|:-:
 		| 1 | pici
@@ -279,12 +279,12 @@ Retorna `true` se um objeto pertence à lista em questão.
 
 	* A consulta
 
-		~~~
+		```
 		select e.nome
 		from empregados e inner join departamentos d on e.departamento = d.id
 		where d.departamento in ('computação', 'letras')
-		~~~
-	
+		```
+
 		resulta na `tabela< coluna<str> >`
 
 		| e.nome
@@ -299,7 +299,7 @@ Se uma `<tabela>` possui apenas uma coluna, ela pode ser utilizada como uma list
 
 	* A consulta
 
-		~~~
+		```
 		select departamentos.nome
 		from departamentos
 		where departamentos.id in (
@@ -307,8 +307,8 @@ Se uma `<tabela>` possui apenas uma coluna, ela pode ser utilizada como uma list
 			from empregados
 			where empregados.salário < 950
 		)
-		~~~
-	
+		```
+
 		resulta na `tabela< coluna<str> >`
 
 		| departamentos.nome
@@ -330,30 +330,30 @@ Computa a quantidade de objetos não nulos da coluna escolhida. Um cuidado extra
 
 	* A consulta
 
-		~~~
+		```
 		select count(empregados.id) as quantidade
 		from empregados
 		where empregados.salário > 900
-		~~~
-	
+		```
+
 		resulta na `tabela< coluna<num> >` **de nome indeterminado**
 
 		| quantidade
 		|:-:
 		| 3
-	
+
 	* A consulta
 
-		~~~
+		```
 		select *
 		from (
 			select count(empregados.id) as quantidade
 			from empregados
 			where empregados.salário > 900
 		) resultado
-		
-		~~~
-	
+
+		```
+
 		resulta na `tabela< coluna<num> >` **cujo nome é `resultado`**
 
 		| resultado.quantidade
@@ -366,16 +366,15 @@ Caso não importe se a tabela tenha ou não objetos nulos, podemos utilizar `cou
 
 	* A consulta
 
-		~~~
+		```
 		select *
 		from (
 			select count(*) as quantidade
 			from empregados
 			where empregados.salário > 900
 		) resultado
-		
-		~~~
-	
+		```
+
 		resulta na `tabela< coluna<num> >`
 
 		| resultado.quantidade
@@ -395,19 +394,19 @@ Funções utilizadas exclusivamente em colunas cujo tipo básico é `num`. Elas 
 As funções de agregação normalmente são utilizadas para gerar tabelas com apenas uma linha.
 
 * Exemplo:
-	
+
 	* A consulta
 
-		~~~
+		```
 		select *
 		from (
-			select count(*) as quantidade, min(e.salário) as min_sal, max(e.salário) as max_sal,
-				sum(e.salário) as sum_sal, avg(e.salário) as avg_sal
+			select count(*) as quantidade, min(e.salário) as min_sal,
+				max(e.salário) as max_sal, sum(e.salário) as sum_sal,
+				avg(e.salário) as avg_sal
 			from empregados e
 		) resultado
-		
-		~~~
-	
+		```
+
 		resulta na `tabela< coluna<num>, coluna<num>, coluna<num>, coluna<num>, coluna<num> >`
 
 		| resultado.quantidade | resultado.min_sal | resultado.max_sal | resultado.sum_sal | resultado.avg_sal
@@ -417,29 +416,36 @@ As funções de agregação normalmente são utilizadas para gerar tabelas com a
 Mas nós podemos utilizar `group by` para que os resultados das funções de agregação sejam computados em blocos isolados. Para isto, à exceção da coluna elegida para o `group by`, todas as outras colunas mencionadas na cláusula `select` devem gerar **apenas uma linha**, como é o caso das funções de agregação.
 
 * Exemplo:
-	
+
 	* A consulta
 
-		~~~
+		```
 		select *
 		from (
 			select e.departamento, count(*) as quantidade, min(e.salário) as min_sal,
-				max(e.salário) as max_sal, sum(e.salário) as sum_sal, avg(e.salário) as avg_sal
+				max(e.salário) as max_sal, sum(e.salário) as sum_sal,
+				avg(e.salário) as avg_sal
 			from empregados e
 			group by e.departamento
 		) resultado
-		
-		~~~
-	
+		```
+
 		|resulta na
 		|`tabela< coluna<num>, coluna<num>, coluna<num>, coluna<num>, coluna<num>, coluna<num> >`
 
-		| resultado.departamento | resultado.quantidade | resultado.min_sal | resultado.max_sal | resultado.sum_sal | resultado.avg_sal
-		|:-:|:-:|:-:|:-:|:-:|:-:
-		| 3 | 1 | 900 | 900 | 900 | 900
-		| 2 | 1 | 925 | 925 | 925 | 925
-		| 1 | 2 | 950 | 975 | 1925 | 962.5
+		| resultado.departamento | resultado.quantidade | resultado.min_sal ...
+		|:-:|:-:|:-:
+		| 3 | 1 | 900
+		| 2 | 1 | 925
+		| 1 | 2 | 950
+		|
+		| ...resultado.max_sal | resultado.sum_sal | resultado.avg_sal
+		|:-:|:-:|:-:
+		| 900 | 900 | 900
+		| 925 | 925 | 925
+		| 975 | 1925 | 962.5
+
 
 # Links recomendados
-* [w3schools](https://www.w3schools.com/sql/){:target="_blank"}
-* [Wikipédia](https://pt.wikipedia.org/wiki/SQL){:target="_blank"}
+* [w3schools](https://www.w3schools.com/sql/){:target="\_blank"}
+* [Wikipédia](https://pt.wikipedia.org/wiki/SQL){:target="\_blank"}
