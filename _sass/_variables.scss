@@ -15,7 +15,7 @@ $palatino: Palatino, 'Palatino LT STD', 'Palatino Linotype', 'Book Antiqua',
 $sans-font: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
 
 $monospaced-font: Menlo, Monaco, monospace;
-$code-color: #bf616a;
+$code-color: #777;
 
 @mixin box-sizing($type: border-box) {
   -webkit-box-sizing: $type;

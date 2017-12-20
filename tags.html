@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Postagens por Tags
+title: Tags
 ---
 
 <h1 class="text-title">{{ page.title }}</h1>
@@ -23,14 +23,16 @@ title: Postagens por Tags
 
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
-  <span class="tag-box-span" id="{{ this_word | cgi_escape }}">{{ this_word }}</span>
-  <ul>
-    {% for post in site.tags[this_word] %}
-    <div style="margin-bottom:1rem;">
-      <a href="{{ post.url | prepend: site.baseurl }}"><h1 style="display:inline;">{{ post.title }}</h1></a>
-      {{ post.date | date: "%d/%m/%Y" }}
+    <div id="{{ this_word | cgi_escape }}" class="posts-for-tag">
+      <span class="tag-box-span" id="{{ this_word | cgi_escape }}">{{ this_word }}</span>
+      <ul>
+        {% for post in site.tags[this_word] %}
+          <div style="margin-bottom:1rem;">
+            <a href="{{ post.url | prepend: site.baseurl }}"><h1 style="display:inline;">{{ post.title }}</h1></a>
+            {{ post.date | date: "%d/%m/%Y" }}
+          </div>
+        {% endfor %}
+      </ul>
     </div>
-    {% endfor %}
-  </ul>
   {% endunless %}{% endfor %}
 </div>
