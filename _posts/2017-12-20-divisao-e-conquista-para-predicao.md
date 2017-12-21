@@ -9,7 +9,7 @@ tags:
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-Quando praticamos aprendizado de máquina, idealmente gostaríamos de encontrar uma função capaz predizer qualquer entrada desconhecida de forma confiável, mas nem sempre isso é possível. Nestes casos, uma estratégia possível é dividir o espaço amostral para encontrarmos **alguns** clusters nos quais nossos modelos de aprendizado são capazes de obter resultados mais acurados.
+Quando praticamos aprendizado de máquina, idealmente gostaríamos de encontrar uma função capaz predizer qualquer entrada desconhecida de forma confiável, mas nem sempre isso é possível. Nestes casos, uma estratégia possível é particionar o espaço amostral para encontrarmos **alguns** clusters nos quais nossos modelos de aprendizado são capazes de obter resultados mais acurados.
 
 Neste artigo apresentarei uma forma de implementar a divisão e conquista utilizando o algoritmo $$k$$-means. Mas antes, façamos uma breve revisão.
 
