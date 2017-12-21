@@ -17,7 +17,7 @@ Neste artigo apresentarei uma forma de implementar a divisão e conquista utiliz
 
 $$k$$-means é um algoritmo de *clusterização*, ou seja, sua utilidade é agrupar elementos semelhantes. Sua lógica é a seguinte:
 
-1. Inicia-se com $$k$$ pontos aleatórios distribuidos ao longo do espaço amostral, denominados *centroids*. Cada centroid $$c$$ é o centro do conjunto $$S_c$$
+1. Inicia-se com $$k$$ pontos aleatórios distribuidos ao longo do espaço amostral, denominados *centroids*. Cada centroid $$c$$ é o centro do conjunto vazio $$S_c$$
 
 2. Para cada elemento $$e$$ do conjunto de treinamento, verifica-se a distância de $$e$$ para cada centroid e adiciona-se $$e$$ a $$S_{c_p}$$, onde $$c_p$$ é o centroid mais $$p$$róximo de $$e$$
 
