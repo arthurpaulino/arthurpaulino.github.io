@@ -7,8 +7,6 @@ order: 2
 # Zen
 O Zen é um método milenar de libertação espiritual arraigado em um rigoroso treinamento, cujo objetivo é capacitar o praticante a permanecer em estado de presença e a abandonar as falsas crenças.
 
-Sob a orientação do [Monge Meihō Genshō](http://www.daissen.org.br/bio/gensho.php){:target="\_blank"}, discípulo do [Doshō Saikawa Sōkan Rōshi](http://www.daissen.org.br/bio/saikawa.php){:target="\_blank"}, o [Grupo de Estudos Zen de Fortaleza - Daissen Ji Sei An Ji](https://www.facebook.com/daissenjifortaleza){:target="\_blank"}, vinculado à sangha central [Daissen Ji](http://www.daissen.org.br/){:target="\_blank"}, vem se solidificando em suas práticas para melhor nos servir.
-
 # Yoga
 Yoga é uma ciência de cura através de desbloqueios realizados em vários níveis, desde os mais grosseiros (músculos, articulações etc) até os mais finos (emoções, pensamentos etc).
 
@@ -20,8 +18,6 @@ A prática integral do Yoga cria o terreno para o desenvolvimento das virtudes i
 * Expressividade
 * Foco e intuição
 * Transcendência
-
-O shala [Ashtanga Yoga Fortaleza](https://www.facebook.com/ashtangayogafortaleza/){:target="\_blank"}, mantido por [Lucas Carvalho](https://www.facebook.com/profile.php?id=100006901727112){:target="\_blank"}, é uma continuação do legado deixado por [K. Pattabhi Jois](https://en.wikipedia.org/wiki/K._Pattabhi_Jois){:target="\_blank"} por meio do seu discípulo [R. Sharath Jois](https://en.wikipedia.org/wiki/R._Sharath_Jois){:target="\_blank"}.
 
 # União do Vegetal
 A [União do Vegetal](http://www.udv.org.br/){:target="\_blank"} é uma instituição cujos sócios trabalham pelo desenvolvimento espiritual da humanidade, engajando na busca pela integridade por meio da prática das virtudes.

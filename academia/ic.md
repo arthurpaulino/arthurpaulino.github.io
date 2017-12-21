@@ -46,7 +46,7 @@ Por existirem em quantidade exponencial, é inviável iniciar um modelo prático
 
 A separação é feita em tempo polinomial com o algoritmo do corte mínimo, já que $$\sum_{e \in \delta^+ (S)} y_e$$ é um corte de V. Se o corte mínimo tem valor maior que ou igual a $$1$$, então não há mais restrição $$4$$ violada.
 
-Link para a implementação em C++: [agmrgm](https://github.com/arthurpaulino/agmrgm){:target="_blank"}.
+Link para a implementação em C++: [agmrgm](https://github.com/arthurpaulino/agmrgm){:target="\_blank"}.
 
 # Resultados experimentais
 

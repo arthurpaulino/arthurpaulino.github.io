@@ -14,7 +14,7 @@ title: Tags
   <center>
     <ul class="tag-box inline">
     {% for tag in tag_words %}
-      <a href="#{{ tag | cgi_escape }}">{{ tag }} <span>{{ site.tags[tag] | size }}</span></a>
+      <a href="#{{ tag | cgi_escape }}">{{ tag }}<span>{{ site.tags[tag] | size }}</span></a>
     {% endfor %}
     </ul>
   </center>
