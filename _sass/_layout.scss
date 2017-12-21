@@ -124,6 +124,19 @@ footer,
 	box-shadow: 2px 2px 10px #aaa;
 }
 
+.top-left-float-3{
+	position:fixed;
+	width:40px;
+	height:40px;
+	top:165;
+	left:20px;
+	background-color:#fff;
+	color:#111;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 10px #aaa;
+}
+
 .my-float{
 	margin-top:11px;
 }
