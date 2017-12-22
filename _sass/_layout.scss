@@ -47,11 +47,6 @@ footer,
     @include transition(all 0.2s ease-out);
     color: $default-color;
     display: inline-block;
-    padding: 0 1rem 0 0;
-
-    &:last-child {
-      padding-right: 0;
-    }
 
     &:hover,
     &:focus {
@@ -63,6 +58,7 @@ footer,
     @include transition(all 0.2s ease-out);
     color: $default-color;
     font-family: $sans-font;
+    margin-left: 10px;
 
     &:hover,
     &:focus {
