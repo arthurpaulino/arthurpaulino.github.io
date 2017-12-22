@@ -78,4 +78,4 @@ Quando $$k = 1$$, obtemos o resultado sem a estratégia de divisão e conquista.
 
 A grande desvantagem desta estratégia é o custo computacional. O conjunto de treinamento precisa ser particionado várias vezes e, para cada particionamento, é necessário executar o algoritmo de aprendizagem. Mas poder computacional é algo escalável, principalmente com as tecnologias que estão surgindo, como por exemplo a biblioteca [TensorFlow](https://www.tensorflow.org/).
 
-Além disso, a depender do método de aprendizagem escolhido, a computação de funções de predição pode ser mais eficiente se replicado em partições do que se executado no conjunto de treinamento inteiro. Exemplos disso são os métodos que envolvem invesões de matrizes, cujos algoritmos têm complexidades mais altas que $$O(n^{2.37})$$ até o momento.
+Além disso, a depender do método de aprendizagem escolhido, a computação de funções de predição pode ser mais eficiente se replicada em partições do que se executada no conjunto de treinamento inteiro. Exemplos disso são os métodos que envolvem invesões de matrizes, cujos algoritmos têm complexidades mais altas que $$O(n^{2.37})$$ até o momento.
