@@ -24,5 +24,5 @@ superá-las.
 
 # Plantio Caianinho
 
-Uma aplicação mobile (nativa) e web para que os usuários, em conjunto, documentem
-o desenvolvimento de plantas e gerem relatórios acerca das mesmas.
+Aplicativo Android no qual os usuários, em conjunto, documentam o desenvolvimento
+de plantas e geram relatórios acerca das mesmas.
