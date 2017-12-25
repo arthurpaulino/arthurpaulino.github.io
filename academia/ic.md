@@ -3,8 +3,6 @@ layout: page
 title: Árvores Geradoras Mínimas com Restrição de Grau Mínimo
 ---
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
 # Descrição do problema
 Dados um grafo $$G=(V,E)$$ com pesos atribuídos às arestas, $$C \subset V$$, $$\vert C \vert \geq 1$$, $$T = V \setminus C$$, $$\vert T \vert \geq 2$$ e um número inteiro $$d>0$$, encontrar uma árvore geradora de $$G$$ cuja soma dos pesos de suas arestas seja a menor possível e que atenda às restrições:
 * $$\delta(v) \geq d$$, $$\forall v \in C$$;
