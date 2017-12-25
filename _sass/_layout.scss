@@ -81,7 +81,7 @@ footer,
   }
 }
 
-.bottom-right-float{
+.bottom-right-float {
 	position:fixed;
 	width:40px;
 	height:40px;
@@ -92,9 +92,14 @@ footer,
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 10px #aaa;
+
+  @media (max-width: 1050px) {
+    bottom:10px;
+  	right:10px;
+  }
 }
 
-.top-left-float-1{
+.top-left-float-1 {
 	position:fixed;
 	width:40px;
 	height:40px;
@@ -105,9 +110,15 @@ footer,
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 10px #aaa;
+
+  @media (max-width: 1050px) {
+    top:auto;
+    bottom:10px;
+  	left:10px;
+  }
 }
 
-.top-left-float-2{
+.top-left-float-2 {
 	position:fixed;
 	width:40px;
 	height:40px;
@@ -118,9 +129,15 @@ footer,
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 10px #aaa;
+
+  @media (max-width: 1050px) {
+    top:auto;
+    bottom:10px;
+  	left:55px;
+  }
 }
 
-.top-left-float-3{
+.top-left-float-3 {
 	position:fixed;
 	width:40px;
 	height:40px;
@@ -131,9 +148,15 @@ footer,
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 10px #aaa;
+
+  @media (max-width: 1050px) {
+    top:auto;
+    bottom:10px;
+  	left:100px;
+  }
 }
 
-.my-float{
+.my-float {
 	margin-top:11px;
 }
 

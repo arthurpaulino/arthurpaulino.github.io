@@ -2,7 +2,6 @@
 layout: post
 title: Divisão e conquista para predição
 tags:
-  - data-science
   - machine-learning
   - k-means
 ---
