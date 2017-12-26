@@ -19,7 +19,10 @@
 
   p {
     margin: 0 0 1rem;
-    text-align: justify;
+
+    @media (min-width: 600px) {
+      text-align: justify;
+    }
   }
 
   a:hover {

@@ -35,7 +35,7 @@ Seja `nn` uma rede neural
 
   Exemplo: `nn.weight[node1][node2]` é o peso da aresta que conecta `node1` a `node2`
 
-* `nn.eval` é o dicionário que contém as saídas dos perceptrons no contexto em que a rede foi alimentada com uma certa entrada
+* `nn.eval` é o dicionário que registra as saídas dos perceptrons no contexto em que a rede foi alimentada com uma certa entrada
 
   Exemplo: `nn.eval[node]` é o valor da saída do perceptron `node`
 
@@ -60,3 +60,25 @@ Seja `node` um perceptron.
 * `node.back_nodes` é a lista de perceptrons que alimentam `node`
 
 # O algoritmo
+
+O algoritmo *Backpropagation* acontece em três etapas:
+
+1. Alimentar a rede com um elemento do conjunto de treinamento
+
+2. Calcular o erro cometido por cada perceptron
+
+3. Atualizar os pesos das arestas com o intuito de diminuir o erro
+
+## Primeiro passo: alimentando a rede
+
+Seja `target_output_array` a resposta ideal para a entrada `input_array`. Nós desejamos que a rede neural `nn` aprenda a dar uma resposta mais próxima de `target_output_array` quando alimentada pela entrada `input_array`.
+
+Primeiramente, nós alimentamos `nn` com `input_array` para obtermos a saída `output_array`
+
+```python
+output_array = nn.feed(input_array)
+```
+
+## Segundo passo: calculando os erros dos perceptrons
+
+## Terceiro passo: atualizando os pesos das arestas
