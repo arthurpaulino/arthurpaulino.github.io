@@ -11,13 +11,27 @@ O algoritmo *Backpropagation* pode parecer confuso nas primeiras vezes que o vis
 
 O objetivo do *Backpropagation* é ajustar os pesos das arestas de uma rede neural para que esta possa responder de forma mais condizente com os dados do conjunto de treinamento.
 
-O ponto chave sobre redes neurais é que elas aprendem com os próprios erros. Nós veremos como isto acontece, mas antes precisamos formalizar uma estrutura de dados para representarmos uma rede neural. Este passo é importante para que possamos acompanhar a lógica do algoritmo sem que dependamos de uma notação matemática carregada.
+O ponto chave sobre redes neurais é que elas aprendem com os próprios erros. Nós veremos como isto acontece, mas antes precisamos formalizar uma estrutura de dados para representarmos uma rede neural. Este passo é importante para que possamos acompanhar a lógica do algoritmo ao passo que lidamos com a matemática necessária.
 
 Se Python lhe é familiar, você se sentirá ainda mais em casa!
 
 # Modelo
 
 O objetivo aqui não é criar o modelo mais eficiente, mas sim o mais didático. Perceba que abstrairemos muitos aspectos de implementação.
+
+Para simplificarmos ainda mais nossas vidas, assumiremos que todos os perceptrons da rede implementam a função logística $$f(x) = 1/(1+e^{-1})$$ para computarem suas saídas. Note que $$f'(x) = f(x)(1 - f(x))$$, pois este resultado será necessário adiante.
+
+## Perceptron
+
+Seja `node` um perceptron.
+
+### Atributos
+
+* `node.front_nodes` é a lista de perceptrons alimentados por `node`
+
+* `node.back_nodes` é a lista de perceptrons que alimentam `node`
+
+* `node.eval` registra a saída de `node` num contexto em que a rede foi alimentada
 
 ## Rede neural
 
@@ -35,50 +49,46 @@ Seja `nn` uma rede neural
 
   Exemplo: `nn.weight[node1][node2]` é o peso da aresta que conecta `node1` a `node2`
 
-* `nn.eval` é o dicionário que registra as saídas dos perceptrons no contexto em que a rede foi alimentada com uma certa entrada
+### Método
 
-  Exemplo: `nn.eval[node]` é o valor da saída do perceptron `node`
+* `output_array = nn.feed(input_array)` retorna a resposta da rede neural à entrada `input_array`, onde
 
-### Métodos
-
-* `nn.reset()` faz `nn.eval[node] = None` para todos os perceptrons `node` da rede
-
-* `output_array = nn.feed(input_array)` é utilizado para obtermos a resposta da rede neural a uma determinada entrada, onde
-
-  * `output_array[i]` é a saída do perceptron `nn.output_nodes[i]`
+  * `output_array[i]` é igual a `nn.output_nodes[i].eval`
 
   * `input_array[i]` é a entrada do perceptron `nn.input_nodes[i]`
 
-## Perceptron
-
-Seja `node` um perceptron.
-
-### Atributos
-
-* `node.front_nodes` é a lista de perceptrons alimentados por `node`
-
-* `node.back_nodes` é a lista de perceptrons que alimentam `node`
-
 # O algoritmo
 
-O algoritmo *Backpropagation* acontece em três etapas:
+Sejam $$F$$ a função que desejamos aprender e $$N$$ a função que a rede computa. Idealmente, gostariamos que $$\forall x, N(x) = F(x)$$. Mas como não conhecemos a lei de formação de $$F$$, precisamos encontrar outro caminho para tornarmos $$N$$ o mais semelhante a $$F$$ possível.
 
-1. Alimentar a rede com um elemento do conjunto de treinamento
+Definamos então a função $$E(x) = \frac{1}{2}(F(x) - N(x))^2$$ para representar o erro que a rede comete ao tentar simular $$F(x)$$.
 
-2. Calcular o erro cometido por cada perceptron
+Recaptulando, podemos compreender o algoritmo em três etapas:
 
-3. Atualizar os pesos das arestas com o intuito de diminuir o erro
+1. [Alimentar a rede](#alimentando-a-rede) com um elemento do conjunto de treinamento
 
-## Primeiro passo: alimentando a rede
+2. [Calcular o gradiente do erro](#calculando-o-gradiente-do-erro) da rede em relação aos pesos de cada aresta
+
+3. [Atualizar os pesos das arestas](#atualizando-os-pesos-das-arestas) com o intuito de diminuir o erro
+
+## Alimentando a rede
 
 Seja `target_output_array` a resposta ideal para a entrada `input_array`. Nós desejamos que a rede neural `nn` aprenda a dar uma resposta mais próxima de `target_output_array` quando alimentada pela entrada `input_array`.
 
-Primeiramente, nós alimentamos `nn` com `input_array` para obtermos a saída `output_array`
+Primeiramente, nós alimentamos a rede com `input_array` para obtermos `output_array`
 
 ```python
 output_array = nn.feed(input_array)
 ```
 
-## Segundo passo: calculando os erros dos perceptrons
+## Calculando o gradiente do erro
 
-## Terceiro passo: atualizando os pesos das arestas
+### Perceptrons da camada de saída
+
+### Perceptrons da camada oculta
+
+## Atualizando os pesos das arestas
+
+# Bibliografia
+
+ROJAS, Raul. [Neural Networks - A Systematic Introduction](https://page.mi.fu-berlin.de/rojas/neural/). Springer-Verlag, Berlin, New-York, 1996. [p.151-184](https://page.mi.fu-berlin.de/rojas/neural/chapter/K7.pdf).
