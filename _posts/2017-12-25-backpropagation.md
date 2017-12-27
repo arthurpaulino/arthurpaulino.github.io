@@ -19,7 +19,7 @@ Se Python lhe é familiar, você se sentirá ainda mais em casa!
 
 O objetivo aqui não é criar o modelo mais eficiente, mas sim o mais didático. Perceba que abstrairemos muitos aspectos de implementação.
 
-Para simplificarmos ainda mais nossas vidas, assumiremos que todos os perceptrons da rede implementam a função logística $$f(x) = 1/(1+e^{-1})$$ para computarem suas saídas. Note que $$f'(x) = f(x)(1 - f(x))$$, pois este resultado será necessário adiante.
+Para simplificarmos ainda mais nossas vidas, assumiremos que todos os perceptrons da rede implementam a sigmóide $$s(\Sigma) = 1/(1+e^{-\Sigma})$$ para computarem suas saídas, onde $$\Sigma$$ é o resultado da função de agregação do perceptron. Note que $$ds/d\Sigma = s(\Sigma)[1 - s(\Sigma)]$$, pois este resultado será necessário mais adiante.
 
 ## Perceptron
 
@@ -59,17 +59,23 @@ Seja `nn` uma rede neural
 
 # O algoritmo
 
-Sejam $$F$$ a função que desejamos aprender e $$N$$ a função que a rede computa. Idealmente, gostariamos que $$\forall x, N(x) = F(x)$$. Mas como não conhecemos a lei de formação de $$F$$, precisamos encontrar outro caminho para tornarmos $$N$$ o mais semelhante a $$F$$ possível.
+Sejam $$F$$ a função que desejamos aprender e $$N$$ a função que a rede computa. Idealmente, gostariamos que $$\forall x, N(x, w) = F(x)$$, onde $$w$$ é a matriz de pesos das arestas da rede. Mas como não conhecemos a lei de formação de $$F$$, precisamos encontrar um caminho para tornarmos $$N$$ o mais semelhante possível a $$F$$.
 
-Definamos então a função $$E(x) = \frac{1}{2}(F(x) - N(x))^2$$ para representar o erro que a rede comete ao tentar simular $$F(x)$$.
+Definamos então a função $$E(x, w) = \frac{1}{2}[F(x) - N(x, w)]^2$$ para representar o erro que a rede comete ao tentar simular $$F(x)$$. A estratégia é a seguinte:
 
-Recaptulando, podemos compreender o algoritmo em três etapas:
+1. Utilizar um valor de $$x$$ para o qual conhecemos $$F(x)$$
 
-1. [Alimentar a rede](#alimentando-a-rede) com um elemento do conjunto de treinamento
+    Os valores de $$x$$ que podemos utilizar estão no conjunto de treinamento
 
-2. [Calcular o gradiente do erro](#calculando-o-gradiente-do-erro) da rede em relação aos pesos de cada aresta
+2. Encontrar o gradiente de $$E(x, w)$$ em relação a cada item $$w_{ij}$$ de $$w$$ para sabermos exatamente a direção de máximo crescimento do erro
 
-3. [Atualizar os pesos das arestas](#atualizando-os-pesos-das-arestas) com o intuito de diminuir o erro
+    Para encontrarmos $$\partial E/\partial w_{ij}$$, denominemos por $$o_i$$ a saída do perceptron $$i$$ e calculamos a derivada parcial do erro em relação à entrada proveniente de $$i$$:
+
+    $$\frac{\partial E}{\partial(o_i w_{ij})}$$
+
+3. Ajustar $$w$$ de modo que caminhemos na direção oposta ao gradiente de $$E(x, w)$$
+
+Vejamos então como isto é feito na prática.
 
 ## Alimentando a rede
 
