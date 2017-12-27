@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Backpropagation descomplicado
+title: Backpropagation
 tags:
   - machine-learning
   - neural-networks
