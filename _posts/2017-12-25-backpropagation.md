@@ -11,7 +11,7 @@ O algoritmo *Backpropagation* pode parecer confuso nas primeiras vezes que o vis
 
 O objetivo do *Backpropagation* é ajustar os pesos das arestas de uma rede neural para que esta possa responder de forma mais condizente com os dados do conjunto de treinamento.
 
-O ponto chave sobre redes neurais é que elas aprendem com os próprios erros. Nós veremos como isto acontece, mas antes precisamos formalizar uma estrutura de dados para representarmos uma rede neural. Este passo é importante para que possamos acompanhar a lógica do algoritmo ao passo que lidamos com a matemática necessária.
+O ponto chave sobre redes neurais é que elas aprendem com os próprios erros. Nós veremos como isto acontece, mas antes precisamos formalizar uma estrutura de dados para representarmos uma rede neural. Este passo é importante para que possamos acompanhar a lógica do algoritmo logo após lidarmos com a matemática necessária.
 
 Se Python lhe é familiar, você se sentirá ainda mais em casa!
 
@@ -19,7 +19,7 @@ Se Python lhe é familiar, você se sentirá ainda mais em casa!
 
 O objetivo aqui não é criar o modelo mais eficiente, mas sim o mais didático. Perceba que abstrairemos muitos aspectos de implementação.
 
-Para simplificarmos ainda mais nossas vidas, assumiremos que todos os perceptrons da rede implementam a sigmóide $$s(\Sigma) = 1/(1+e^{-\Sigma})$$ para computarem suas saídas, onde $$\Sigma$$ é o resultado da função de agregação do perceptron. Note que $$ds/d\Sigma = s(\Sigma)[1 - s(\Sigma)]$$. Este resultado será necessário mais adiante.
+Para simplificarmos ainda mais nossas vidas, assumiremos que todos os perceptrons da rede implementam a sigmóide $$s(\sigma) = 1/(1+e^{-\sigma})$$ para computarem suas saídas, onde $$\sigma$$ é o resultado da função de agregação do perceptron. Note que $$ds/d\sigma = s(\sigma)(1 - s(\sigma))$$. Este resultado será necessário mais adiante.
 
 ## Perceptron
 
@@ -78,15 +78,17 @@ Definamos então a função $$E(x, w) = \frac{1}{2}[F(x) - N(x, w)]^2$$ para rep
 
     $$ * $$ $$o_i$$ é constante no contexto em que $$x$$ está fixo.
 
-    $$\frac{\partial E}{\partial(o_i w_{ij})}$$ é a derivada parcial do erro em relação à entrada em $$j$$ proveniente de $$i$$. A denotemos por $$\delta_j$$ para que possamos guardar os valores das componentes do gradiente na matriz $$G$$ fazendo
+    $$\frac{\partial E}{\partial(o_i w_{ij})}$$ é a derivada parcial do erro em relação à entrada em $$j$$ proveniente de $$i$$. A denotaremos por $$\delta_j$$ para que possamos guardar os valores das componentes do gradiente na matriz $$G$$ fazendo
 
-    $$G_{ij} = \frac{\partial E}{\partial(o_i w_{ij})} = o_i\delta_j$$
+    $$G_{ij} = o_i\delta_j$$
 
 3. Ajustar $$w$$ de modo que caminhemos na direção oposta ao gradiente de $$E$$
 
     Uma vez que temos a matriz $$G$$ completa, podemos fazer $$w_{ij} = w_{ij} - \alpha G_{ij}$$, onde $$\alpha$$ é a taxa de aprendizado.
 
 Vejamos então como isto é feito na prática.
+
+# Implementação
 
 ## Alimentando a rede
 
@@ -99,6 +101,8 @@ output_array = net.feed(input_array)
 ```
 
 ## Calculando o gradiente do erro
+
+Aqui nós utilizaremos uma estrutura de dados semelhante ao dicionário que guarda os pesos das arestas
 
 ### Perceptrons da camada de saída
 
