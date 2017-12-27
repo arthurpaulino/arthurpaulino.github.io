@@ -19,7 +19,7 @@ Se Python lhe é familiar, você se sentirá ainda mais em casa!
 
 O objetivo aqui não é criar o modelo mais eficiente, mas sim o mais didático. Perceba que abstrairemos muitos aspectos de implementação.
 
-Para simplificarmos ainda mais nossas vidas, assumiremos que todos os perceptrons da rede implementam a sigmóide $$s(\Sigma) = 1/(1+e^{-\Sigma})$$ para computarem suas saídas, onde $$\Sigma$$ é o resultado da função de agregação do perceptron. Note que $$ds/d\Sigma = s(\Sigma)[1 - s(\Sigma)]$$, pois este resultado será necessário mais adiante.
+Para simplificarmos ainda mais nossas vidas, assumiremos que todos os perceptrons da rede implementam a sigmóide $$s(\Sigma) = 1/(1+e^{-\Sigma})$$ para computarem suas saídas, onde $$\Sigma$$ é o resultado da função de agregação do perceptron. Note que $$ds/d\Sigma = s(\Sigma)[1 - s(\Sigma)]$$. Este resultado será necessário mais adiante.
 
 ## Perceptron
 
@@ -35,27 +35,27 @@ Seja `node` um perceptron.
 
 ## Rede neural
 
-Seja `nn` uma rede neural
+Seja `net` uma rede neural
 
 ### Atributos
 
-* `nn.input_nodes` é a lista de perceptrons da camada de entrada
+* `net.input_nodes` é a lista de perceptrons da camada de entrada
 
-* `nn.hidden_nodes` é a lista de perceptrons da camada oculta
+* `net.hidden_nodes` é a lista de perceptrons da camada oculta
 
-* `nn.output_nodes` é a lista de perceptrons da camada de saída
+* `net.output_nodes` é a lista de perceptrons da camada de saída
 
-* `nn.weight` é a matriz dos pesos das arestas
+* `net.w` é o dicionário que contém os pesos das arestas
 
-  Exemplo: `nn.weight[node1][node2]` é o peso da aresta que conecta `node1` a `node2`
+  `net.w[(node_i, node_j)]` é o peso da aresta que conecta o perceptron `node_i` ao perceptron `node_j`
 
 ### Método
 
-* `output_array = nn.feed(input_array)` retorna a resposta da rede neural à entrada `input_array`, onde
+* `output_array = net.feed(input_array)` retorna a resposta da rede neural à entrada `input_array`, onde
 
-  * `output_array[i]` é igual a `nn.output_nodes[i].eval`
+  * `output_array[i]` é igual a `net.output_nodes[i].eval`
 
-  * `input_array[i]` é a entrada do perceptron `nn.input_nodes[i]`
+  * `input_array[i]` é a entrada do perceptron `net.input_nodes[i]`
 
 # O algoritmo
 
@@ -67,24 +67,35 @@ Definamos então a função $$E(x, w) = \frac{1}{2}[F(x) - N(x, w)]^2$$ para rep
 
     Os valores de $$x$$ que podemos utilizar estão no conjunto de treinamento
 
-2. Encontrar o gradiente de $$E(x, w)$$ em relação a cada item $$w_{ij}$$ de $$w$$ para sabermos exatamente a direção de máximo crescimento do erro
+2. Encontrar o gradiente de $$E$$ em relação a cada item $$w_{ij}$$ de $$w$$ para sabermos exatamente a direção de máximo crescimento do erro para um $$x$$ fixo
 
-    Para encontrarmos $$\partial E/\partial w_{ij}$$, denominemos por $$o_i$$ a saída do perceptron $$i$$ e calculamos a derivada parcial do erro em relação à entrada proveniente de $$i$$:
+    Seja $$o_i$$ a saída do perceptron $$i$$. Para encontrarmos $$\partial E/\partial w_{ij}$$, apliquemos a regra da cadeia:
 
-    $$\frac{\partial E}{\partial(o_i w_{ij})}$$
+    $$\frac{\partial E}{\partial w_{ij}} =
+    \frac{\partial E}{\partial(o_i w_{ij})} \bigg[\frac{\partial(o_i w_{ij})}{\partial w_{ij}}\bigg] \stackrel{ * }{=}
+    \frac{\partial E}{\partial(o_i w_{ij})} \bigg[o_i\frac{\partial w_{ij}}{\partial w_{ij}}\bigg] =
+    o_i\frac{\partial E}{\partial(o_i w_{ij})}$$
 
-3. Ajustar $$w$$ de modo que caminhemos na direção oposta ao gradiente de $$E(x, w)$$
+    $$ * $$ $$o_i$$ é constante no contexto em que $$x$$ está fixo.
+
+    $$\frac{\partial E}{\partial(o_i w_{ij})}$$ é a derivada parcial do erro em relação à entrada em $$j$$ proveniente de $$i$$. A denotemos por $$\delta_j$$ para que possamos guardar os valores das componentes do gradiente na matriz $$G$$ fazendo
+
+    $$G_{ij} = \frac{\partial E}{\partial(o_i w_{ij})} = o_i\delta_j$$
+
+3. Ajustar $$w$$ de modo que caminhemos na direção oposta ao gradiente de $$E$$
+
+    Uma vez que temos a matriz $$G$$ completa, podemos fazer $$w_{ij} = w_{ij} - \alpha G_{ij}$$, onde $$\alpha$$ é a taxa de aprendizado.
 
 Vejamos então como isto é feito na prática.
 
 ## Alimentando a rede
 
-Seja `target_output_array` a resposta ideal para a entrada `input_array`. Nós desejamos que a rede neural `nn` aprenda a dar uma resposta mais próxima de `target_output_array` quando alimentada pela entrada `input_array`.
+Seja `target_output_array` a resposta ideal para a entrada `input_array`. Nós desejamos que a rede neural `net` aprenda a dar uma resposta mais próxima de `target_output_array` quando alimentada pela entrada `input_array`.
 
 Primeiramente, nós alimentamos a rede com `input_array` para obtermos `output_array`
 
 ```python
-output_array = nn.feed(input_array)
+output_array = net.feed(input_array)
 ```
 
 ## Calculando o gradiente do erro
