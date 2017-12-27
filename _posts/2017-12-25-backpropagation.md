@@ -19,17 +19,15 @@ Se Python lhe é familiar, você se sentirá ainda mais em casa!
 
 O objetivo aqui não é criar o modelo mais eficiente, mas sim o mais didático. Perceba que abstrairemos muitos aspectos de implementação.
 
-Para simplificarmos ainda mais nossas vidas, assumiremos que todos os perceptrons da rede implementam a sigmóide $$s(\sigma) = 1/(1+e^{-\sigma})$$ para computarem suas saídas, onde $$\sigma$$ é o resultado da função de agregação do perceptron. Note que $$ds/d\sigma = s(\sigma)(1 - s(\sigma))$$. Este resultado será necessário mais adiante.
-
 ## Perceptron
 
 Seja `node` um perceptron.
 
 ### Atributos
 
-* `node.front_nodes` é a lista de perceptrons alimentados por `node`
-
 * `node.back_nodes` é a lista de perceptrons que alimentam `node`
+
+* `node.front_nodes` é a lista de perceptrons alimentados por `node`
 
 * `node.eval` registra a saída de `node` num contexto em que a rede foi alimentada
 
@@ -38,10 +36,6 @@ Seja `node` um perceptron.
 Seja `net` uma rede neural
 
 ### Atributos
-
-* `net.input_nodes` é a lista de perceptrons da camada de entrada
-
-* `net.hidden_nodes` é a lista de perceptrons da camada oculta
 
 * `net.output_nodes` é a lista de perceptrons da camada de saída
 
@@ -55,13 +49,24 @@ Seja `net` uma rede neural
 
   * `output_array[i]` é igual a `net.output_nodes[i].eval`
 
-  * `input_array[i]` é a entrada do perceptron `net.input_nodes[i]`
-
 # O algoritmo
+
+Assumiremos que todos os perceptrons da rede implementam a sigmóide como função de ativação. Assim, o valor da saída de um perceptron $$j$$ é $$s(a_j) = 1/(1+e^{-a_j})$$, onde $$a_j$$ é o resultado das entradas em $$j$$ multiplicadas pelos devidos pesos. Ou seja:
+
+$$a_j = \sum\limits_{k \in B} o_k w_{kj},$$
+
+onde:
+* $$B$$ é o conjunto dos perceptrons que alimentam $$j$$
+
+* $$o_k$$ é a saída do perceptron $$k$$
+
+* $$w_{kj}$$ é o peso da aresta que liga $$k$$ a $$j$$.
+
+Note que $$\frac{d}{da_j}s(a_j) = s(a_j)[1 - s(a_j)]$$. Este resultado será utilizado mais adiante.
 
 Sejam $$F$$ a função que desejamos aprender e $$N$$ a função que a rede computa. Idealmente, gostariamos que $$\forall x, N(x, w) = F(x)$$, onde $$w$$ é a matriz de pesos das arestas da rede. Mas como não conhecemos a lei de formação de $$F$$, precisamos encontrar um caminho para tornarmos $$N$$ o mais semelhante possível a $$F$$.
 
-Definamos então a função $$E(x, w) = \frac{1}{2}[F(x) - N(x, w)]^2$$ para representar o erro que a rede comete ao tentar simular $$F(x)$$. A estratégia é a seguinte:
+Definamos então a função $$E = \frac{1}{2}\|N(x) - F(x)\|^2$$ para representar o erro que a rede comete ao tentar simular $$F(x)$$. A estratégia é a seguinte:
 
 1. Utilizar um valor de $$x$$ para o qual conhecemos $$F(x)$$
 
@@ -69,26 +74,74 @@ Definamos então a função $$E(x, w) = \frac{1}{2}[F(x) - N(x, w)]^2$$ para rep
 
 2. Encontrar o gradiente de $$E$$ em relação a cada item $$w_{ij}$$ de $$w$$ para sabermos exatamente a direção de máximo crescimento do erro para um $$x$$ fixo
 
-    Seja $$o_i$$ a saída do perceptron $$i$$. Para encontrarmos $$\partial E/\partial w_{ij}$$, apliquemos a regra da cadeia:
+    Para encontrarmos $$\partial E/\partial w_{ij}$$, apliquemos a regra da cadeia:
 
-    $$\frac{\partial E}{\partial w_{ij}} =
-    \frac{\partial E}{\partial(o_i w_{ij})} \bigg[\frac{\partial(o_i w_{ij})}{\partial w_{ij}}\bigg] \stackrel{ * }{=}
-    \frac{\partial E}{\partial(o_i w_{ij})} \bigg[o_i\frac{\partial w_{ij}}{\partial w_{ij}}\bigg] =
-    o_i\frac{\partial E}{\partial(o_i w_{ij})}$$
+    $$
+      \frac{\partial E}{\partial w_{ij}} =
+      \frac{\partial E}{\partial a_j}\frac{\partial a_j}{\partial w_{ij}}
+    $$
 
-    $$ * $$ $$o_i$$ é constante no contexto em que $$x$$ está fixo.
+    Expandindo $$\partial a_j/\partial w_{ij}$$:
 
-    $$\frac{\partial E}{\partial(o_i w_{ij})}$$ é a derivada parcial do erro em relação à entrada em $$j$$ proveniente de $$i$$. A denotaremos por $$\delta_j$$ para que possamos guardar os valores das componentes do gradiente na matriz $$G$$ fazendo
+    $$
+      \frac{\partial a_j}{\partial w_{ij}} =
+      \frac{\partial \bigg(\sum\limits_{k \in B} o_k w_{kj}\bigg)}{\partial w_{ij}} =
+    $$
 
-    $$G_{ij} = o_i\delta_j$$
+    $$
+      = \frac{\partial (o_\lambda w_{\lambda j} + \dots + o_i w_{ij} + \dots + o_\eta w_{\eta j})}{\partial w_{ij}} =
+    $$
+
+    $$
+      = \stackrel{0}{\frac{\partial (o_\lambda w_{\lambda j})}{\partial w_{ij}}} + \stackrel{0}{\dots} +
+      \frac{\partial (o_i w_{ij})}{\partial w_{ij}} + \stackrel{0}{\dots} +
+      \stackrel{0}{\frac{\partial (o_\eta w_{\eta j})}{\partial w_{ij}}} =
+    $$
+
+    $$
+      = \frac{\partial (o_i w_{ij})}{\partial w_{ij}} \stackrel{!!!}{=}
+      o_i\frac{\partial w_{ij}}{\partial w_{ij}} = o_i
+    $$
+
+    **!!!** Note que $$o_i$$ é constante no contexto em que a entrada da rede está fixa.
+
+    Concluimos então que
+
+    $$\frac{\partial E}{\partial w_{ij}} = \frac{\partial E}{\partial a_j} o_i$$
+
+    Denotaremos $$\partial E/\partial a_j$$ por $$\delta_j$$ para que possamos guardar os valores das componentes do gradiente na matriz $$G$$ fazendo
+
+    $$G_{ij} = \delta_j o_i$$
 
 3. Ajustar $$w$$ de modo que caminhemos na direção oposta ao gradiente de $$E$$
 
     Uma vez que temos a matriz $$G$$ completa, podemos fazer $$w_{ij} = w_{ij} - \alpha G_{ij}$$, onde $$\alpha$$ é a taxa de aprendizado.
 
-Vejamos então como isto é feito na prática.
+## $$\delta$$ para perceptrons da camada de saída
 
-# Implementação
+Sejam $$o_i$$ e $$t_i$$ as componentes $$i$$ de $$N(x)$$ e $$F(x)$$ respectivamente, e $$m$$ a dimensão de $$N(x)$$ e de $$F(x)$$. Ao expandirmos a fórmula do erro, obtemos
+
+$$E = \frac{1}{2} \Big\{ \big[ (o_1 - t_1)^2 + \dots + (o_m - t_m)^2 \big]^{\frac{1}{2}} \Big\}^2 =
+\frac{1}{2}(o_1 - t_1)^2 + \dots + \frac{1}{2}(o_m - t_m)^2$$
+
+Ao calcularmos $$\delta_j$$, todas as parcelas que não dependem de $$o_j$$ serão anuladas, pois serão tratadas como constantes na derivação parcial de $$E$$ em relação a $$a_j$$. Assim temos
+
+$$\delta_j = \frac{\partial \Big[\frac{1}{2}(o_j - t_j)^2\Big]}{\partial a_j} =
+\frac{\partial \Big[\frac{1}{2}(s(a_j) - t_j)^2\Big]}{\partial a_j}$$
+
+Aplicando a regra da cadeia, temos
+
+$$\delta_j = \bigg[\frac{d}{da_j}s(a_j)\bigg][s(a_j) - t_j]$$
+
+Portanto
+
+$$\delta_j = s(a_j)[1 - s(a_j)][s(a_j) - t_j] = o_j(1 - o_j)(o_j - t_j)$$
+
+$$G_{ij} = o_j(1 - o_j)(o_j - t_j)o_i$$
+
+## $$\delta$$ para perceptrons da camada oculta
+
+# Implementação do algoritmo
 
 ## Alimentando a rede
 
@@ -102,13 +155,105 @@ output_array = net.feed(input_array)
 
 ## Calculando o gradiente do erro
 
-Aqui nós utilizaremos uma estrutura de dados semelhante ao dicionário que guarda os pesos das arestas
+Aqui nós utilizaremos um dicionário `d` para guardar os valores $$\delta$$ de cada perceptron.
+
+Utilizaremos também `G`, um dicionário semelhante à estrutura que guarda os pesos das arestas de `net`.
+
+```python
+output_array = net.feed(input_array)
+
+d = {}
+for node in net.hidden_nodes + net.output_nodes:
+    d[node] = 0.0
+
+G = {}
+for edge in net.w:
+    G[edge] = 0.0
+```
 
 ### Perceptrons da camada de saída
 
+```python
+output_array = net.feed(input_array)
+
+d = {}
+for node in net.hidden_nodes + net.output_nodes:
+    d[node] = 0.0
+
+G = {}
+for edge in net.w:
+    G[edge] = 0.0
+
+m = len(net.output_nodes)
+for output_node, node_order in zip(net.output_nodes, range(m)):
+
+    d[output_node] = output_node.eval *
+        (1.0 - output_node.eval) *
+        (output_node.eval - target_output_array[node_order])
+
+    for back_node in output_node.back_nodes:
+        G[(back_node, output_node)] = d[output_node]*back_node
+```
+
 ### Perceptrons da camada oculta
 
+```python
+output_array = net.feed(input_array)
+
+d = {}
+for node in net.hidden_nodes + net.output_nodes:
+    d[node] = 0.0
+
+G = {}
+for edge in net.w:
+    G[edge] = 0.0
+
+m = len(net.output_nodes)
+for output_node, node_order in zip(net.output_nodes, range(m)):
+
+    d[output_node] = output_node.eval *
+        (1.0 - output_node.eval) *
+        (output_node.eval - target_output_array[node_order])
+
+    for back_node in output_node.back_nodes:
+        G[(back_node, output_node)] = d[output_node]*back_node
+
+#####
+...
+#####
+```
+
 ## Atualizando os pesos das arestas
+
+```python
+output_array = net.feed(input_array)
+
+d = {}
+for node in net.hidden_nodes + net.output_nodes:
+    d[node] = 0.0
+
+G = {}
+for edge in net.w:
+    G[edge] = 0.0
+
+m = len(net.output_nodes)
+for output_node, node_order in zip(net.output_nodes, range(m)):
+
+    d[output_node] = output_node.eval *
+        (1.0 - output_node.eval) *
+        (output_node.eval - target_output_array[node_order])
+
+    for back_node in output_node.back_nodes:
+        G[(back_node, output_node)] = d[output_node]*back_node
+
+#####
+...
+#####
+
+alpha = 0.1
+for edge in net.w:
+    net.w[edge] = net.w[edge] - alpha*G[edge]
+```
 
 # Bibliografia
 
