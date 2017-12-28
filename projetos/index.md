@@ -3,6 +3,10 @@ layout: page
 title: Projetos
 ---
 
+# Much-Assembly-Required
+
+Sandbox para a criação de unidades cujas inteligências são programadas em Assembly.
+
 # Doodle Engineer
 
 Jogo inspirado em [Doodle God](https://www.kongregate.com/games/badim/doodle-god),
