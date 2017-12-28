@@ -137,27 +137,40 @@ Portanto
 
 $$\delta_j = \sigma(s_j)[1 - \sigma(s_j)][\sigma(s_j) - t_j] = o_j(1 - o_j)(o_j - t_j)$$
 
-$$G_{ij} = o_j(1 - o_j)(o_j - t_j)o_i$$
+$$G_{ij} = [o_j(1 - o_j)(o_j - t_j)]o_i$$
 
 ## Calculando $$\delta$$ indutivamente
 
 Seja $$j$$ um perceptron para o qual queremos encontrar $$\delta_j$$ sendo que sabemos os valores de $$\delta$$ dos perceptrons F alimentados por $$j$$.
 
-Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma nova parcela no resultado do erro total $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
+Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ (de $$F$$ront) por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma nova parcela no resultado do erro total $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
 
 $$\delta_j = \frac{\partial E}{\partial s_j} =
 \sum_{f \in F}\frac{\partial E}{\partial s_f} \frac{\partial s_f}{\partial s_j} =
-\delta_f\sum_{f \in F}\frac{\partial s_f}{\partial s_j}$$
+\sum_{f \in F}\delta_f\frac{\partial s_f}{\partial s_j}$$
 
-Agora só precisamos calcular $$\partial s_f/\partial s_j$$
+Agora precisamos calcular $$\partial s_f/\partial s_j$$
+
+$$\frac{\partial s_f}{\partial s_j} =
+\frac{\partial(o_\xi w_{\xi f} + \dots + o_j w_{jf} + \dots + o_\zeta w_{\zeta f})}{\partial s_j}
+\stackrel{!!!}{=} w_{jf}\bigg[\frac{d}{d s_j}o_j\bigg]$$
+
+**!!!** Note que todas as parcelas que não dependem de $$s_j$$ são constantes na derivação. Além disso, $$w_{jf}$$ também é considerado constante. Continuando,
+
+$$\frac{\partial s_f}{\partial s_j} = w_{jf}\bigg[\frac{d}{d s_j}o_j\bigg] = w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg] =
+w_{jf}\sigma(s_j)[1 - \sigma(s_j)] = w_{jf}o_j(1 - o_j)$$
+
+Portanto
+
+$$\delta_j = \sum_{f \in F}\delta_fw_{jf}o_j(1 - o_j) = o_j(1 - o_j)\sum_{f \in F}\delta_fw_{jf}$$
+
+$$G_{ij} = \Bigg[o_j(1 - o_j)\sum_{f \in F}\delta_fw_{jf}\Bigg]o_i$$
 
 # Implementação do algoritmo
 
 ## Alimentando a rede
 
-Seja `target_output_array` a resposta ideal para a entrada `input_array`. Nós desejamos que a rede neural `net` aprenda a dar uma resposta mais próxima de `target_output_array` quando alimentada pela entrada `input_array`.
-
-Primeiramente, nós alimentamos a rede com `input_array` para obtermos `output_array`
+Primeiramente, nós alimentamos a rede com `input_array` para obtermos `output_array`.
 
 ```python
 output_array = net.feed(input_array)
@@ -165,72 +178,111 @@ output_array = net.feed(input_array)
 
 ## Calculando o gradiente do erro
 
-Aqui nós utilizaremos um dicionário `d` para guardar os valores $$\delta$$ de cada perceptron.
+Aqui nós utilizaremos `delta` para guardar os valores $$\delta$$ e `G` para guardar os valores de $$G$$.
 
-Utilizaremos também `G`, um dicionário semelhante à estrutura que guarda os pesos das arestas de `net`.
+`target_output_array` é a resposta ideal para `input_array`.
 
 ```python
-output_array = net.feed(input_array)
-
-d = {}
+delta = {}
 for node in net.hidden_nodes + net.output_nodes:
-    d[node] = 0.0
+    delta[node] = 0.0
 
 G = {}
 for edge in net.w:
     G[edge] = 0.0
 
 # iterando sobre os perceptrons da camada de saída
+next_layer = set()
 m = len(net.output_nodes)
 for output_node, node_order in zip(net.output_nodes, range(m)):
 
-    d[output_node] = output_node.output *
+    delta[output_node] = output_node.output *
         (1.0 - output_node.output) *
         (output_node.output - target_output_array[node_order])
 
     for back_node in output_node.back_nodes:
-        G[(back_node, output_node)] = d[output_node]*back_node
+        G[(back_node, output_node)] = delta[output_node]*back_node.output
+        next_layer.add(back_node)
 
-# iterando sobre os perceptrons da camada oculta
-#####
-...
-#####
+# seguindo indutivamente pela rede
+while (len(next_layer) > 0):
+    current_layer = next_layer
+    next_layer = set()
+    while (len(current_layer) > 0):
+        node = current_layer.pop()
+
+        if (len(node.back_nodes) == 0):        
+        # se node.back_nodes está vazia, node é da camada de entrada. ou seja,
+        # não é necessário percorrer os outros perceptrons de current_layer.
+        # next_layer está vazio e o loop terminará
+            break
+
+        front_sum = 0.0
+        for front_node in node.front_nodes:
+            front_sum += delta[front_node]*net.w[(node, front_node)]
+        delta[node] = node.output*(1 - node.output)*front_sum
+
+        for back_node in node.back_nodes:
+            G[(back_node, node)] = delta[node]*back_node.output
+            next_layer.add(back_node)
 ```
 
 ## Atualizando os pesos das arestas
 
-Utilizaremos `a = 0.1` para representar a taxa de aprendizado $$\alpha$$.
+Utilizaremos `alpha = 0.1` para representar a taxa de aprendizado $$\alpha$$.
 
 ```python
-output_array = net.feed(input_array)
-
-d = {}
-for node in net.hidden_nodes + net.output_nodes:
-    d[node] = 0.0
-
-G = {}
+alpha = 0.1
 for edge in net.w:
-    G[edge] = 0.0
+    net.w[edge] = net.w[edge] - alpha*G[edge]
+```
 
-# iterando sobre os perceptrons da camada de saída
-m = len(net.output_nodes)
-for output_node, node_order in zip(net.output_nodes, range(m)):
+# Isolando a implementação em uma função
 
-    d[output_node] = output_node.output *
-        (1.0 - output_node.output) *
-        (output_node.output - target_output_array[node_order])
+```python
+def backpropagation(net, input_array, target_output_array, alpha):
+    output_array = net.feed(input_array)
 
-    for back_node in output_node.back_nodes:
-        G[(back_node, output_node)] = d[output_node]*back_node
+    delta = {}
+    for node in net.hidden_nodes + net.output_nodes:
+        delta[node] = 0.0
 
-# iterando sobre os perceptrons da camada oculta
-#####
-...
-#####
+    G = {}
+    for edge in net.w:
+        G[edge] = 0.0
 
-a = 0.1
-for edge in net.w:
-    net.w[edge] = net.w[edge] - a*G[edge]
+    next_layer = set()
+    m = len(net.output_nodes)
+    for output_node, node_order in zip(net.output_nodes, range(m)):
+
+        delta[output_node] = output_node.output *
+            (1.0 - output_node.output) *
+            (output_node.output - target_output_array[node_order])
+
+        for back_node in output_node.back_nodes:
+            G[(back_node, output_node)] = delta[output_node]*back_node.output
+            next_layer.add(back_node)
+
+    while (len(next_layer) > 0):
+        current_layer = next_layer
+        next_layer = set()
+        while (len(current_layer) > 0):
+            node = current_layer.pop()
+
+            if (len(node.back_nodes) == 0):        
+                break
+
+            front_sum = 0.0
+            for front_node in node.front_nodes:
+                front_sum += delta[front_node]*net.w[(node, front_node)]
+            delta[node] = node.output*(1 - node.output)*front_sum
+
+            for back_node in node.back_nodes:
+                G[(back_node, node)] = delta[node]*back_node.output
+                next_layer.add(back_node)
+
+    for edge in net.w:
+        net.w[edge] = net.w[edge] - alpha*G[edge]
 ```
 
 # Bibliografia
