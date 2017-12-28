@@ -189,7 +189,7 @@ for output_node, node_order in zip(net.output_nodes, range(m)):
 
 ## Atualizando os pesos das arestas
 
-Utilizaremos `alpha = 0.1` para representar a taxa de aprendizado $$\alpha$$.
+Utilizaremos `a = 0.1` para representar a taxa de aprendizado $$\alpha$$.
 
 ```python
 output_array = net.feed(input_array)
@@ -218,9 +218,9 @@ for output_node, node_order in zip(net.output_nodes, range(m)):
 ...
 #####
 
-alpha = 0.1
+a = 0.1
 for edge in net.w:
-    net.w[edge] = net.w[edge] - alpha*G[edge]
+    net.w[edge] = net.w[edge] - a*G[edge]
 ```
 
 # Bibliografia
