@@ -176,7 +176,7 @@ $$G_{ij} = [o_j(1 - o_j)(o_j - t_j)]o_i$$
 
 ## Calculando $$\delta$$ indutivamente
 
-Seja $$j$$ um perceptron para o qual queremos encontrar $$\delta_j$$ sendo que sabemos os valores de $$\delta$$ dos perceptrons F alimentados por $$j$$.
+Seja $$j$$ um perceptron para o qual queremos encontrar $$\delta_j$$ sendo que sabemos os valores de $$\delta$$ dos perceptrons $$F$$ alimentados por $$j$$.
 
 Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ (de $$F$$ront) por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma nova parcela no resultado do erro total $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
 
