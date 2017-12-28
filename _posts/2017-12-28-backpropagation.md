@@ -178,7 +178,7 @@ $$G_{ij} = [o_j(1 - o_j)(o_j - t_j)]o_i$$
 
 Seja $$j$$ um perceptron para o qual queremos encontrar $$\delta_j$$ sendo que sabemos os valores de $$\delta$$ dos perceptrons alimentados por $$j$$.
 
-Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ (de $$F$$ront) por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma nova parcela no resultado do erro total $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
+Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ (de $$F$$ront) por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma participação maior na derivada de $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
 
 $$\delta_j = \frac{\partial E}{\partial s_j} =
 \sum_{f \in F}\frac{\partial E}{\partial s_f} \frac{\partial s_f}{\partial s_j} =
