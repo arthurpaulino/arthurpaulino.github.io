@@ -72,11 +72,11 @@ onde:
 
 Note que $$\frac{d}{ds_j}\sigma(s_j) = \sigma(s_j)[1 - \sigma(s_j)]$$. Este resultado será utilizado mais adiante.
 
-Sejam $$F$$ a função que desejamos aprender e $$N$$ a função que a rede computa. Idealmente, gostariamos que $$\forall x, N(x, w) = F(x)$$, onde $$w$$ é a matriz de pesos das arestas da rede. Mas como não conhecemos a lei de formação de $$F$$, precisamos encontrar um caminho para tornarmos $$N$$ o mais semelhante possível a $$F$$.
+Sejam $$T$$ (de $$T$$arget) a função que desejamos aprender e $$O$$ (de $$O$$utput) a função que a rede computa. Idealmente, gostariamos que $$\forall x, O(x) = T(x)$$. Mas como não conhecemos a lei de formação de $$T$$, precisamos encontrar um caminho para tornarmos $$O$$ o mais semelhante possível a $$T$$.
 
-Definamos então a função $$E = \frac{1}{2}\|N(x) - F(x)\|^2$$ para representar o erro que a rede comete ao tentar simular $$F(x)$$. A estratégia é a seguinte:
+Definamos então a função $$E = \frac{1}{2}\|O(x) - T(x)\|^2$$ para representar o erro que a rede comete ao tentar simular $$T(x)$$. A estratégia é a seguinte:
 
-1. Utilizar um valor de $$x$$ para o qual conhecemos $$F(x)$$;
+1. Utilizar um valor de $$x$$ para o qual conhecemos $$T(x)$$;
 
     Os valores de $$x$$ que podemos utilizar estão no conjunto de treinamento
 
@@ -154,7 +154,7 @@ Definamos então a função $$E = \frac{1}{2}\|N(x) - F(x)\|^2$$ para representa
 
 ## $$\delta$$ para perceptrons da camada de saída
 
-Sejam $$o_i$$ e $$t_i$$ as componentes $$i$$ de $$N(x)$$ e $$F(x)$$ respectivamente, e $$m$$ a dimensão de $$N(x)$$ e de $$F(x)$$. Ao expandirmos a fórmula do erro, obtemos
+Sejam $$o_i$$ e $$t_i$$ as componentes $$i$$ de $$O(x)$$ e $$T(x)$$, respectivamente, e $$m = dim(O(x)) = dim(T(x))$$. Ao expandirmos a fórmula do erro, obtemos
 
 $$E = \frac{1}{2} \Big\{ \big[ (o_1 - t_1)^2 + \dots + (o_m - t_m)^2 \big]^{\frac{1}{2}} \Big\}^2 =
 \frac{1}{2}(o_1 - t_1)^2 + \dots + \frac{1}{2}(o_m - t_m)^2$$
@@ -176,7 +176,7 @@ $$G_{ij} = [o_j(1 - o_j)(o_j - t_j)]o_i$$
 
 ## Calculando $$\delta$$ indutivamente
 
-Seja $$j$$ um perceptron para o qual queremos encontrar $$\delta_j$$ sendo que sabemos os valores de $$\delta$$ dos perceptrons $$F$$ alimentados por $$j$$.
+Seja $$j$$ um perceptron para o qual queremos encontrar $$\delta_j$$ sendo que sabemos os valores de $$\delta$$ dos perceptrons alimentados por $$j$$.
 
 Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ (de $$F$$ront) por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma nova parcela no resultado do erro total $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
 
