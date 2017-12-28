@@ -169,45 +169,8 @@ for node in net.hidden_nodes + net.output_nodes:
 G = {}
 for edge in net.w:
     G[edge] = 0.0
-```
 
-### Perceptrons da camada de saída
-
-```python
-output_array = net.feed(input_array)
-
-d = {}
-for node in net.hidden_nodes + net.output_nodes:
-    d[node] = 0.0
-
-G = {}
-for edge in net.w:
-    G[edge] = 0.0
-
-m = len(net.output_nodes)
-for output_node, node_order in zip(net.output_nodes, range(m)):
-
-    d[output_node] = output_node.eval *
-        (1.0 - output_node.eval) *
-        (output_node.eval - target_output_array[node_order])
-
-    for back_node in output_node.back_nodes:
-        G[(back_node, output_node)] = d[output_node]*back_node
-```
-
-### Perceptrons da camada oculta
-
-```python
-output_array = net.feed(input_array)
-
-d = {}
-for node in net.hidden_nodes + net.output_nodes:
-    d[node] = 0.0
-
-G = {}
-for edge in net.w:
-    G[edge] = 0.0
-
+# iterando sobre os perceptrons da camada de saída
 m = len(net.output_nodes)
 for output_node, node_order in zip(net.output_nodes, range(m)):
 
@@ -218,6 +181,7 @@ for output_node, node_order in zip(net.output_nodes, range(m)):
     for back_node in output_node.back_nodes:
         G[(back_node, output_node)] = d[output_node]*back_node
 
+# iterando sobre os perceptrons da camada oculta
 #####
 ...
 #####
@@ -225,6 +189,8 @@ for output_node, node_order in zip(net.output_nodes, range(m)):
 
 ## Atualizando os pesos das arestas
 
+Utilizaremos `alpha = 0.1` para representar a taxa de aprendizado $$\alpha$$.
+
 ```python
 output_array = net.feed(input_array)
 
@@ -236,6 +202,7 @@ G = {}
 for edge in net.w:
     G[edge] = 0.0
 
+# iterando sobre os perceptrons da camada de saída
 m = len(net.output_nodes)
 for output_node, node_order in zip(net.output_nodes, range(m)):
 
@@ -246,6 +213,7 @@ for output_node, node_order in zip(net.output_nodes, range(m)):
     for back_node in output_node.back_nodes:
         G[(back_node, output_node)] = d[output_node]*back_node
 
+# iterando sobre os perceptrons da camada oculta
 #####
 ...
 #####
