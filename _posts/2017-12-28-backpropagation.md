@@ -187,12 +187,12 @@ $$\delta_j = \frac{\partial E}{\partial s_j} =
 Agora precisamos calcular $$\partial s_f/\partial s_j$$
 
 $$\frac{\partial s_f}{\partial s_j} =
-\frac{\partial(o_\xi w_{\xi f} + \dots + o_j w_{jf} + \dots + o_\zeta w_{\zeta f})}{\partial s_j}
-\stackrel{!!!}{=} w_{jf}\bigg[\frac{d}{d s_j}o_j\bigg]$$
+\frac{\partial[\sigma(s_\xi) w_{\xi f} + \dots + \sigma(s_j) w_{jf} + \dots + \sigma(s_\zeta) w_{\zeta f}]}{\partial s_j}
+\stackrel{!!!}{=} w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg]$$
 
 **!!!** Note que todas as parcelas que não dependem de $$s_j$$ são constantes na derivação. Além disso, $$w_{jf}$$ também é considerado constante. Continuando,
 
-$$\frac{\partial s_f}{\partial s_j} = w_{jf}\bigg[\frac{d}{d s_j}o_j\bigg] = w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg] =
+$$\frac{\partial s_f}{\partial s_j} = w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg] =
 w_{jf}\sigma(s_j)[1 - \sigma(s_j)] = w_{jf}o_j(1 - o_j)$$
 
 Portanto,
