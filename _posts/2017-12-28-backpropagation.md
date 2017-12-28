@@ -4,6 +4,7 @@ title: Backpropagation
 tags:
   - machine-learning
   - neural-networks
+  - backpropagation
   - python
 ---
 
@@ -11,7 +12,7 @@ O algoritmo *Backpropagation* pode parecer confuso nas primeiras vezes que o vis
 
 O objetivo do *Backpropagation* é ajustar os pesos das arestas de uma rede neural para que esta possa responder de forma mais condizente com os dados do conjunto de treinamento.
 
-O ponto chave sobre redes neurais é que elas aprendem com os próprios erros. Nós veremos como isto acontece, mas antes precisamos formalizar uma estrutura de dados para representarmos uma rede neural. Este passo é importante para que possamos acompanhar a lógica do algoritmo logo após lidarmos com a matemática necessária.
+O ponto chave sobre redes neurais é que elas aprendem com os próprios erros. Nós veremos como isto acontece, mas antes precisamos formalizar uma estrutura de dados para representarmos uma rede neural. Este passo é importante para que possamos acompanhar a lógica do algoritmo **logo após** lidarmos com a matemática necessária.
 
 Se Python lhe é familiar, você se sentirá ainda mais em casa!
 
@@ -24,6 +25,8 @@ O objetivo aqui não é criar o modelo mais eficiente, mas sim o mais didático.
 Seja `node` um perceptron.
 
 ### Atributos
+
+* `node.bias` é o valor da entrada fixa de `node`
 
 * `node.back_nodes` é a lista de perceptrons que alimentam `node`
 
@@ -39,6 +42,8 @@ Seja `net` uma rede neural
 
 * `net.output_nodes` é a lista de perceptrons da camada de saída
 
+* `net.all_nodes` é a lista de todos os perceptrons da rede
+
 * `net.w` é o dicionário que contém os pesos das arestas
 
   `net.w[(node_i, node_j)]` é o peso da aresta que conecta o perceptron `node_i` ao perceptron `node_j`
@@ -53,9 +58,12 @@ Seja `net` uma rede neural
 
 Assumiremos que todos os perceptrons da rede implementam a sigmóide como função de ativação. Assim, o valor da saída de um perceptron $$j$$ é $$\sigma(s_j) = 1/(1+e^{-s_j})$$, onde $$s_j$$ é a soma das entradas em $$j$$ multiplicadas pelos devidos pesos. Ou seja:
 
-$$s_j = \sum_{b \in B} o_b w_{bj},$$
+$$s_j = \theta_j + \sum_{b \in B} o_b w_{bj},$$
 
 onde:
+
+* $$\theta_j$$ é o *bias* de $$j$$
+
 * $$B$$ (de $$B$$ack) é o conjunto dos perceptrons que alimentam $$j$$
 
 * $$o_b$$ é a saída do perceptron $$b$$
@@ -68,11 +76,13 @@ Sejam $$F$$ a função que desejamos aprender e $$N$$ a função que a rede comp
 
 Definamos então a função $$E = \frac{1}{2}\|N(x) - F(x)\|^2$$ para representar o erro que a rede comete ao tentar simular $$F(x)$$. A estratégia é a seguinte:
 
-1. Utilizar um valor de $$x$$ para o qual conhecemos $$F(x)$$
+1. Utilizar um valor de $$x$$ para o qual conhecemos $$F(x)$$;
 
     Os valores de $$x$$ que podemos utilizar estão no conjunto de treinamento
 
-2. Encontrar o gradiente de $$E$$ em relação a cada item $$w_{ij}$$ de $$w$$ para sabermos exatamente a direção de máximo crescimento do erro para um $$x$$ fixo
+2. Encontrar o gradiente de $$E$$ em relação a cada $$w$$ e a cada $$\theta$$ para sabermos exatamente a direção de máximo crescimento do erro para um $$x$$ fixo;
+
+    **Gradiente do erro em relação aos pesos das arestas**
 
     Para encontrarmos $$\partial E/\partial w_{ij}$$, apliquemos a regra da cadeia:
 
@@ -113,9 +123,34 @@ Definamos então a função $$E = \frac{1}{2}\|N(x) - F(x)\|^2$$ para representa
 
     $$G_{ij} = \delta_j o_i$$
 
-3. Ajustar $$w$$ de modo que caminhemos na direção oposta ao gradiente de $$E$$
+    **Gradiente do erro em relação aos _biases_**
 
-    Uma vez que temos a matriz $$G$$ completa, podemos fazer $$w_{ij} = w_{ij} - \alpha G_{ij}$$, onde $$\alpha$$ é a taxa de aprendizado.
+    Para encontrarmos $$\partial E/\partial \theta_j$$, o processo é semelhante:
+
+    $$
+      \frac{\partial E}{\partial \theta_j} =
+      \frac{\partial E}{\partial s_j}\frac{\partial s_j}{\partial \theta_j}
+    $$
+
+    Já sabemos que $$\partial E/\partial s_j = \delta_j$$. Vamos então expandir $$\partial s_j/\partial \theta_j$$.
+
+    $$
+      \frac{\partial s_j}{\partial \theta_j} =
+      \frac{\partial\bigg(\theta_j + \sum_\limits{b \in B} o_b w_{bj}\bigg)}{\partial \theta_j} =
+      1
+    $$
+
+    Portanto,
+
+    $$\frac{\partial E}{\partial \theta_j} = \delta_j$$
+
+3. Ajustar $$w$$ e $$\theta$$ de modo que caminhemos na direção oposta ao gradiente de $$E$$.
+
+    Seja $$\alpha$$ a taxa de aprendizado.
+
+    Uma vez que temos a matriz $$G$$ completa, podemos fazer $$w_{ij} = w_{ij} - \alpha G_{ij}$$.
+
+    Com os valores de $$\delta$$ guardados, podemos fazer $$\theta_j = \theta_j - \alpha\delta_j$$.
 
 ## $$\delta$$ para perceptrons da camada de saída
 
@@ -133,7 +168,7 @@ Aplicando a regra da cadeia, temos
 
 $$\delta_j = \bigg[\frac{d}{ds_j}\sigma(s_j)\bigg][\sigma(s_j) - t_j]$$
 
-Portanto
+Portanto,
 
 $$\delta_j = \sigma(s_j)[1 - \sigma(s_j)][\sigma(s_j) - t_j] = o_j(1 - o_j)(o_j - t_j)$$
 
@@ -160,7 +195,7 @@ $$\frac{\partial s_f}{\partial s_j} =
 $$\frac{\partial s_f}{\partial s_j} = w_{jf}\bigg[\frac{d}{d s_j}o_j\bigg] = w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg] =
 w_{jf}\sigma(s_j)[1 - \sigma(s_j)] = w_{jf}o_j(1 - o_j)$$
 
-Portanto
+Portanto,
 
 $$\delta_j = \sum_{f \in F}\delta_fw_{jf}o_j(1 - o_j) = o_j(1 - o_j)\sum_{f \in F}\delta_fw_{jf}$$
 
@@ -211,12 +246,6 @@ while (len(next_layer) > 0):
     while (len(current_layer) > 0):
         node = current_layer.pop()
 
-        if (len(node.back_nodes) == 0):        
-        # se node.back_nodes está vazia, node é da camada de entrada. ou seja,
-        # não é necessário percorrer os outros perceptrons de current_layer.
-        # next_layer está vazio e o loop terminará
-            break
-
         front_sum = 0.0
         for front_node in node.front_nodes:
             front_sum += delta[front_node]*net.w[(node, front_node)]
@@ -227,14 +256,16 @@ while (len(next_layer) > 0):
             next_layer.add(back_node)
 ```
 
-## Atualizando os pesos das arestas
+## Atualizando os pesos das arestas e os _biases_
 
 Utilizaremos `alpha = 0.1` para representar a taxa de aprendizado $$\alpha$$.
 
 ```python
 alpha = 0.1
 for edge in net.w:
-    net.w[edge] = net.w[edge] - alpha*G[edge]
+    net.w[edge] -= alpha*G[edge]
+for node in net.all_nodes:
+    node.bias -= alpha*delta[node]
 ```
 
 # Isolando a implementação em uma função
@@ -283,6 +314,8 @@ def backpropagation(net, input_array, target_output_array, alpha):
 
     for edge in net.w:
         net.w[edge] = net.w[edge] - alpha*G[edge]
+    for node in net.all_nodes:
+        node.bias -= alpha*delta[node]
 ```
 
 # Bibliografia
