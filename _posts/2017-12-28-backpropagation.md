@@ -94,8 +94,7 @@ Definamos então a função $$E = \frac{1}{2}\|O(x) - T(x)\|^2$$ para representa
     Expandindo $$\partial s_j/\partial w_{ij}$$:
 
     $$
-      \frac{\partial s_j}{\partial w_{ij}} =
-      \frac{\partial \bigg(\sum\limits_{b \in B} o_b w_{bj}\bigg)}{\partial w_{ij}} =
+      \frac{\partial s_j}{\partial w_{ij}} = \frac{\partial \bigg(\sum\limits_{b \in B} o_b w_{bj}\bigg)}{\partial w_{ij}} =
     $$
 
     $$
@@ -203,97 +202,28 @@ $$G_{ij} = \Bigg[o_j(1 - o_j)\sum_{f \in F}\delta_fw_{jf}\Bigg]o_i$$
 
 # Implementação do algoritmo
 
-## Alimentando a rede
-
-Primeiramente, nós alimentamos a rede com `input_array` para obtermos `output_array`.
-
-```python
-output_array = net.feed(input_array)
-```
-
-## Calculando o gradiente do erro
-
-Aqui nós utilizaremos `delta` para guardar os valores $$\delta$$ e `G` para guardar os valores de $$G$$.
-
-`target_output_array` é a resposta ideal para `input_array`.
-
-```python
-delta = {}
-for node in net.hidden_nodes + net.output_nodes:
-    delta[node] = 0.0
-
-G = {}
-for edge in net.w:
-    G[edge] = 0.0
-
-# iterando sobre os perceptrons da camada de saída
-next_layer = set()
-m = len(net.output_nodes)
-for output_node, node_order in zip(net.output_nodes, range(m)):
-
-    delta[output_node] = output_node.output *
-        (1.0 - output_node.output) *
-        (output_node.output - target_output_array[node_order])
-
-    for back_node in output_node.back_nodes:
-        G[(back_node, output_node)] = delta[output_node]*back_node.output
-        next_layer.add(back_node)
-
-# seguindo indutivamente pela rede
-while (len(next_layer) > 0):
-    current_layer = next_layer
-    next_layer = set()
-    while (len(current_layer) > 0):
-        node = current_layer.pop()
-
-        front_sum = 0.0
-        for front_node in node.front_nodes:
-            front_sum += delta[front_node]*net.w[(node, front_node)]
-        delta[node] = node.output*(1 - node.output)*front_sum
-
-        for back_node in node.back_nodes:
-            G[(back_node, node)] = delta[node]*back_node.output
-            next_layer.add(back_node)
-```
-
-## Atualizando os pesos das arestas e os _biases_
-
-Utilizaremos `alpha = 0.1` para representar a taxa de aprendizado $$\alpha$$.
-
-```python
-alpha = 0.1
-for edge in net.w:
-    net.w[edge] -= alpha*G[edge]
-for node in net.all_nodes:
-    node.bias -= alpha*delta[node]
-```
-
-# Isolando a implementação em uma função
-
 ```python
 def backpropagation(net, input_array, target_output_array, alpha):
+
+    # capturando a resposta da rede
     output_array = net.feed(input_array)
 
+    # calculando os valores de delta para a camada de saída
     delta = {}
-    for node in net.hidden_nodes + net.output_nodes:
-        delta[node] = 0.0
-
     G = {}
-    for edge in net.w:
-        G[edge] = 0.0
-
     next_layer = set()
     m = len(net.output_nodes)
-    for output_node, node_order in zip(net.output_nodes, range(m)):
+    for node, node_order in zip(net.output_nodes, range(m)):
 
-        delta[output_node] = output_node.output *
-            (1.0 - output_node.output) *
-            (output_node.output - target_output_array[node_order])
+        delta[node] = node.output * (1.0 - node.output) *
+            (node.output - target_output_array[node_order])
 
+        # calculando as componentes do gradiente referentes a node
         for back_node in output_node.back_nodes:
-            G[(back_node, output_node)] = delta[output_node]*back_node.output
+            G[(back_node, node)] = delta[node]*back_node.output
             next_layer.add(back_node)
 
+    #calculando os valores de delta indutivamente
     while (len(next_layer) > 0):
         current_layer = next_layer
         next_layer = set()
@@ -308,10 +238,12 @@ def backpropagation(net, input_array, target_output_array, alpha):
                 front_sum += delta[front_node]*net.w[(node, front_node)]
             delta[node] = node.output*(1 - node.output)*front_sum
 
+            # calculando as componentes do gradiente referentes a node
             for back_node in node.back_nodes:
                 G[(back_node, node)] = delta[node]*back_node.output
                 next_layer.add(back_node)
 
+    # ajustando os pesos das arestas e os biases
     for edge in net.w:
         net.w[edge] = net.w[edge] - alpha*G[edge]
     for node in net.all_nodes:
