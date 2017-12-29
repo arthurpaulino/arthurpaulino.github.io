@@ -77,7 +77,7 @@ $$7$$ fornece um limite superior para o grau de todo vértice de $$C$$. Denotare
 
 *Comb Inequalities* são comumente utilizadas para a computação de *ciclos hamiltonianos*. Substituindo-se as inequações $$\delta(v) \leq 2$$ por $$\delta(v) \leq D$$, $$\forall v \in C$$, obtem-se a inequação
 
-|\begin{equation}\sum_{e \in E(H)} y_e + \sum_{i=1}^k \sum_{e \in E(W_i)} \leq \frac{D \vert H \vert - k - 1}{2} + \sum_{i=1}^k (\vert W_i \vert -1)\end{equation} |||| $$(8)$$
+\begin{equation}\small\sum_{e \in E(H)} y_e + \sum_{i=1}^k \sum_{e \in E(W_i)} \leq \frac{D \vert H \vert - k - 1}{2} + \sum_{i=1}^k (\vert W_i \vert -1) \hspace{0.3cm}(8)\end{equation}
 
 Há instâncias cujas relaxações da formulação resultam em soluções não inteiras e que, quando adiciona-se restrições $$8$$ violadas ao modelo, a solução da nova relaxação é inteira.
 

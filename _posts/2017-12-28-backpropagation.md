@@ -101,7 +101,7 @@ Definamos então a função $$E = \frac{1}{2}\|O(x) - T(x)\|^2$$ para representa
       = \frac{\partial (o_\xi w_{\xi j} + \dots + o_i w_{ij} + \dots + o_\zeta w_{\zeta j})}{\partial w_{ij}} =
     $$
 
-    $$
+    $$\small
       = \stackrel{0}{\frac{\partial (o_\xi w_{\xi j})}{\partial w_{ij}}} + \stackrel{0}{\dots} +
       \frac{\partial (o_i w_{ij})}{\partial w_{ij}} + \stackrel{0}{\dots} +
       \stackrel{0}{\frac{\partial (o_\zeta w_{\zeta j})}{\partial w_{ij}}} =
@@ -156,8 +156,9 @@ Definamos então a função $$E = \frac{1}{2}\|O(x) - T(x)\|^2$$ para representa
 
 Sejam $$o_i$$ e $$t_i$$ as componentes $$i$$ de $$O(x)$$ e $$T(x)$$, respectivamente, e $$m = dim(O(x)) = dim(T(x))$$. Ao expandirmos a fórmula do erro, obtemos
 
-$$E = \frac{1}{2} \Big\{ \big[ (o_1 - t_1)^2 + \dots + (o_m - t_m)^2 \big]^{\frac{1}{2}} \Big\}^2 =
-\frac{1}{2}(o_1 - t_1)^2 + \dots + \frac{1}{2}(o_m - t_m)^2$$
+$$E = \frac{1}{2} \Big\{ \big[ (o_1 - t_1)^2 + \dots + (o_m - t_m)^2 \big]^{\frac{1}{2}} \Big\}^2 =$$
+
+$$= \frac{1}{2}(o_1 - t_1)^2 + \dots + \frac{1}{2}(o_m - t_m)^2$$
 
 Ao calcularmos $$\delta_j$$, todas as parcelas que não dependem de $$o_j$$ serão anuladas, pois serão tratadas como constantes na derivação parcial de $$E$$ em relação a $$s_j$$. Assim temos
 
@@ -186,14 +187,14 @@ $$\delta_j = \frac{\partial E}{\partial s_j} =
 
 Agora precisamos calcular $$\partial s_f/\partial s_j$$
 
-$$\frac{\partial s_f}{\partial s_j} =
-\frac{\partial[\sigma(s_\xi) w_{\xi f} + \dots + \sigma(s_j) w_{jf} + \dots + \sigma(s_\zeta) w_{\zeta f}]}{\partial s_j}
-\stackrel{!!!}{=} w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg]$$
+$$
+  \small\frac{\partial s_f}{\partial s_j} =
+  \frac{\partial[\sigma(s_\xi) w_{\xi f} + \dots + \sigma(s_j) w_{jf} + \dots + \sigma(s_\zeta) w_{\zeta f}]}{\partial s_j} =
+$$
 
-**!!!** Note que todas as parcelas que não dependem de $$s_j$$ são constantes na derivação. Além disso, $$w_{jf}$$ também é considerado constante. Continuando,
+$$= w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg] = w_{jf}\sigma(s_j)[1 - \sigma(s_j)] =$$
 
-$$\frac{\partial s_f}{\partial s_j} = w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg] =
-w_{jf}\sigma(s_j)[1 - \sigma(s_j)] = w_{jf}o_j(1 - o_j)$$
+$$= w_{jf}o_j(1 - o_j)$$
 
 Portanto,
 
@@ -219,7 +220,8 @@ def backpropagation(net, input_array, target_output_array, alpha):
         delta[node] = node.output * (1.0 - node.output) *
             (node.output - target_output_array[node_order])
 
-        # calculando as componentes do gradiente referentes às arestas de node
+        # calculando as componentes do gradiente referentes às
+        # arestas de node
         for back_node in output_node.back_nodes:
             G[(back_node, node)] = delta[node]*back_node.output
             next_layer.add(back_node)
