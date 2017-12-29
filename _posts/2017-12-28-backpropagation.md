@@ -64,7 +64,7 @@ onde:
 
 * $$\theta_j$$ é o *bias* de $$j$$
 
-* $$B$$ (de $$B$$ack) é o conjunto dos perceptrons que alimentam $$j$$
+* $$B$$ ($$B$$ack) é o conjunto dos perceptrons que alimentam $$j$$
 
 * $$o_b$$ é a saída do perceptron $$b$$
 
@@ -72,7 +72,7 @@ onde:
 
 Note que $$\frac{d}{ds_j}\sigma(s_j) = \sigma(s_j)[1 - \sigma(s_j)]$$. Este resultado será utilizado mais adiante.
 
-Sejam $$T$$ (de $$T$$arget) a função que desejamos aprender e $$O$$ (de $$O$$utput) a função que a rede computa. Idealmente, gostariamos que $$\forall x, O(x) = T(x)$$. Mas como não conhecemos a lei de formação de $$T$$, precisamos encontrar um caminho para tornarmos $$O$$ o mais semelhante possível a $$T$$.
+Sejam $$T$$ ($$T$$arget) a função que desejamos aprender e $$O$$ ($$O$$utput) a função que a rede computa. Idealmente, gostariamos que $$\forall x, O(x) = T(x)$$. Mas como não conhecemos a lei de formação de $$T$$, precisamos encontrar um caminho para tornarmos $$O$$ o mais semelhante possível a $$T$$.
 
 Definamos então a função $$E = \frac{1}{2}\|O(x) - T(x)\|^2$$ para representar o erro que a rede comete ao tentar simular $$T(x)$$. A estratégia é a seguinte:
 
@@ -179,7 +179,7 @@ $$G_{ij} = [o_j(1 - o_j)(o_j - t_j)]o_i$$
 
 Seja $$j$$ um perceptron para o qual queremos encontrar $$\delta_j$$ sendo que sabemos os valores de $$\delta$$ dos perceptrons alimentados por $$j$$.
 
-Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ (de $$F$$ront) por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma participação maior na derivada de $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
+Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ ($$F$$ront) por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma participação maior na derivada de $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
 
 $$\delta_j = \frac{\partial E}{\partial s_j} =
 \sum_{f \in F}\frac{\partial E}{\partial s_f} \frac{\partial s_f}{\partial s_j} =
