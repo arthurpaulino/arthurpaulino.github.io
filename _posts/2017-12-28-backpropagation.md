@@ -109,7 +109,7 @@ Definamos então a função $$E = \frac{1}{2}\|O(x) - T(x)\|^2$$ para representa
 
     $$
       = \frac{\partial (o_i w_{ij})}{\partial w_{ij}} \stackrel{!!!}{=}
-      o_i\frac{\partial w_{ij}}{\partial w_{ij}} = o_i
+      o_i\bigg[\frac{d}{dw_{ij}}w_{ij}\bigg] = o_i
     $$
 
     **!!!** Note que $$o_i$$ é constante no contexto em que a entrada da rede está fixa.
@@ -136,6 +136,7 @@ Definamos então a função $$E = \frac{1}{2}\|O(x) - T(x)\|^2$$ para representa
     $$
       \frac{\partial s_j}{\partial \theta_j} =
       \frac{\partial\bigg(\theta_j + \sum_\limits{b \in B} o_b w_{bj}\bigg)}{\partial \theta_j} =
+      \frac{d}{d\theta_j}\theta_j =
       1
     $$
 
@@ -218,7 +219,7 @@ def backpropagation(net, input_array, target_output_array, alpha):
         delta[node] = node.output * (1.0 - node.output) *
             (node.output - target_output_array[node_order])
 
-        # calculando as componentes do gradiente referentes a node
+        # calculando as componentes do gradiente referentes às arestas de node
         for back_node in output_node.back_nodes:
             G[(back_node, node)] = delta[node]*back_node.output
             next_layer.add(back_node)
@@ -230,15 +231,13 @@ def backpropagation(net, input_array, target_output_array, alpha):
         while (len(current_layer) > 0):
             node = current_layer.pop()
 
-            if (len(node.back_nodes) == 0):        
-                break
-
             front_sum = 0.0
             for front_node in node.front_nodes:
                 front_sum += delta[front_node]*net.w[(node, front_node)]
             delta[node] = node.output*(1 - node.output)*front_sum
 
-            # calculando as componentes do gradiente referentes a node
+            # calculando as componentes do gradiente referentes às
+            # arestas de node
             for back_node in node.back_nodes:
                 G[(back_node, node)] = delta[node]*back_node.output
                 next_layer.add(back_node)
