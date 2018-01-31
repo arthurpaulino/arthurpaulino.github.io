@@ -7,7 +7,7 @@ title: Projetos
 
 Sandbox para a criação de unidades cujas inteligências são programadas em Assembly.
 
-# Doodle Engineer
+# Mechanical Stars
 
 Jogo inspirado em [Doodle God](https://www.kongregate.com/games/badim/doodle-god),
 mas relacionado ao avanço da tecnologia humana.
