@@ -5,7 +5,7 @@ title: Projetos
 
 # Ativos
 
-# Mechanical Stars
+## Mechanical Stars
 
 Jogo inspirado em [Doodle God](https://www.kongregate.com/games/badim/doodle-god),
 mas relacionado ao avanço da tecnologia humana.
