@@ -94,11 +94,11 @@ Definamos então a função $$E = \frac{1}{2}\|O(x) - T(x)\|^2$$ para representa
     Expandindo $$\partial s_j/\partial w_{ij}$$:
 
     $$
-      \frac{\partial s_j}{\partial w_{ij}} = \frac{\partial \bigg(\sum\limits_{b \in B} o_b w_{bj}\bigg)}{\partial w_{ij}} =
+      \frac{\partial s_j}{\partial w_{ij}} = \frac{\partial \bigg(\theta_j + \sum\limits_{b \in B} o_b w_{bj}\bigg)}{\partial w_{ij}} =
     $$
 
     $$
-      = \frac{\partial (o_\xi w_{\xi j} + \dots + o_i w_{ij} + \dots + o_\zeta w_{\zeta j})}{\partial w_{ij}} =
+      = \frac{\theta_j + \partial (o_\xi w_{\xi j} + \dots + o_i w_{ij} + \dots + o_\zeta w_{\zeta j})}{\partial w_{ij}} =
     $$
 
     $$\small
@@ -179,17 +179,15 @@ $$G_{ij} = [o_j(1 - o_j)(o_j - t_j)]o_i$$
 
 Seja $$j$$ um perceptron para o qual queremos encontrar $$\delta_j$$ sendo que sabemos os valores de $$\delta$$ dos perceptrons alimentados por $$j$$.
 
-Imagine que $$j$$ alimenta um perceptron $$f$$ de $$F$$ ($$F$$ront) por vez. A cada perceptron $$f$$ alimentado, $$j$$ tem uma participação maior na derivada de $$E$$. Então podemos usar a regra da cadeia da seguinte forma:
+Considerando $$E$$ como uma função dos somatórios $$s_f$$, $$f \in F$$, e aplicando a regra da derivada total, obtemos:
 
-$$\delta_j = \frac{\partial E}{\partial s_j} =
-\sum_{f \in F}\frac{\partial E}{\partial s_f} \frac{\partial s_f}{\partial s_j} =
-\sum_{f \in F}\delta_f\frac{\partial s_f}{\partial s_j}$$
+$$\delta_j = \frac{\partial E}{\partial s_j} = \frac{\partial E(\dots, s_f, \dots)}{\partial s_j} = \sum_{f \in F}\frac{\partial E}{\partial s_f} \frac{\partial s_f}{\partial s_j} = \sum_{f \in F}\delta_f\frac{\partial s_f}{\partial s_j}$$
 
 Agora precisamos calcular $$\partial s_f/\partial s_j$$
 
 $$
   \small\frac{\partial s_f}{\partial s_j} =
-  \frac{\partial[\sigma(s_\xi) w_{\xi f} + \dots + \sigma(s_j) w_{jf} + \dots + \sigma(s_\zeta) w_{\zeta f}]}{\partial s_j} =
+  \frac{\partial[\theta_f + \sigma(s_\xi) w_{\xi f} + \dots + \sigma(s_j) w_{jf} + \dots + \sigma(s_\zeta) w_{\zeta f}]}{\partial s_j} =
 $$
 
 $$= w_{jf}\bigg[\frac{d}{ds_j}\sigma(s_j)\bigg] = w_{jf}\sigma(s_j)[1 - \sigma(s_j)] =$$
