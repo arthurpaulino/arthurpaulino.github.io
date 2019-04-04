@@ -5,10 +5,11 @@ title: Projetos
 
 # Ativos
 
-## Mechanical Stars
+## MiraiML
 
-Jogo inspirado em [Doodle God](https://www.kongregate.com/games/badim/doodle-god),
-mas relacionado ao avanço da tecnologia humana.
+Um motor assíncrono de aprendizagem de máquina automática e contínua.
+
+Link: [github/arthurpaulino/miraiml](https://github.com/arthurpaulino/miraiml)
 
 # Em espera
 
