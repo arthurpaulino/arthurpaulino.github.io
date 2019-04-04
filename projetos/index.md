@@ -7,7 +7,7 @@ title: Projetos
 
 ## MiraiML
 
-Um motor assíncrono de aprendizagem de máquina automática e contínua.
+Um motor assíncrono de Aprendizagem de Máquina automática e contínua.
 
 Link: [github/arthurpaulino/miraiml](https://github.com/arthurpaulino/miraiml)
 

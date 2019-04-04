@@ -8,6 +8,14 @@
     text-align: center;
   }
 
+  &-subtitle {
+    color: $default-color;
+    font-family: $sans-font;
+    font-size: 2rem;
+    margin: 1rem;
+    text-align: center;
+  }
+
   &-info {
     margin-bottom: 1rem;
     text-align: center;
