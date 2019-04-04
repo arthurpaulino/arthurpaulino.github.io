@@ -53,7 +53,7 @@ centroide mais $$p$$róximo de $$e$$
     2c. Obtemos a média $$\mu_k$$ e o desvio padrão $$\sigma_k$$ das acurácias das
     funções de predição, levando em consideração a cardinalidade de cada cluster
 
-![](/assets/img/2017-12-20-0.png){:class="img-responsive"}
+![](/assets/img/2017-12-20-1.png){:class="img-responsive"}
 *Divisão ($$k$$-means) e conquista ($$f_{k_{1..k}}$$)*
 
 Agora podemos avaliar quais valores de $$k$$ são interessantes. Estamos

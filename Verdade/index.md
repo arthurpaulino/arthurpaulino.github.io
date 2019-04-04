@@ -3,7 +3,7 @@ layout: page
 title: A busca pela Verdade
 ---
 
-Sou uma pessoa profundamente compromissada com a busca pela Verdade, pois, em minha
+Sou uma pessoa profundamente envolvida com a busca pela Verdade, pois, em minha
 experiência, o autoconhecimento é a única porta para a paz genuína.
 
 # Livros
