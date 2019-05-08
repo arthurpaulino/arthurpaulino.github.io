@@ -1,7 +1,8 @@
-# arthurpaulino.github.io
+# [arthurpaulino.github.io](https://arthurpaulino.github.io/)
 
 Site pessoal feito com [Jekyll](https://jekyllrb.com/).
 
-## Dependencies
+## Dependências
 
-- [jekyll-paginate](https://github.com/jekyll/jekyll-paginate)
+- [jekyll-paginate](https://rubygems.org/gems/jekyll-paginate)
+- [wdm](https://rubygems.org/gems/wdm/)

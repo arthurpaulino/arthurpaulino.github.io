@@ -5,35 +5,43 @@ title: Projetos
 
 # Ativos
 
-## MiraiML
+- [MiraiML][miraiml]: Um motor assíncrono de Aprendizagem de Máquina automática
+  e contínua.
 
-Um motor assíncrono de Aprendizagem de Máquina automática e contínua.
+- [scikit-lego][sklego]: Mais elementos para pipelines da biblioteca [scikit-learn]
+  [sklearn]
 
-Link: [github/arthurpaulino/miraiml](https://github.com/arthurpaulino/miraiml)
+- [pingouin][pingouin]: Uma série de funções estatísticas com usabilidade simples
+
+- [trajminer][trajminer]: Biblioteca para cálculos relacionados a trajetórias
 
 # Em espera
 
-## WMP
+- WMP: Trata-se de uma plataforma online na qual os jogadores programam
+  inteligências artificiais em um contexto de batalhas RPG assíncronas. A engine
+  é mantida em um repositório privado, mas o manual do jogo pode ser lido
+  [aqui][wmp].
 
-Trata-se de uma plataforma online na qual os jogadores programam inteligências
-artificiais em um contexto de batalhas RPG assíncronas.
+- [Plantio Caianinho][plantio]: Aplicativo Android no qual os usuários, em
+  conjunto, documentam o desenvolvimento de plantas e geram relatórios acerca das
+  mesmas.
 
-A engine é mantida em um repositório privado, mas o manual do jogo pode ser lido
-[aqui](https://github.com/arthurpaulino/wmpmanuals).
+# Idealizados
 
-## Plantio Caianinho
-
-Aplicativo Android no qual os usuários, em conjunto, documentam o desenvolvimento
-de plantas e geram relatórios acerca das mesmas.
-
-## weheal.online
-
-Aplicativo web no qual as pessoas, em completo anonimato, podem compartilhar suas
-dificuldades emocionais e receber feedback de pessoas relacionadas sobre como
-superá-las.
+- weheal.online: Aplicativo web no qual as pessoas, em completo anonimato, podem
+  compartilhar suas dificuldades emocionais e receber feedback de pessoas
+  relacionadas sobre como superá-las.
 
 # Finalizados / Participação concluída
 
-## Much-Assembly-Required
+- [Much-Assembly-Required][mar]: Sandbox para a criação de unidades cujas
+  inteligências são programadas em Assembly.
 
-Sandbox para a criação de unidades cujas inteligências são programadas em Assembly.
+[miraiml]: https://github.com/arthurpaulino/miraiml
+[sklego]: https://github.com/koaning/scikit-lego
+[sklearn]: https://github.com/scikit-learn/scikit-learn
+[pingouin]: https://github.com/raphaelvallat/pingouin
+[trajminer]: https://github.com/trajminer/trajminer
+[wmp]: https://github.com/arthurpaulino/wmpmanuals
+[plantio]: https://github.com/arthurpaulino/PlantioCaianinho
+[mar]: https://muchassemblyrequired.com/

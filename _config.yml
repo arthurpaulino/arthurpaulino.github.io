@@ -22,6 +22,7 @@ author:
 # Gems
 plugins:
   - jekyll-paginate
+  - wdm
 
 # Accounts
 twitter_username:     arthurleonardop
