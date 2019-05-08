@@ -17,10 +17,8 @@ title: Projetos
 
 # Em espera
 
-- WMP: Trata-se de uma plataforma online na qual os jogadores programam
-  inteligências artificiais em um contexto de batalhas RPG assíncronas. A engine
-  é mantida em um repositório privado, mas o manual do jogo pode ser lido
-  [aqui][wmp].
+- [WMP][wmp]: Trata-se de uma plataforma online na qual os jogadores programam
+  inteligências artificiais em um contexto de batalhas RPG assíncronas.
 
 - [Plantio Caianinho][plantio]: Aplicativo Android no qual os usuários, em
   conjunto, documentam o desenvolvimento de plantas e geram relatórios acerca das
@@ -42,6 +40,6 @@ title: Projetos
 [sklearn]: https://github.com/scikit-learn/scikit-learn
 [pingouin]: https://github.com/raphaelvallat/pingouin
 [trajminer]: https://github.com/trajminer/trajminer
-[wmp]: https://github.com/arthurpaulino/wmpmanuals
+[wmp]: https://github.com/wmp-game
 [plantio]: https://github.com/arthurpaulino/PlantioCaianinho
 [mar]: https://muchassemblyrequired.com/
