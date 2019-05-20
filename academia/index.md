@@ -24,8 +24,8 @@ Ciência da Computação pelo programa [MDCC](http://www.mdcc.ufc.br/){:target="
 na [Universidade Federal do Ceará](http://www.ufc.br/){:target="\_blank"} sob a
 orientação do [Prof. Dr. João Paulo Pordeus Gomes](http://lattes.cnpq.br/9553770402705512){:target="\_blank"}.
 
-- Tema: Neuroevolução de Topologias Aumentantes com Melhorias Culturais
-- Estágio em Docência: [Fundamentos de Banco de Dados (2017)](fbd) sob a orientação
+- Tema: [ceNEAT: Neuroevolução de topologias aumentantes com melhorias culturais](http://www.repositorio.ufc.br/handle/riufc/41804){:target="\_blank"}
+- Estágio em Docência: [Fundamentos de Banco de Dados (2017)](sql) sob a orientação
 da [Profª. Vania Maria Ponte Vidal](http://lattes.cnpq.br/9431229866203038){:target="\_blank"}
 - Legado:
   - [PyStochastic](https://github.com/arthurpaulino/PyStochastic){:target="\_blank"}
