@@ -8,13 +8,6 @@ title: Projetos
 - [MiraiML][miraiml]: Um motor assíncrono de Aprendizagem de Máquina automática
   e contínua.
 
-- [scikit-lego][sklego]: Mais elementos para pipelines da biblioteca [scikit-learn]
-  [sklearn]
-
-- [pingouin][pingouin]: Uma série de funções estatísticas com usabilidade simples
-
-- [trajminer][trajminer]: Biblioteca para cálculos relacionados a trajetórias
-
 # Em espera
 
 - [WMP][wmp]: Trata-se de uma plataforma online na qual os jogadores programam
@@ -31,6 +24,11 @@ title: Projetos
   relacionadas sobre como superá-las.
 
 # Finalizados / Participação concluída
+
+- [scikit-lego][sklego]: Mais elementos para pipelines da biblioteca [scikit-learn]
+  [sklearn]
+
+- [pingouin][pingouin]: Uma série de funções estatísticas com usabilidade simples
 
 - [Much-Assembly-Required][mar]: Sandbox para a criação de unidades cujas
   inteligências são programadas em Assembly.
