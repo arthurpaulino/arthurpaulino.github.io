@@ -81,7 +81,7 @@ Queremos provar que $$\mathscr{P}_\sim$$ é uma partição de $$S$$.
     os elementos de $$\mathscr{P}_\sim$$ são conjuntos construídos tão somente
     a partir de elementos de $$S$$. Contradição.
 
-    Agora suponhamos que existe um elemento, $$s \in S$$ que não pertence a
+    Agora suponhamos que existe um elemento $$s \in S$$ que não pertence a
     $$U$$. Por reflexividade, temos que $$s \sim s$$. Assim sendo, existe a
     classe de equivalência $$[s]_\sim$$ composta por, pelo menos, o elemento
     $$s$$. Ao realizarmos a operação de união entre todas as classes de
