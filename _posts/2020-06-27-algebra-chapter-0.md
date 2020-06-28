@@ -19,9 +19,9 @@ fiquei com a lembrança de que trata-se de algo que não consigo compreender bem
 Pois bem, me proponho a revisitar o assunto e me desafio a aprendê-lo de forma
 autodidata.
 
-Utilizarei o livro *Algebra, Chapter 0*, escrito por Paolo Aluffi, recomendado
+Utilizarei o livro *Algebra, Chapter 0*, escrito por Paolo Aluffi e recomendado
 por um amigo meu, [Daniel Augusto][spectraldani]{:target="\_blank"}, mais novo e
-mais incrivelmente hábil na Matemática do que eu. Expresso aqui minha gratidão!
+incrivelmente mais hábil na Matemática do que eu. Expresso aqui minha gratidão!
 
 [Ir para os estudos!]({{site.url}}/algebra)
 
