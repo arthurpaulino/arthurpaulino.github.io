@@ -21,8 +21,8 @@ ser verdadeiras, pois uma é a negação da outra:
 1. $$R$$ pertence a si próprio
 2. $$R$$ não pertence a si próprio
 
-Acontece que (1) não pode ser verdade, pois, pela própria definição, $$R$$ não é
-composto por conjuntos que pertençam a si próprios.
+Acontece que (1) não pode ser verdade, pois, pela própria definição de $$R$$,
+este não é composto por conjuntos que pertençam a si próprios.
 
 Então (2) deve ser verdade? Ora, se $$R$$ não pertence a si próprio, então, pela
 definição de $$R$$, ele deveria pertencer a si próprio, pois $$R$$ é composto
