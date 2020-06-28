@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Algebra, Chapter 0 - Paolo Aluffi
+title: Aventuras na Álgebra
 subtitle: Enfrentando um fantasma do passado
 tags:
   - studies
