@@ -11,7 +11,7 @@ tags:
 
 Iniciarei uma jornada de estudos de Álgebra Abstrata (ou Estruturas Algébricas).
 Quando comecei Engenharia Elétrica na Universidade de Brasília, curso
-interrompido, cursei uma disciplina chamada *Álgebra I*, a qual foi realmente
+interrompido, estudei uma disciplina chamada *Álgebra I*, a qual foi realmente
 indigesta para mim. Passei, mas com uma nota bem aquém do que gostaria e fiquei
 com a sensação de que não colhi muitos dos frutos que aquela disciplina tinha a
 me oferecer. Desde então, esta área da matemática me dá frio na barriga, pois
