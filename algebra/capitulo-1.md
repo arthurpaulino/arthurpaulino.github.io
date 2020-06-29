@@ -87,3 +87,64 @@ Queremos provar que $$\mathscr{P}_\sim$$ é uma partição de $$S$$.
     $$s$$. Ao realizarmos a operação de união entre todas as classes de
     equivalência de $$S$$ para computarmos $$U$$, o elemento $$s$$ pertencerá a
     $$U$$. Contradição
+
+## Exercício 1.3
+
+> Given a partition $$\mathscr{P}$$ on a set $$S$$, show how to define a
+relation $$\sim$$ on $$S$$ such that $$\mathscr{P}$$ is the corresponding
+partition.
+
+$$\sim = \bigcup_{P \in \mathscr{P}} P \times P$$
+
+Ou seja, $$\sim$$ é formada pela união dos produtos cartesianos dos elementos de
+$$\mathscr{P}$$ por eles mesmos. Agora precisamos mostrar que $$S/\sim =
+\mathscr{P}$$. Continua...
+
+## Exercício 1.4
+
+> How many different equivalence relations may be defined on the set $$\{1, 2,
+3\}$$?
+
+É a mesma quantidade de formas de particionar tal conjunto:
+
+|$$\{\{1, 2, 3\}\}$$
+|$$\{\{1\}, \{2, 3\}\}$$
+|$$\{\{2\}, \{1, 3\}\}$$
+|$$\{\{3\}, \{1, 2\}\}$$
+|$$\{\{1\}, \{2\}, \{3\}\}$$
+|
+
+Cinco diferentes relações de equivalência podem ser definidas no conjunto $$\{1,
+2, 3\}$$. Para um resultado genérico, o número de Bell diz quantas partições
+existem em um conjunto com uma quantidade arbitrária de elementos.
+
+## Exercício 1.5
+
+> Give an example of a relation that is reflexive and symmetric, but not
+transitive. What happens if you attempt to use this relation to define a
+partition on the set?
+
+|$$S = \{1, 2, 3\}$$
+|$$\dot\sim = \{(1, 1), (2, 2), (3, 3), (1, 2), (2, 1), (2, 3), (3, 2)\}$$
+|$$S/\dot\sim = \{\{1, 2\}, \{1, 2, 3\}, \{2, 3\}\}$$
+|
+
+A tentativa de particionar $$S$$ segundo $$\dot\sim$$ não funcionou, pois os
+elementos de $$S/\dot\sim$$ não são disjuntos.
+
+## Exercício 1.6
+
+> Define a relation $$\sim$$ on the set $$\mathbb{R}$$ of real numbers, by
+setting $$a \sim b \iff b − a \in \mathbb{Z}$$. Prove that this is an
+equivalence relation, and find a ‘compelling’ description for
+$$\mathbb{R}/\sim$$. Do the same for the relation $$\approx$$ on the plane
+$$\mathbb{R} \times \mathbb{R}$$ defined by declaring $$(a_1, a_2) \approx (b_1,
+b_2) \iff b_1 − a_1 \in \mathbb{Z}$$ and $$b_2 − a_2 \in \mathbb{Z}$$.
+
+$$\sim$$ é uma relação de equivalência:
+
+1. $$\sim$$ é reflexiva: $$\forall x \in \mathbb{R}, x - x = 0 \in \mathbb{Z}
+\implies x \sim x$$
+
+2. $$\sim$$ é simétrica: sejam $$x_1$$ e $$x_2$$ números reais tais que $$x_1
+\sim x_2$$. Continua...
