@@ -98,7 +98,38 @@ $$\sim = \bigcup_{P \in \mathscr{P}} P \times P$$
 
 Ou seja, $$\sim$$ é formada pela união dos produtos cartesianos dos elementos de
 $$\mathscr{P}$$ por eles mesmos. Agora precisamos mostrar que $$S/\sim =
-\mathscr{P}$$. Continua...
+\mathscr{P}$$.
+
+Sejam $$Q \in S/\sim$$ e $$r \in Q$$. Como $$\mathscr{P}$$ é uma partição de
+$$S$$, então existe algum $$P \in \mathscr{P}$$ tal que $$r \in P$$. Se
+provarmos que $$Q = P$$, mostramos que todo elemento de $$S$$ pertence aos
+mesmos conjuntos tanto em $$S/\sim$$ quanto em $$\mathscr{P}$$. E como cada
+elemento destes são formados tão somente por elementos de $$S$$, mostramos que
+$$S/\sim$$ e $$\mathscr{P}$$ são formados pelos mesmos elementos, ou seja, são
+os mesmos conjuntos.
+
+* $$Q$$ é subconjunto de $$P$$: Suponhamos que existe $$q \in Q$$ tal que $$q
+\notin P$$. Como $$q$$ e $$r$$ são elementos de $$Q$$, uma das três opções deve
+ser verdadeira: (1) $$r \sim q$$, (2) $$q \sim r$$ ou (3) existe $$q' \in Q$$
+tal que $$q \sim q'$$ (3).
+
+    1. $$r \sim q \iff (r, q) \in \sim \iff q \in P$$. Contradição;
+
+    2. $$q \sim r \iff (q, r) \in \sim \iff q \in P$$. Contradição;
+
+    3. $$\exists q' \in Q \vert q \sim q' \implies (q, q') \in \sim \iff q \in
+    P$$. Contradição.
+
+    Logo, não pode existir tal $$q$$. Então $$Q \subset P$$.
+
+* $$P$$ é subconjunto de $$Q$$: Suponhamos que existe $$p \in P$$ tal que $$p
+\notin Q$$. Como $$p$$ e $$r$$ são elementos de $$P$$, $$(p, r)$$ pertence ao
+produto cartesiano $$P \times P$$, logo $$(p, r)$$ pertence à relação $$\sim$$.
+Agora, uma das opções a seguir deve ser verdadeira: (1) $$Q$$ é o único elemento
+de $$S/\sim$$ ao qual $$r$$ pertence ou (2) existe algum outro conjunto $$Q'
+\neq Q$$ pertencente a $$S/\sim$$ ao qual $$r$$ pertence.
+
+    1. 
 
 ## Exercício 1.4
 
@@ -141,10 +172,64 @@ $$\mathbb{R}/\sim$$. Do the same for the relation $$\approx$$ on the plane
 $$\mathbb{R} \times \mathbb{R}$$ defined by declaring $$(a_1, a_2) \approx (b_1,
 b_2) \iff b_1 − a_1 \in \mathbb{Z}$$ and $$b_2 − a_2 \in \mathbb{Z}$$.
 
-$$\sim$$ é uma relação de equivalência:
+**$$\sim$$ é uma relação de equivalência:**
 
 1. $$\sim$$ é reflexiva: $$\forall x \in \mathbb{R}, x - x = 0 \in \mathbb{Z}
-\implies x \sim x$$
+\implies x \sim x$$.
 
 2. $$\sim$$ é simétrica: sejam $$x_1$$ e $$x_2$$ números reais tais que $$x_1
-\sim x_2$$. Continua...
+\sim x_2$$. Logo, $$x_2 - x_1 = z \in \mathbb{Z}$$. Ora, $$-z$$ também é um
+número inteiro pois é o produto de dois números inteiros, então $$x_1 - x_2 \in
+\mathbb{Z}$$ e portanto $$x_2 \sim x_1$$.
+
+3. $$\sim$$ é transitiva: sejam $$x_1$$, $$x_2$$ e $$x_3$$ números reais tais
+que $$x_1 \sim x_2$$ e $$x_2 \sim x_3$$. Sejam também $$z_1 = x_2 - x_1$$ e
+$$z_2 = x_3 - x_2$$ números inteiros (devido à definição de $$\sim$$). Acontece
+que $$z_3 = z_2 + z_1$$ é a soma de dois inteiros e portanto também é um
+inteiro. Desenvolvendo: $$z_3 = x_3 - x_2 + x_2 - x_1 = x_3 - x_1 \in
+\mathbb{Z}$$. Portanto, $$x_1 \sim x_3$$.
+
+Uma possível descrição de $$\mathbb{R}/\sim$$ é um conjunto cujos elementos são
+as classes de equivalência de cada $$\epsilon$$ real pertencente ao intervalo
+$$[0, 1)$$. Cada uma dessas classes é formada por todos os números reais cujas
+distâncias até o $$\epsilon$$ referente são inteiras:
+
+$$\mathbb{R}/\sim = \{[\epsilon]_\sim | 0 \leq \epsilon < 1\}$$
+
+**$$\approx$$ é uma relação de equivalência:**
+
+1. $$\approx$$ é reflexiva: $$\forall x, y \in \mathbb{R}, x - x = y - y = 0
+\in \mathbb{Z} \implies (x, y) \approx (x, y)$$.
+
+2. $$\approx$$ é simétrica: sejam $$x_1$$, $$x_2$$, $$y_1$$ e $$y_2$$ números
+reais tais que $$(x_1, y_1) \approx (x_2, y_2)$$. Logo, $$x_2 - x_1 = z_x \in
+\mathbb{Z}$$ e $$y_2 - y_1 = z_y \in \mathbb{Z}$$. Ora, tanto $$-z_x$$ quanto
+$$-z_y$$ também são inteiros pois são produtos de dois números inteiros. Então
+$$x_1 - x_2 \in \mathbb{Z}$$ e $$y_1 - y_2 \in \mathbb{Z}$$, logo $$(x_2, y_2)
+\approx (x_1, y_1)$$.
+
+3. $$\approx$$ é transitiva: sejam $$x_1$$, $$x_2$$, $$x_3$$, $$y_1$$, $$y_2$$ e
+$$y_3$$ números reais tais que $$(x_1, x_2) \approx (x_2, y_2)$$ e $$(x_2, y_2)
+\approx (x_3, y_3)$$. Sejam também $$z_{x_1} = x_2 - x_1$$, $$z_{x_2} = x_3 -
+x_2$$ e $$z_{y_1} = y_2 - y_1$$, $$z_{y_2} = y_3 - y_2$$ números inteiros
+(devido à definição de $$\approx$$). Acontece que tanto $$z_{x_3} = z_{x_2} +
+z_{x_1}$$ quanto $$z_{y_3} = z_{y_2} + z_{y_1}$$ são somas de dois inteiros,
+cada um, e portanto também são inteiros. Desenvolvendo:
+
+|$$z_{x_3} = x_3 - x_2 + x_2 - x_1 = x_3 - x_1 \in \mathbb{Z}$$
+|$$z_{y_3} = y_3 - y_2 + y_2 - y_1 = y_3 - y_1 \in \mathbb{Z}$$
+|
+
+Então $$(x_1, y_1) \approx (x_3, y_3)$$.
+
+Uma descrição para $$\mathbb{R^2}/\approx$$ é o conjunto formado pelas classes
+de equivalência geradas a partir de pares $$(\epsilon_x, \epsilon_y)$$, de modo
+que tanto $$\epsilon_x$$ quanto $$\epsilon_y$$ pertencentem ao intervalo $$[0,
+1)$$. Cada par $$(\epsilon_x, \epsilon_y)$$ gera uma classe de equivalência que
+contém os pontos pertencentes aos cruzamentos de um *grid* em $$\mathbb{R^2}$$
+centralizado em $$(\epsilon_x, \epsilon_y)$$:
+
+$$\mathbb{R}/\approx = \{[(\epsilon_x, \epsilon_y)]_\approx | 0 \leq \epsilon_x
+< 1 \wedge 0 \leq \epsilon_y < 1\}$$
+
+---
