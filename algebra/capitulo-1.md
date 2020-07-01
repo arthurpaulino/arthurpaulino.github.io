@@ -100,36 +100,33 @@ Ou seja, $$\sim$$ é formada pela união dos produtos cartesianos dos elementos 
 $$\mathscr{P}$$ por eles mesmos. Agora precisamos mostrar que $$S/\sim =
 \mathscr{P}$$.
 
-Sejam $$Q \in S/\sim$$ e $$r \in Q$$. Como $$\mathscr{P}$$ é uma partição de
-$$S$$, então existe algum $$P \in \mathscr{P}$$ tal que $$r \in P$$. Se
-provarmos que $$Q = P$$, mostramos que todo elemento de $$S$$ pertence aos
-mesmos conjuntos tanto em $$S/\sim$$ quanto em $$\mathscr{P}$$. E como cada
-elemento destes são formados tão somente por elementos de $$S$$, mostramos que
-$$S/\sim$$ e $$\mathscr{P}$$ são formados pelos mesmos elementos, ou seja, são
-os mesmos conjuntos.
+$$S/\sim$$ é subconjunto de $$\mathscr{P}$$: sejam $$Q$$ um elemento de
+$$S/\sim$$ e $$q \in Q$$ tal que $$[q]_\sim = Q$$. Sabemos que existe um único
+conjunto $$P \in \mathscr{P}$$ ao qual $$q$$ pertence, pois todos os elementos
+de $$S/\sim$$ são formados tão somente por elementos de $$S$$ e $$\mathscr{P}$$
+é uma partição de $$S$$. Vamos mostrar que $$Q = P$$ e que, portanto, $$Q \in
+\mathscr{P}$$.
 
-* $$Q$$ é subconjunto de $$P$$: Suponhamos que existe $$q \in Q$$ tal que $$q
-\notin P$$. Como $$q$$ e $$r$$ são elementos de $$Q$$, uma das três opções deve
-ser verdadeira: (1) $$r \sim q$$, (2) $$q \sim r$$ ou (3) existe $$q' \in Q$$
-tal que $$q \sim q'$$ (3).
+* Suponhamos um elemento $$q^* \in Q$$ tal que $$q^* \notin P$$. Como $$q^* \in
+Q$$, então $$q^* \sim q$$. Se $$(q^*, q) \in \sim$$ e $$P$$ é o único conjunto
+em $$\mathscr{P}$$ ao qual $$q$$ pertence, $$(q^*, q)$$ deve pertencer a $$P
+\times P$$ e, portanto, $$q^* \in P$$. Contradição.
 
-    1. $$r \sim q \iff (r, q) \in \sim \iff q \in P$$. Contradição;
+* Suponhamos um elemento $$p^* \in P$$ tal que $$p^* \notin Q$$. Como $$p^*$$ e
+$$q$$ são elementos de $$P$$, podemos afirmar que $$(p^*, q) \in P \times P$$ e
+que, portanto, $$p^* \sim q$$. Já que $$Q = [q]_\sim$$, concluímos que $$p^* \in
+Q$$. Contradição.
 
-    2. $$q \sim r \iff (q, r) \in \sim \iff q \in P$$. Contradição;
+$$\mathscr{P}$$ é subconjunto de $$S/\sim$$: seja $$P \in \mathscr{P}$$. Vamos
+mostrar que existe um conjunto $$Q \in S/\sim$$ com os mesmos elementos de $$P$$
+e que, como $$Q = P$$, $$P \in S/\sim$$.
 
-    3. $$\exists q' \in Q \vert q \sim q' \implies (q, q') \in \sim \iff q \in
-    P$$. Contradição.
-
-    Logo, não pode existir tal $$q$$. Então $$Q \subset P$$.
-
-* $$P$$ é subconjunto de $$Q$$: Suponhamos que existe $$p \in P$$ tal que $$p
-\notin Q$$. Como $$p$$ e $$r$$ são elementos de $$P$$, $$(p, r)$$ pertence ao
-produto cartesiano $$P \times P$$, logo $$(p, r)$$ pertence à relação $$\sim$$.
-Agora, uma das opções a seguir deve ser verdadeira: (1) $$Q$$ é o único elemento
-de $$S/\sim$$ ao qual $$r$$ pertence ou (2) existe algum outro conjunto $$Q'
-\neq Q$$ pertencente a $$S/\sim$$ ao qual $$r$$ pertence.
-
-    1. 
+* Seja $$p \in P$$. No produto cartesiano $$P \times P$$ existe um par ordenado
+$$(p^*, p)$$ para cada $$p^* \in P$$. Levando esses pares ordenados em
+consideração, os quais pertencem a $$\sim$$, construímos $$Q = [p]_\sim$$, que é
+formado exatamente pelos elementos ($$p^*$$) de $$P$$. Ora, pela definição de
+$$S/\sim$$, $$[p]_\sim$$ deve ser um de seus elementos. Portanto, $$Q \in
+S/\sim$$.
 
 ## Exercício 1.4
 
