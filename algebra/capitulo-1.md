@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Preliminares - Teoria dos conjuntos e categorias
+title: Teoria dos conjuntos e categorias
 ---
 
-# Seção 1
+# 1. Teoria ingênua dos conjuntos
 
 ## Exercício 1.1
 
