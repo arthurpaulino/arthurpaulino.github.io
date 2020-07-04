@@ -230,3 +230,43 @@ $$\mathbb{R}/\approx = \{[(\epsilon_x, \epsilon_y)]_\approx | 0 \leq \epsilon_x
 < 1 \wedge 0 \leq \epsilon_y < 1\}$$
 
 ---
+
+# 2. Funções entre conjuntos
+
+## Demonstração sugerida pelo autor
+
+> Se a função $$f$$ é injetora e subjetora, então a inversão de $$\Gamma_f$$ é o
+grafo de uma função.
+
+Definamos a inversão de $$\Gamma_f$$, $$\Lambda_f$$, como o conjunto:
+
+$$\Lambda_f = \{(b, a) \in B \times A | b = f(a)\}$$
+
+Para mostrarmos que $$\Lambda_f$$ é o grafo de uma função, precisamos provar o
+seguinte:
+
+$$\forall b \in B, \exists !a \in A | (b, a) \in \Lambda_f$$
+
+Mas antes de mostrarmos que existe um único $$a$$, mostraremos algo mais fraco:
+que existe um $$a$$. Isto é verdade porque $$f$$ é subjetiva, ou seja, deve
+existir $$a \in A$$ tal que $$b = f(a)$$ para todo $$b \in B$$.
+
+Agora vamos mostrar que $$a$$ é único para cada $$b \in B$$. Isto é verdade
+exatamente porque $$f$$ é injetora, já que elementos diferentes de $$A$$ devem
+ser mapeados em elementos diferentes em $$B$$ por $$f$$.
+
+## Proposição 2.1 (1)
+
+> f has a left inverse if and only if it is injective.
+
+#### Se $$f$$ tem inversa pela esquerda, então $$f$$ é injetora
+
+Se $$f: A \rightarrow B$$ tem inversa pela esquerda então existe $$g$$ tal que
+$$g(f(a)) = a$$ para todo $$a \in A$$. Sejam $$a_1$$ e $$a_2$$ elementos de
+$$A$$ tais que $$a_1 \neq a_2$$. Temos que $$g(f(a_1)) = a_1$$ e $$g(f(a_2)) =
+a_2$$, ou seja, $$g(f(a_1)) \neq g(f(a_2))$$.
+
+Se $$f(a_1)$$ fosse igual a $$f(a_2)$$, $$g$$ os enviaria para o mesmo
+resultado. Mas o oposto disto deve ocorrer. Então $$f(a_1) \neq f(a_2)$$.
+
+#### Se $$f$$ é injetora, então $$f$$ tem inversa pela esquerda
