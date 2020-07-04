@@ -257,16 +257,26 @@ ser mapeados em elementos diferentes em $$B$$ por $$f$$.
 
 ## Proposição 2.1 (1)
 
-> f has a left inverse if and only if it is injective.
+> Assume $$A \neq \emptyset$$ and let $$f: A \rightarrow B$$ be a function. Then
+f has a left inverse if and only if it is injective.
 
 #### Se $$f$$ tem inversa pela esquerda, então $$f$$ é injetora
 
-Se $$f: A \rightarrow B$$ tem inversa pela esquerda então existe $$g$$ tal que
-$$g(f(a)) = a$$ para todo $$a \in A$$. Sejam $$a_1$$ e $$a_2$$ elementos de
-$$A$$ tais que $$a_1 \neq a_2$$. Temos que $$g(f(a_1)) = a_1$$ e $$g(f(a_2)) =
-a_2$$, ou seja, $$g(f(a_1)) \neq g(f(a_2))$$.
+Se $$f$$ tem inversa pela esquerda então existe $$g$$ tal que $$g(f(a)) = a$$
+para todo $$a \in A$$. Sejam $$a_1$$ e $$a_2$$ elementos de $$A$$ tais que $$a_1
+\neq a_2$$. Temos que $$g(f(a_1)) = a_1$$ e $$g(f(a_2)) = a_2$$, ou seja,
+$$g(f(a_1)) \neq g(f(a_2))$$.
 
 Se $$f(a_1)$$ fosse igual a $$f(a_2)$$, $$g$$ os enviaria para o mesmo
 resultado. Mas o oposto disto deve ocorrer. Então $$f(a_1) \neq f(a_2)$$.
 
 #### Se $$f$$ é injetora, então $$f$$ tem inversa pela esquerda
+
+Construiremos uma função $$g: B \rightarrow A$$ e mostraremos que ela é de fato
+uma inversa de $$f$$ pela esquerda. Seja $$s$$ um elemento qualquer de $$A$$
+($$A \neq \emptyset$$). Definamos então:
+
+$$g(b) = \begin{cases}a \Leftarrow f(a) = b, a \in A\\ s \Leftarrow b \notin
+\textrm{im}f \end{cases}$$
+
+Continua...
