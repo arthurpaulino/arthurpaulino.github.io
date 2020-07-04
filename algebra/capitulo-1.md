@@ -276,7 +276,18 @@ Construiremos uma função $$g: B \rightarrow A$$ e mostraremos que ela é de fa
 uma inversa de $$f$$ pela esquerda. Seja $$s$$ um elemento qualquer de $$A$$
 ($$A \neq \emptyset$$). Definamos então:
 
-$$g(b) = \begin{cases}a \Leftarrow f(a) = b, a \in A\\ s \Leftarrow b \notin
+$$g(b) = \begin{cases}a \leftarrow f(a) = b, a \in A\\ s \leftarrow b \notin
 \textrm{im}f \end{cases}$$
 
-Continua...
+Primeiramente vejamos por que $$g$$ é de fato uma função. Para qualquer $$b \in
+B$$, ou $$b$$ é a imagem de algum $$a \in A$$ segundo $$f$$ ou não é. Em ambos
+os casos nós temos um valor para $$g(b)$$ e assim varremos todo o conjunto
+$$B$$. Se $$b$$ é tal que se adeque ao segundo caso ($$b \notin \textrm{im}f$$),
+o valor de $$g(b)$$ é sempre o mesmo, $$s$$. Caso contrário, pelo fato de $$f$$
+ser injetora, não podem existir elementos distintos de $$A$$ que são mapeados
+em $$b$$. Logo, $$a$$ é único e portanto $$g$$ é de fato uma função.
+
+Agora vamos verificar se $$g$$ é de fato uma inversa de $$f$$ pela esquerda. Segundo
+$$g$$, a imagem de um elemento $$y$$ tal que $$y$$ que é a imagem de um elemento
+$$x$$ segundo $$f$$ é o próprio $$x$$. Logo $$g(f(x)) = x$$ e portanto $$g \circ
+f$$ é a função identidade.
