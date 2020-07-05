@@ -3,7 +3,6 @@ layout: post
 title: Aventuras na Álgebra
 subtitle: Enfrentando um fantasma do passado
 tags:
-  - studies
   - algebra
 ---
 

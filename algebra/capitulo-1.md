@@ -287,7 +287,7 @@ o valor de $$g(b)$$ é sempre o mesmo, $$s$$. Caso contrário, pelo fato de $$f$
 ser injetora, não podem existir elementos distintos de $$A$$ que são mapeados
 em $$b$$. Logo, $$a$$ é único e portanto $$g$$ é de fato uma função.
 
-Agora vamos verificar se $$g$$ é de fato uma inversa de $$f$$ pela esquerda. Segundo
-$$g$$, a imagem de um elemento $$y$$ tal que $$y$$ que é a imagem de um elemento
-$$x$$ segundo $$f$$ é o próprio $$x$$. Logo $$g(f(x)) = x$$ e portanto $$g \circ
-f$$ é a função identidade.
+Agora vamos verificar se $$g$$ é de fato uma inversa de $$f$$ pela esquerda.
+Segundo $$g$$, a imagem de um elemento $$y$$ tal que $$y$$ que é a imagem de um
+elemento $$x$$ segundo $$f$$ é o próprio $$x$$. Logo $$g(f(x)) = x$$ e portanto
+$$g \circ f$$ é a função identidade.
