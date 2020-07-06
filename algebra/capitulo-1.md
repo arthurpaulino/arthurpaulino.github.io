@@ -7,7 +7,7 @@ title: Teoria dos conjuntos e categorias
 
 ## Exercício 1.1
 
-> Locate a discussion of Russell’s paradox, and understand it.
+> Encontre uma discussão acerca do paradoxo de Russel e o entenda.
 
 O paradoxo de Russel reside na instanciação de um conjunto, digamos $$R$$,
 definido da seguinte forma:
@@ -32,10 +32,10 @@ contradição.
 Assim, conjunto definido de tal maneira não pode existir.
 
 ## Exercício 1.2
-
-> Prove that if $$\sim$$ is an equivalence relation on a set $$S$$, then the
-corresponding family $$\mathscr{P}_\sim$$ defined in §1.5 is indeed a partition
-of $$S$$: that is, its elements are nonempty, disjoint and their union is $$S$$.
+> Prove que se $$\sim$$ é uma relação de equivalência no conjunto $$S$$, então
+a família correspondente $$\mathscr{P}_\sim$$ definida em §1.5 é de fato uma
+partição de $$S$$: ou seja, seus elementos são não-vazios, disjuntos e suas
+uniões resulta no próprio $$S$$.
 
 Primeiramente, vamos retomar algumas definições.
 
@@ -90,9 +90,8 @@ Queremos provar que $$\mathscr{P}_\sim$$ é uma partição de $$S$$.
 
 ## Exercício 1.3
 
-> Given a partition $$\mathscr{P}$$ on a set $$S$$, show how to define a
-relation $$\sim$$ on $$S$$ such that $$\mathscr{P}$$ is the corresponding
-partition.
+> Dada uma partição $$\mathscr{P}$$ no conjunto $$S$$, mostre como definir uma
+relação $$\sim$$ em $$S$$ tal que $$\mathscr{P}$$ é sua partição correspondente.
 
 $$\sim = \bigcup_{P \in \mathscr{P}} P \times P$$
 
@@ -130,8 +129,8 @@ S/\sim$$.
 
 ## Exercício 1.4
 
-> How many different equivalence relations may be defined on the set $$\{1, 2,
-3\}$$?
+> Quantas diferentes relações de equivalência podem ser definidas no conjunto
+$$\{1, 2, 3\}$$?
 
 É a mesma quantidade de formas de particionar tal conjunto:
 
@@ -148,9 +147,9 @@ existem em um conjunto com uma quantidade arbitrária de elementos.
 
 ## Exercício 1.5
 
-> Give an example of a relation that is reflexive and symmetric, but not
-transitive. What happens if you attempt to use this relation to define a
-partition on the set?
+> Dê um exemplo de uma relação que é reflexiva, simétrica, mas não transitiva.
+O que acontece se você tentar usar esta relação para definir uma partição no
+conjunto?
 
 |$$S = \{1, 2, 3\}$$
 |$$\dot\sim = \{(1, 1), (2, 2), (3, 3), (1, 2), (2, 1), (2, 3), (3, 2)\}$$
@@ -162,12 +161,12 @@ elementos de $$S/\dot\sim$$ não são disjuntos.
 
 ## Exercício 1.6
 
-> Define a relation $$\sim$$ on the set $$\mathbb{R}$$ of real numbers, by
-setting $$a \sim b \iff b − a \in \mathbb{Z}$$. Prove that this is an
-equivalence relation, and find a ‘compelling’ description for
-$$\mathbb{R}/\sim$$. Do the same for the relation $$\approx$$ on the plane
-$$\mathbb{R} \times \mathbb{R}$$ defined by declaring $$(a_1, a_2) \approx (b_1,
-b_2) \iff b_1 − a_1 \in \mathbb{Z}$$ and $$b_2 − a_2 \in \mathbb{Z}$$.
+> Defina uma relação $$\sim$$ no conjunto $$\mathbb{R}$$ dos números reais tal
+que $$a \sim b \iff b − a \in \mathbb{Z}$$. Prove que se trata de uma relação
+de equivalência e encontre uma descrição convincente para $$\mathbb{R}/\sim$$.
+Faça o mesmo para a relação $$\approx$$ no plano $$\mathbb{R} \times
+\mathbb{R}$$ definida por $$(a_1, a_2) \approx (b_1, b_2) \iff b_1 − a_1 \in
+\mathbb{Z}$$ e $$b_2 − a_2 \in \mathbb{Z}$$.
 
 **$$\sim$$ é uma relação de equivalência:**
 
@@ -257,10 +256,10 @@ ser mapeados em elementos diferentes em $$B$$ por $$f$$.
 
 ## Proposição 2.1 (1)
 
-> Assume $$A \neq \emptyset$$ and let $$f: A \rightarrow B$$ be a function. Then
-f has a left inverse if and only if it is injective.
+> Assuma $$A \neq \emptyset$$ e seja $$f: A \rightarrow B$$ uma função. Então
+$$f$$ tem uma inversa pela esquerda se, e somente se, ela é injetora.
 
-#### Se $$f$$ tem inversa pela esquerda, então $$f$$ é injetora
+### Se $$f$$ tem inversa pela esquerda, então $$f$$ é injetora
 
 Se $$f$$ tem inversa pela esquerda então existe $$g$$ tal que $$g(f(a)) = a$$
 para todo $$a \in A$$. Sejam $$a_1$$ e $$a_2$$ elementos de $$A$$ tais que $$a_1
@@ -270,7 +269,7 @@ $$g(f(a_1)) \neq g(f(a_2))$$.
 Se $$f(a_1)$$ fosse igual a $$f(a_2)$$, $$g$$ os enviaria para o mesmo
 resultado. Mas o oposto disto deve ocorrer. Então $$f(a_1) \neq f(a_2)$$.
 
-#### Se $$f$$ é injetora, então $$f$$ tem inversa pela esquerda
+### Se $$f$$ é injetora, então $$f$$ tem inversa pela esquerda
 
 Construiremos uma função $$g: B \rightarrow A$$ e mostraremos que ela é de fato
 uma inversa de $$f$$ pela esquerda. Seja $$s$$ um elemento qualquer de $$A$$
@@ -310,3 +309,43 @@ $$f(h(b)) = f(a)$$ e, como $$f$$ é injetora (proposição 2.1.1), $$h(b)$$ deve
 ser igual a $$a$$.
 
 Concluímos então que $$g(b) = a = h(b)$$.
+
+## Proposição 2.3
+
+> Uma função é injetora se, e somente se, ela é um monomorfismo.
+
+### Se uma função é injetora, então ela é um monomorfismo.
+
+Sejam $$f: A \rightarrow B$$, $$Z$$ um conjunto e $$\mu, \eta: Z \rightarrow
+A$$ tais que:
+
+$$f \circ \mu = f \circ \eta$$
+
+Pela proposição 2.1.1, seja $$g$$ a inversa à esquerda de $$f$$. Façamos a
+composição pela esquerda e depois apliquemos a propriedade associativa:
+
+$$g \circ (f \circ \mu) = g \circ (f \circ \eta)$$
+
+$$(g \circ f) \circ \mu = (g \circ f) \circ \eta$$
+
+$$\textrm{id}_A \circ \mu = \textrm{id}_A \circ \eta$$
+
+$$\mu = \eta$$
+
+### Se uma função é um monomorfismo, então ela é injetora.
+
+Seja $$f: A \rightarrow B$$ um monomorfismo. Suponhamos que $$f$$ não seja
+injetora, ou seja, que existam $$a_1, a_2 \in A$$ tais que $$a_1 \neq a_2$$ e
+$$f(a_1) = f(a_2)$$. Definamos então $$Z = \{a\} \subset A$$ e as funções $$\mu,
+\eta: Z \rightarrow A$$ tais que $$\mu(a) = a_1$$ e $$\eta(a) = a_2$$.
+Desenvolvemos então:
+
+|$$(f \circ \mu)(a) = f(\mu(a)) = f(a_1)$$
+|$$(f \circ \eta)(a) = f(\eta(a)) = f(a_2)$$
+|
+
+Como $$a$$ é o único elemento dos domínios de $$\mu$$ e $$\eta$$ e $$f(a_1) =
+f(a_2)$$, temos que $$f \circ \mu = f \circ \eta$$ e portanto devemos esperar
+que $$\mu$$ seja igual a $$\eta$$. No entanto, tais funções mapeiam o elemento
+$$a$$ em valores diferentes $$a_1$$ e $$a_2$$ e, assim, são funções diferentes
+entre si. Contradição.
