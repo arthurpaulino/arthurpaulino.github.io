@@ -291,3 +291,22 @@ Agora vamos verificar se $$g$$ é de fato uma inversa de $$f$$ pela esquerda.
 Segundo $$g$$, a imagem de um elemento $$y$$ tal que $$y$$ que é a imagem de um
 elemento $$x$$ segundo $$f$$ é o próprio $$x$$. Logo $$g(f(x)) = x$$ e portanto
 $$g \circ f$$ é a função identidade.
+
+## Demonstração sugerida pelo autor
+
+> Se a função $$f: A \rightarrow B$$ tem uma inversa pela direita e uma inversa
+pela esquerda, então tais inversas são a mesma função.
+
+Sejam $$g, h: B \rightarrow A$$ as inversas de $$f$$ pela esquerda e pela
+direita, respectivamente. Mostraremos que $$\forall b \in B, g(b) = h(b)$$. Seja
+então $$b$$ um elemento qualquer de $$B$$.
+
+Como $$f$$ é sobrejetora (proposição 2.1.2), deve existir um elemento $$a \in
+A$$ tal que $$b = f(a)$$. Já que $$g$$ é inversa à esquerda de $$f$$, $$g(b) =
+g(f(a)) = a$$.
+
+Como $$h$$ é inversa à direita de $$f$$, $$f(h(b)) = b = f(a)$$. Temos agora que
+$$f(h(b)) = f(a)$$ e, como $$f$$ é injetora (proposição 2.1.1), $$h(b)$$ deve
+ser igual a $$a$$.
+
+Concluímos então que $$g(b) = a = h(b)$$.
