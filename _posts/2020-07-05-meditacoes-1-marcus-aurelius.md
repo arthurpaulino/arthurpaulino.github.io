@@ -67,6 +67,6 @@ manifestaram em sua vida de modo a corroborar com a construção de uma fortalez
 virtuosa. Mas cabe também em seu mérito o discernimento para tirar bom proveito
 do que se encontrava em sua disposição.
 
-* Fonte: [The Internet Classics Archive][link]{:target="\_blank"}
+Fonte: [The Internet Classics Archive][link]{:target="\_blank"}
 
 [link]: http://classics.mit.edu/Antoninus/meditations.1.one.html

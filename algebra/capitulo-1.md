@@ -349,3 +349,19 @@ f(a_2)$$, temos que $$f \circ \mu = f \circ \eta$$ e portanto devemos esperar
 que $$\mu$$ seja igual a $$\eta$$. No entanto, tais funções mapeiam o elemento
 $$a$$ em valores diferentes $$a_1$$ e $$a_2$$ e, assim, são funções diferentes
 entre si. Contradição.
+
+## Demonstração sugerida pelo autor
+
+> Se $$f$$ e $$\sim$$ são respectivamente uma função $$A \rightarrow B$$ e a
+relação definida em $$\forall a', a'' \in A, a' \sim a''$$ $$\iff f(a') =
+f(a'')$$, então $$\sim$$ é uma relação de quivalência.
+
+1. $$\sim$$ é reflexiva: $$f(a)$$ é trivialmente igual a $$f(a)$$ e portanto $$a
+\sim a$$.
+
+2. $$\sim$$ é simétrica: sejam $$a_1, a_2 \in A$$ tais que $$a_1 \sim a_2$$.
+Então $$f(a_1) = f(a_2)$$ e portanto $$a_2 \sim a_1$$.
+
+3. $$\sim$$ é transitiva: sejam $$a_1, a_2, a_3 \in A$$ tais que $$a_1 \sim
+a_2$$ e $$a_2 \sim a_3$$. Então $$f(a_1) = f(a_2)$$ e $$f(a_2) = f(a_3)$$. Logo,
+$$f(a_1) = f(a_3)$$ e, assim, $$a_1 \sim a_3$$.
