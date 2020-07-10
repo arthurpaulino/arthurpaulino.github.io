@@ -3,7 +3,6 @@ layout: post
 title: Meditações 1 (Marcus Aurelius)
 subtitle: Do reconhecimento às virtudes
 tags:
-  - virtudes
   - filosofia
 ---
 
