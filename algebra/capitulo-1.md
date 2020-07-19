@@ -234,8 +234,8 @@ $$\mathbb{R}/\approx = \{[(\epsilon_x, \epsilon_y)]_\approx | 0 \leq \epsilon_x
 
 ## Demonstração sugerida pelo autor
 
-> Se a função $$f$$ é injetora e subjetora, então a inversão de $$\Gamma_f$$ é o
-grafo de uma função.
+> Se a função $$f$$ é injetora e sobrejetora, então a inversão de $$\Gamma_f$$ é
+o grafo de uma função.
 
 Definamos a inversão de $$\Gamma_f$$, $$\Lambda_f$$, como o conjunto:
 
@@ -247,7 +247,7 @@ seguinte:
 $$\forall b \in B, \exists !a \in A | (b, a) \in \Lambda_f$$
 
 Mas antes de mostrarmos que existe um único $$a$$, mostraremos algo mais fraco:
-que existe um $$a$$. Isto é verdade porque $$f$$ é subjetiva, ou seja, deve
+que existe um $$a$$. Isto é verdade porque $$f$$ é sobrejetora, ou seja, deve
 existir $$a \in A$$ tal que $$b = f(a)$$ para todo $$b \in B$$.
 
 Agora vamos mostrar que $$a$$ é único para cada $$b \in B$$. Isto é verdade
@@ -314,7 +314,7 @@ Concluímos então que $$g(b) = a = h(b)$$.
 
 > Uma função é injetora se, e somente se, ela é um monomorfismo.
 
-### Se uma função é injetora, então ela é um monomorfismo.
+### Se uma função é injetora, então ela é um monomorfismo
 
 Sejam $$f: A \rightarrow B$$, $$Z$$ um conjunto e $$\mu, \eta: Z \rightarrow
 A$$ tais que:
@@ -332,7 +332,7 @@ $$\textrm{id}_A \circ \mu = \textrm{id}_A \circ \eta$$
 
 $$\mu = \eta$$
 
-### Se uma função é um monomorfismo, então ela é injetora.
+### Se uma função é um monomorfismo, então ela é injetora
 
 Seja $$f: A \rightarrow B$$ um monomorfismo. Suponhamos que $$f$$ não seja
 injetora, ou seja, que existam $$a_1, a_2 \in A$$ tais que $$a_1 \neq a_2$$ e
@@ -365,3 +365,65 @@ Então $$f(a_1) = f(a_2)$$ e portanto $$a_2 \sim a_1$$.
 3. $$\sim$$ é transitiva: sejam $$a_1, a_2, a_3 \in A$$ tais que $$a_1 \sim
 a_2$$ e $$a_2 \sim a_3$$. Então $$f(a_1) = f(a_2)$$ e $$f(a_2) = f(a_3)$$. Logo,
 $$f(a_1) = f(a_3)$$ e, assim, $$a_1 \sim a_3$$.
+
+## Exercício 2.1
+
+> Quantas bijeções distintas existem entre um conjunto $$S$$ com $$n$$ elementos
+e ele próprio?
+
+Selecionamos elementos de $$S$$ em uma ordem qualquer. Para cada elemento
+selecionado, a quantidade de possibilidades para formar um novo par ordenado da
+bijeção é igual a $$n$$ menos a quantidade de elementos selecionados
+previamente. Portanto, a quantidade de bijeções distintas é igual a:
+
+$$n \times (n-1) \times (n-2) \times \dots \times 1 = n!$$
+
+## Exercício 2.2
+
+> Prove a afirmação (2) da Proposição 2.1: $$f: A \rightarrow B$$ tem uma
+inversa pela direita se e somente se $$f$$ for sobrejetora.
+
+### Se $$f$$ tem inversa pela direita, então $$f$$ é sobrejetora
+
+Se $$f$$ tem inversa pela direita, então existe $$g: B \rightarrow A$$ tal que
+$$f(g(b)) = b$$ para todo $$b \in B$$.
+
+Suponhamos que existe $$b^* \in B$$ tal que $$b^* \notin \textrm{im}f$$. Para
+$$b^*$$, não pode acontecer que $$f(g(b^*)) = b^*$$. Contradição.
+
+### Se $$f$$ é sobrejetora, então $$f$$ tem inversa pela direita
+
+Para cada elemento $$b \in B$$ definamos o conjunto $$A_b \subset A$$ composto
+pelos elementos $$a \in A$$ tais que $$f(a) = b$$. Isto é possível porque $$f$$
+é sobrejetora, então temos a garantia de que $$A_b$$ nunca é vazio.
+
+Proposição: Para todos $$b_1, b_2 \in B$$ tais que $$b_1 \neq b_2$$ temos que
+$$A_{b_1} \cap A_{b_2} = \emptyset$$.
+
+Prova: Suponhamos que existe um $$a^* \in A_{b_1} \cap A_{b_2}$$. Como $$a^* \in
+A_{b_1}$$, então $$f(a^*) = b_1$$. Como $$a^* \in A_{b_2}$$, então $$f(a^*) =
+b_2$$. Contradição, pois $$f$$ é uma função.
+
+Assim, podemos fazer uso do axioma da escolha para instanciar uma função $$h:
+\{A_b | b \in B\} \rightarrow A$$ que seleciona um elemento fixo $$a_{b, h}$$ de
+cada $$A_b$$. É importante ressaltar que $$f(a_{b, h}) = b$$, pois $$a_{b, h}
+\in A_b$$. Agora podemos definir $$g: B \rightarrow A$$ segundo a seguinte lei
+de formação:
+
+$$g(b) = h(A_b) = a_{b, h}$$
+
+Note que $$g$$ é de fato uma função, pois:
+
+* Está definida para todos os elementos de $$b \in B$$ já que $$A_b \neq
+\emptyset$$;
+
+* Leva cada elemento de $$B$$ em um único elemento de $$A$$ devido à construção
+de $$h$$.
+
+Agora só precisamos mostrar que $$g$$ é de fato uma inversa à direita de $$f$$.
+Calculemos então $$(f \circ g)(b)$$:
+
+$$(f \circ g)(b) = f(g(b)) = f(h(A_b)) = f(a_{b, h}) = b$$
+
+Como $$b$$ é um elemento qualquer de $$B$$, $$f \circ g$$ é a própria função
+identidade $$\textrm{id}_B$$.
