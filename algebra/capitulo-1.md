@@ -276,15 +276,16 @@ uma inversa de $$f$$ pela esquerda. Seja $$s$$ um elemento qualquer de $$A$$
 ($$A \neq \emptyset$$). Definamos então:
 
 $$g(b) = \begin{cases}a \leftarrow f(a) = b, a \in A\\ s \leftarrow b \notin
-\textrm{im}f \end{cases}$$
+\textrm{im}_f \end{cases}$$
 
 Primeiramente vejamos por que $$g$$ é de fato uma função. Para qualquer $$b \in
 B$$, ou $$b$$ é a imagem de algum $$a \in A$$ segundo $$f$$ ou não é. Em ambos
 os casos nós temos um valor para $$g(b)$$ e assim varremos todo o conjunto
-$$B$$. Se $$b$$ é tal que se adeque ao segundo caso ($$b \notin \textrm{im}f$$),
-o valor de $$g(b)$$ é sempre o mesmo, $$s$$. Caso contrário, pelo fato de $$f$$
-ser injetora, não podem existir elementos distintos de $$A$$ que são mapeados
-em $$b$$. Logo, $$a$$ é único e portanto $$g$$ é de fato uma função.
+$$B$$. Se $$b$$ é tal que se adeque ao segundo caso ($$b \notin
+\textrm{im}_f$$), o valor de $$g(b)$$ é sempre o mesmo, $$s$$. Caso contrário,
+pelo fato de $$f$$ ser injetora, não podem existir elementos distintos de $$A$$
+que são mapeados em $$b$$. Logo, $$a$$ é único e portanto $$g$$ é de fato uma
+função.
 
 Agora vamos verificar se $$g$$ é de fato uma inversa de $$f$$ pela esquerda.
 Segundo $$g$$, a imagem de um elemento $$y$$ tal que $$y$$ que é a imagem de um
@@ -388,7 +389,7 @@ inversa pela direita se e somente se $$f$$ for sobrejetora.
 Se $$f$$ tem inversa pela direita, então existe $$g: B \rightarrow A$$ tal que
 $$f(g(b)) = b$$ para todo $$b \in B$$.
 
-Suponhamos que existe $$b^* \in B$$ tal que $$b^* \notin \textrm{im}f$$. Para
+Suponhamos que existe $$b^* \in B$$ tal que $$b^* \notin \textrm{im}_f$$. Para
 $$b^*$$, não pode acontecer que $$f(g(b^*)) = b^*$$. Contradição.
 
 ### Se $$f$$ é sobrejetora, então $$f$$ tem inversa pela direita
@@ -434,7 +435,8 @@ identidade $$\textrm{id}_B$$.
 
 Sejam $$f: A \rightarrow B$$ uma função bijetora e $$g: B \rightarrow A$$ a sua
 inversa. Se $$g$$ é a inversa de $$f$$, então $$g$$ é a inversa de $$f$$ pela
-esquerda e pela direita. Notemos as seguinte implicações:
+esquerda ($$g \circ f = \textrm{id}_A$$) e pela direita ($$f \circ g =
+\textrm{id}_B$$). Mas notemos também as seguinte implicações:
 
 * Se $$g \circ f = \textrm{id}_A$$ então $$f$$ é a inversa de $$g$$ pela
 direita
@@ -442,7 +444,8 @@ direita
 * Se $$f \circ g = \textrm{id}_B$$ então $$f$$ é a inversa de $$g$$ pela
 esquerda
 
-Pelo Corolário 2.2, $$g$$ é bijetora.
+Pelo Corolário 2.2, $$g$$ é bijetora pois tem uma inversa ($$f$$) pela direita e
+pela esquerda.
 
 > Prove que a composição de duas bijeções é uma bijeção.
 
@@ -456,4 +459,4 @@ temos que $$g(f(a_1)) \neq g(f(a_2))$$.
 * $$h$$ é sobrejetora: seja $$c \in C$$. Como $$g$$ é sobrejetora, existe $$b
 \in B$$ tal que $$g(b) = c$$. Como $$f$$ é sobrejetora, existe $$a \in A$$ tal
 que $$f(a) = b$$. Então $$c = g(b) = g(f(a)) = h(a)$$ e, portanto, $$c \in
-\textrm{im}h$$.
+\textrm{im}_h$$.
