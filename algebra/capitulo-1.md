@@ -407,17 +407,17 @@ b_2$$. Contradição, pois $$f$$ é uma função.
 Assim, podemos fazer uso do axioma da escolha para instanciar uma função $$h:
 \{A_b | b \in B\} \rightarrow A$$ que seleciona um elemento fixo $$a_{b, h}$$ de
 cada $$A_b$$. É importante ressaltar que $$f(a_{b, h}) = b$$, pois $$a_{b, h}
-\in A_b$$. Agora podemos definir $$g: B \rightarrow A$$ segundo a seguinte lei
-de formação:
+\in A_b$$. Agora podemos definir $$g: B \rightarrow A$$ segundo a lei de
+formação:
 
 $$g(b) = h(A_b) = a_{b, h}$$
 
-Note que $$g$$ é de fato uma função, pois:
+Note que $$g$$ é uma função, pois:
 
-* Está definida para todos os elementos de $$b \in B$$ já que $$A_b \neq
+* Está definida para todos os elementos de $$b \in B$$, já que $$A_b \neq
 \emptyset$$;
 
-* Leva cada elemento de $$B$$ em um único elemento de $$A$$ devido à construção
+* Leva cada elemento de $$B$$ em um único elemento de $$A$$, devido à construção
 de $$h$$.
 
 Agora só precisamos mostrar que $$g$$ é de fato uma inversa à direita de $$f$$.
@@ -427,3 +427,33 @@ $$(f \circ g)(b) = f(g(b)) = f(h(A_b)) = f(a_{b, h}) = b$$
 
 Como $$b$$ é um elemento qualquer de $$B$$, $$f \circ g$$ é a própria função
 identidade $$\textrm{id}_B$$.
+
+## Exercício 2.3
+
+> Prove que a inversa de uma bijeção é uma bijeção.
+
+Sejam $$f: A \rightarrow B$$ uma função bijetora e $$g: B \rightarrow A$$ a sua
+inversa. Se $$g$$ é a inversa de $$f$$, então $$g$$ é a inversa de $$f$$ pela
+esquerda e pela direita. Notemos as seguinte implicações:
+
+* Se $$g \circ f = \textrm{id}_A$$ então $$f$$ é a inversa de $$g$$ pela
+direita
+
+* Se $$f \circ g = \textrm{id}_B$$ então $$f$$ é a inversa de $$g$$ pela
+esquerda
+
+Pelo Corolário 2.2, $$g$$ é bijetora.
+
+> Prove que a composição de duas bijeções é uma bijeção.
+
+Sejam $$f: A \rightarrow B$$ e $$g: B \rightarrow C$$ duas funções bijetoras e
+$$h: A \rightarrow C$$ a composição $$g \circ f$$.
+
+* $$h$$ é injetora: sejam $$a_1, a_2 \in A$$ tais que $$a_1 \neq a_2$$. Como
+$$f$$ é injetora, temos que $$f(a_1) \neq f(a_2)$$. E como $$g$$ é injetora,
+temos que $$g(f(a_1)) \neq g(f(a_2))$$.
+
+* $$h$$ é sobrejetora: seja $$c \in C$$. Como $$g$$ é sobrejetora, existe $$b
+\in B$$ tal que $$g(b) = c$$. Como $$f$$ é sobrejetora, existe $$a \in A$$ tal
+que $$f(a) = b$$. Então $$c = g(b) = g(f(a)) = h(a)$$ e, portanto, $$c \in
+\textrm{im}h$$.
