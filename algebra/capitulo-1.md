@@ -460,3 +460,29 @@ temos que $$g(f(a_1)) \neq g(f(a_2))$$.
 \in B$$ tal que $$g(b) = c$$. Como $$f$$ é sobrejetora, existe $$a \in A$$ tal
 que $$f(a) = b$$. Então $$c = g(b) = g(f(a)) = h(a)$$ e, portanto, $$c \in
 \textrm{im}_h$$.
+
+## Exercício 2.4
+
+> Prove que *isomorfismo* é uma relação de equivalência.
+
+Revisando o conceito de isomorfismo, dizemos que um conjunto $$A$$ é isomorfo a
+um conjunto $$B$$, e denotamos esta relação por $$A \cong B$$, se, e somente se,
+existe uma função bijetora de $$A$$ para $$B$$.
+
+* Isomorfismo é uma relação reflexiva: Seja $$A$$ um conjunto qualquer.
+*Proposição*: A função identidade $$\textrm{id}_A$$ é bijetora. *Prova*: A
+função identidade é injetora porque para todos $$a_1, a_2 \in A$$ tais que
+$$a_1 \neq a_2$$, $$\textrm{id}_A(a_1) \neq \textrm{id}_A(a_2)$$ (fazendo
+$$a_1 = \textrm{id}_A(a_1)$$ e $$a_2 = \textrm{id}_A(a_2)$$). A função
+identidade $$\textrm{id}_A$$ é sobrejetora porque todo elemento de $$A$$ é a
+imagem de um elemento: ele próprio. Assim, $$A \cong A$$.
+
+* Isomorfismo é uma relação simétrica: Sejam $$A$$ e $$B$$ conjuntos tais que
+$$A \cong B$$ e $$f: A \rightarrow B$$ uma bijeção. Como demonstrado na questão
+anterior, a função inversa $$f^{-1}: B \rightarrow A$$ é bijetora. Portanto, $$B
+\cong A$$.
+
+* Isomorfismo é uma relação transitiva: Sejam $$A$$, $$B$$ e $$C$$ conjuntos
+tais que $$A \cong B$$ e $$B \cong C$$. Sejam também $$f: A \rightarrow B$$ e
+$$g: B \rightarrow C$$ bijeções. Como demonstrado na questão anterior, a função
+composta $$h: A \rightarrow C = g \circ f$$ é bijetora. Portanto $$A \cong C$$.
