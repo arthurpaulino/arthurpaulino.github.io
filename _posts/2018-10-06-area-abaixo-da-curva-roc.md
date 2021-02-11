@@ -88,7 +88,7 @@ Observemos então a relação entre $$p$$ e $$TNR(T)$$ na Figura 2.
 
 Logo, $$TNR(T)$$ pode ser calculado com a seguinte integral:
 
-$$TNR(T) = \int_{-\infty}^{\infty} p(t) dt$$
+$$TNR(T) = \int_{-\infty}^{T} p(t) dt$$
 
 Pelo [Teorema Fundamental do Cálculo](https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus){:target="\_blank"},
 temos que TNR′(T) = p(T). Substituindo na Equação 2, obtemos:
