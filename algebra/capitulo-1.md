@@ -317,37 +317,37 @@ Concluímos então que $$g(b) = a = h(b)$$.
 
 ### Se uma função é injetora, então ela é um monomorfismo
 
-Sejam $$f: A \rightarrow B$$, $$Z$$ um conjunto e $$\mu, \eta: Z \rightarrow
+Sejam $$f: A \rightarrow B$$, $$Z$$ um conjunto e $$\mu, \nu: Z \rightarrow
 A$$ tais que:
 
-$$f \circ \mu = f \circ \eta$$
+$$f \circ \mu = f \circ \nu$$
 
 Pela proposição 2.1.1, seja $$g$$ a inversa à esquerda de $$f$$. Façamos a
 composição pela esquerda e depois apliquemos a propriedade associativa:
 
-$$g \circ (f \circ \mu) = g \circ (f \circ \eta)$$
+$$g \circ (f \circ \mu) = g \circ (f \circ \nu)$$
 
-$$(g \circ f) \circ \mu = (g \circ f) \circ \eta$$
+$$(g \circ f) \circ \mu = (g \circ f) \circ \nu$$
 
-$$\textrm{id}_A \circ \mu = \textrm{id}_A \circ \eta$$
+$$\textrm{id}_A \circ \mu = \textrm{id}_A \circ \nu$$
 
-$$\mu = \eta$$
+$$\mu = \nu$$
 
 ### Se uma função é um monomorfismo, então ela é injetora
 
 Seja $$f: A \rightarrow B$$ um monomorfismo. Suponhamos que $$f$$ não seja
 injetora, ou seja, que existam $$a_1, a_2 \in A$$ tais que $$a_1 \neq a_2$$ e
 $$f(a_1) = f(a_2)$$. Definamos então $$Z = \{a\} \subset A$$ e as funções $$\mu,
-\eta: Z \rightarrow A$$ tais que $$\mu(a) = a_1$$ e $$\eta(a) = a_2$$.
+\nu: Z \rightarrow A$$ tais que $$\mu(a) = a_1$$ e $$\nu(a) = a_2$$.
 Desenvolvemos então:
 
 |$$(f \circ \mu)(a) = f(\mu(a)) = f(a_1)$$
-|$$(f \circ \eta)(a) = f(\eta(a)) = f(a_2)$$
+|$$(f \circ \nu)(a) = f(\nu(a)) = f(a_2)$$
 |
 
-Como $$a$$ é o único elemento dos domínios de $$\mu$$ e $$\eta$$ e $$f(a_1) =
-f(a_2)$$, temos que $$f \circ \mu = f \circ \eta$$ e portanto devemos esperar
-que $$\mu$$ seja igual a $$\eta$$. No entanto, tais funções mapeiam o elemento
+Como $$a$$ é o único elemento dos domínios de $$\mu$$ e $$\nu$$ e $$f(a_1) =
+f(a_2)$$, temos que $$f \circ \mu = f \circ \nu$$ e portanto devemos esperar
+que $$\mu$$ seja igual a $$\nu$$. No entanto, tais funções mapeiam o elemento
 $$a$$ em valores diferentes $$a_1$$ e $$a_2$$ e, assim, são funções diferentes
 entre si. Contradição.
 
@@ -486,3 +486,59 @@ anterior, a função inversa $$f^{-1}: B \rightarrow A$$ é bijetora. Portanto, 
 tais que $$A \cong B$$ e $$B \cong C$$. Sejam também $$f: A \rightarrow B$$ e
 $$g: B \rightarrow C$$ bijeções. Como demonstrado na questão anterior, a função
 composta $$h: A \rightarrow C = g \circ f$$ é bijetora. Portanto $$A \cong C$$.
+
+## Exercício 2.5
+
+> Formule uma definição de epimorfismo no mesmo estilo da definição apresentada
+para monomorfismo.
+
+Uma função $$f: A \rightarrow B$$ é um epimorfismo se, para todos os conjuntos
+$$Z$$ e todas as funções $$\mu, \nu: B \rightarrow Z$$:
+
+$$\mu \circ f = \nu \circ f \implies \mu = \nu$$
+
+> Mostre que uma função é sobrejetora se, e somente se, ela é um epimorfismo.
+
+### Se uma função é sobrejetora, então ela é um epimorfismo
+
+Sejam $$f: A \rightarrow B$$, $$Z$$ um conjunto qualquer e as funções $$\mu,
+\nu: B \rightarrow Z$$ tais que:
+
+$$\mu \circ f = \nu \circ f$$
+
+Pela proposição 2.1.2, seja $$g$$ a inversa à direita de $$f$$. Façamos a
+composição pela direita e depois apliquemos a propriedade associativa:
+
+$$(\mu \circ f) \circ g = (\nu \circ f) \circ g$$
+
+$$\mu \circ (f \circ g) = \nu \circ (f \circ g)$$
+
+$$\mu \circ \textrm{id}_B = \nu \circ \textrm{id}_B$$
+
+$$\mu = \nu$$
+
+### Se uma função é um epimorfismo, então ela é sobrejetora
+
+Seja $$f: A \rightarrow B$$ um epimorfismo. Suponhamos que $$f$$ não seja
+sobrejetora, ou seja, $$\exists b \in B | b \notin \textrm{im}_f$$.
+
+Definamos $$\mu, \nu: B \rightarrow \mathcal{P}(B)$$ de modo que:
+
+$$\mu(b) = \{b\}$$
+
+$$\nu(b) = \{b\} \cap \textrm{im}_f$$
+
+Desenvolvendo $$(\mu \circ f)(a)$$ para todo $$a \in A$$:
+
+$$(\mu \circ f)(a) = \mu(f(a)) = \{f(a)\}$$
+
+Agora desenvolvendo $$(\nu \circ f)(a)$$ para todo $$a \in A$$:
+
+$$(\nu \circ f)(a) = \nu(f(a)) = \{f(a)\} \cap \textrm{im}_f = \{f(a)\}$$
+
+Como $$\mu \circ f = \nu \circ f$$ e $$f$$ é um epimorfismo, então $$\mu = \nu$$
+e $$\mu(b) = \nu(b)$$.
+
+Mas, substituindo, $$\{b\} = \{b\} \cap \textrm{im}_f$$ implica que $$b \in
+\textrm{im}_f$$. Contradição.
+
