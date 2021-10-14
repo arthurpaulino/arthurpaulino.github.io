@@ -542,3 +542,23 @@ e $$\mu(b) = \nu(b)$$.
 Mas, substituindo, $$\{b\} = \{b\} \cap \textrm{im}_f$$ implica que $$b \in
 \textrm{im}_f$$. Contradição.
 
+## Exercício 2.6
+
+> Explique como qualquer função $$f: A \rightarrow B$$ determina uma seção de
+$$\pi_A$$.
+
+Revisando o conceito de seção, uma seção é uma inversa à direita de uma função
+sobrejetora. Primeiramente vamos mostrar que a projeção $$\pi_A: A \times B
+\rightarrow A$$ é sobrejetora.
+
+$$\pi_A$$ é sobrejetora porque todo elemento da sua imagem é definido
+explicitamente como a primeira coordenada de algum elemento do produto
+cartesiano $$A \times B$$.
+
+Agora mostraremos que a seção de $$f$$, $$s_f: A \rightarrow A \times B$$, é uma
+inversa à direita de $$\pi_A$$.
+
+$$(\pi_A \circ s_f)(a) = \pi_A(s_f(a)) = \pi_A((a, f(a))) = a$$
+
+Portanto $$\pi_A \circ s_f = \textrm{id}_A$$.
+
