@@ -582,3 +582,34 @@ Suponhamos que $$g$$ não seja sobrejetora. Então existe $$(a^*, f(a^*)) \in
 A$$ e, como $$g$$ é uma função, $$a^*$$ tem imagem: $$g(a^*) = (a^*, f(a^*))$$.
 Logo, $$(a^*, f(a^*)) \in \textrm{im}_g$$. Contradição.
 
+## Exercício 2.8
+
+> Explicite todos os termos da decomposição da função $$\mathbb{R} \rightarrow
+\mathbb{C}$$ definida por $$f(x) = e^{2 \pi i x}$$.
+
+Aplicando a fórmula de Euler: $$f(x) = \cos(2 \pi x) + i \sin(2 \pi x)$$. Se
+observarmos os argumentos das funções trigonométricas, pelo fato deles serem
+múltiplos de $$2\pi$$, constatamos que o valor de $$f(x)$$ é periódico, se
+repetindo a cada inteiro.
+
+Por isso podemos utilizar a relação de equivalência $$\sim$$ definida no
+exercício 1.6 para colocarmos nas mesmas classes de equivalência todos os
+elementos de $$\mathbb{R}$$ que possuem a mesma imagem segundo $$f$$.
+
+Definamos então $$f_1: \mathbb{R} \rightarrow \mathbb{R}/\sim$$ da seguinte
+forma:
+
+$$f_1(x) := \{x^* \in \mathbb{R} | x - x^* \in \mathbb{Z}\}$$
+
+Para a função seguinte, $$f_2: \mathbb{R}/\sim \rightarrow \mathbb{R}$$, faremos uso do axioma da escolha para
+selecionarmos um representante de cada classe de equivalência de forma
+determinística: o mais próximo de zero dentre seus elementos não negativos.
+
+$$f_2(X) := \textrm{arg min}_{x \in (X_{\geq 0})}(x)$$
+
+E para o último passo definamos $$f_3: \mathbb{R} \rightarrow \mathbb{C}$$:
+
+$$f_3(x) := e^{2 \pi i x}$$
+
+Sendo $$f = f_1 \circ f_2 \circ f_3$$.
+
