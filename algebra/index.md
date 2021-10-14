@@ -16,7 +16,9 @@ autodidata.
 
 Utilizarei o livro *Algebra, Chapter 0*, escrito por Paolo Aluffi e recomendado
 por um amigo meu, [Daniel Augusto][spectraldani]{:target="\_blank"}, mais novo e
-incrivelmente mais hábil na Matemática do que eu. Expresso aqui minha gratidão!
+incrivelmente mais hábil na Matemática do que eu. Expresso aqui minha gratidão,
+não apenas pela recomendação mas principalmente pelo acompanhamento durante essa
+jornada!
 
 [spectraldani]: https://spectraldani.github.io/
 

@@ -562,3 +562,23 @@ $$(\pi_A \circ s_f)(a) = \pi_A(s_f(a)) = \pi_A((a, f(a))) = a$$
 
 Portanto $$\pi_A \circ s_f = \textrm{id}_A$$.
 
+## Exercício 2.7
+
+> Seja $$f: A \rightarrow B$$ uma função. Prove que o grafo $$\Gamma_f$$ de
+$$f$$ é isomorfo a $$A$$.
+
+Não que "isomorfismo" tenha sido formalmente definido até então no texto, mas,
+pela palavra, eu diria que mostrar que dois conjuntos são isomorfos é mostrar
+que existe uma bijeção entre eles. Assim sendo, mostraremos que existe uma
+bijeção entre $$A$$ e $$\Gamma_f$$.
+
+Seja $$g: A \rightarrow \Gamma_f$$ a função definida como $$g(a) = (a, f(a))$$.
+
+$$g$$ é injetora pois dados $$a_1, a_2 \in A$$ com $$a_1 \neq a_2$$, temos que
+$$g(a_1) = (a_1, f(a_1)) \neq (a_2, f(a_2)) = g(a_2)$$.
+
+Suponhamos que $$g$$ não seja sobrejetora. Então existe $$(a^*, f(a^*)) \in
+\Gamma_f$$ e que não pertence ao conjunto imagem de $$g$$. No entanto, $$a^* \in
+A$$ e, como $$g$$ é uma função, $$a^*$$ tem imagem: $$g(a^*) = (a^*, f(a^*))$$.
+Logo, $$(a^*, f(a^*)) \in \textrm{im}_g$$. Contradição.
+
