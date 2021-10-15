@@ -674,4 +674,66 @@ definição de $$A \amalg B$$, foi suficiente para mostrar que as uniões
 (disjuntas) de $$A'$$ com $$B'$$ e de $$A''$$ com $$B''$$ geram conjuntos
 isomorfos entre si, ambos candidatos para $$A \amalg B$$.
 
+## Exercício 2.10
+
+> Mostre que se $$A$$ e $$B$$ são conjuntos finitos, então $$\vert B^A \vert =
+\vert B \vert^{\vert A \vert}$$.
+
+Faremos a demonstração por indução no tamanho de $$A$$. Como $$0^0$$ é
+indeterminado, começaremos com o caso base $$\vert A \vert = 1$$.
+
+Se $$A$$ é unitário, a quantidade de funções possíveis de serem construídas é
+igual ao tamanho de $$B$$: uma função pra cada elemento de $$B$$. Então do lado
+esquerdo temos que a quantidade de funções é $$\vert B \vert$$ e do lado direito
+o resultado é $$\vert B \vert^1 = \vert B \vert$$.
+
+Agora sejam $$n_A := \vert A \vert$$ e $$n_B := \vert B \vert$$ e suponhamos que
+existam $${n_B}^{n_A}$$ funções de $$A$$ para $$B$$, ou seja, que a igualdade é
+válida.
+
+Seja $$A' = A \cup \{a\}$$, $$a \notin A$$. Então $$\vert A' \vert = n_A + 1$$.
+Para cada função de $$A$$ para $$B$$ podemos criar $$n_B$$ novas funções de
+$$A'$$ para $$B$$, pois $$a$$ pode estar relacionado com qualquer elemento de
+$$B$$. Portanto a quantidade de funções de $$A'$$ para $$B$$, $$\vert B^{A'}
+\vert$$, é igual a $${n_B}^{n_A} \times n_B = {n_B}^{n_A + 1} = {n_B}^{n_{A'}}
+= \vert B \vert^{\vert A' \vert}$$.
+
+## Exercício 2.11
+
+> Mostre que existe uma bijeção entre $$2^A$$ e $$\mathcal{P}(A)$$, o conjunto
+das partes de $$A$$.
+
+Definamos $$g: 2^A \rightarrow \mathcal{P}(A)$$ como:
+
+$$g(f) = \{a \in A| f(a) = 1\}, f: A \rightarrow \{0, 1\}$$
+
+### $$g$$ é injetora
+
+Sejam $$f_1, f_2 \in 2^A$$ tais que $$f_1 \neq f_2$$. Então existe $$a \in A$$
+tal que $$f_1(a) \neq f_2(a)$$ de modo que apenas umas das possibilidades é
+verdade:
+
+* $$a \in g(f_1)$$ e $$a \notin g(f_2)$$
+* $$a \notin g(f_1)$$ e $$a \in g(f_2)$$
+
+Independentemente de qual for verdade, $$g(f_1) \neq g(f_2)$$.
+
+### $$g$$ é sobrejetora
+
+Sejam $$S \in \mathcal{P}(A)$$ e $$f_S \in 2^A$$ tais que:
+
+$$
+f_S(a) =
+\begin{cases}
+0 \leftarrow a \notin S\\
+1 \leftarrow a \in S
+\end{cases}
+$$
+
+Vamos calcular $$g(f_S)$$:
+
+$$g(f_S) = \{a \in A | f_S(a) = 1\} = \{a \in A | a \in S\} = S$$
+
+Portanto qualquer elemento de $$\mathcal{P}(A)$$ é imagem de algum elemento de
+$$2^A$$.
 
