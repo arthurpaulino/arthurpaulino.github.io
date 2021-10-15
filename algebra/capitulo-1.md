@@ -275,17 +275,21 @@ Construiremos uma função $$g: B \rightarrow A$$ e mostraremos que ela é de fa
 uma inversa de $$f$$ pela esquerda. Seja $$s$$ um elemento qualquer de $$A$$
 ($$A \neq \emptyset$$). Definamos então:
 
-$$g(b) = \begin{cases}a \leftarrow f(a) = b, a \in A\\ s \leftarrow b \notin
-\textrm{im}_f \end{cases}$$
+$$
+g(b) =
+\begin{cases}
+    a \leftarrow f(a) = b, a \in A\\
+    s \leftarrow b \notin \text{im}_f
+\end{cases}
+$$
 
 Primeiramente vejamos por que $$g$$ é de fato uma função. Para qualquer $$b \in
 B$$, ou $$b$$ é a imagem de algum $$a \in A$$ segundo $$f$$ ou não é. Em ambos
 os casos nós temos um valor para $$g(b)$$ e assim varremos todo o conjunto
-$$B$$. Se $$b$$ é tal que se adeque ao segundo caso ($$b \notin
-\textrm{im}_f$$), o valor de $$g(b)$$ é sempre o mesmo, $$s$$. Caso contrário,
-pelo fato de $$f$$ ser injetora, não podem existir elementos distintos de $$A$$
-que são mapeados em $$b$$. Logo, $$a$$ é único e portanto $$g$$ é de fato uma
-função.
+$$B$$. Se $$b$$ é tal que se adeque ao segundo caso ($$b \notin \text{im}_f$$),
+o valor de $$g(b)$$ é sempre o mesmo, $$s$$. Caso contrário, pelo fato de $$f$$
+ser injetora, não podem existir elementos distintos de $$A$$ que são mapeados em
+$$b$$. Logo, $$a$$ é único e portanto $$g$$ é de fato uma função.
 
 Agora vamos verificar se $$g$$ é de fato uma inversa de $$f$$ pela esquerda.
 Segundo $$g$$, a imagem de um elemento $$y$$ tal que $$y$$ que é a imagem de um
@@ -329,7 +333,7 @@ $$g \circ (f \circ \mu) = g \circ (f \circ \nu)$$
 
 $$(g \circ f) \circ \mu = (g \circ f) \circ \nu$$
 
-$$\textrm{id}_A \circ \mu = \textrm{id}_A \circ \nu$$
+$$\text{id}_A \circ \mu = \text{id}_A \circ \nu$$
 
 $$\mu = \nu$$
 
@@ -389,7 +393,7 @@ inversa pela direita se e somente se $$f$$ for sobrejetora.
 Se $$f$$ tem inversa pela direita, então existe $$g: B \rightarrow A$$ tal que
 $$f(g(b)) = b$$ para todo $$b \in B$$.
 
-Suponhamos que existe $$b^* \in B$$ tal que $$b^* \notin \textrm{im}_f$$. Para
+Suponhamos que existe $$b^* \in B$$ tal que $$b^* \notin \text{im}_f$$. Para
 $$b^*$$, não pode acontecer que $$f(g(b^*)) = b^*$$. Contradição.
 
 ### Se $$f$$ é sobrejetora, então $$f$$ tem inversa pela direita
@@ -427,7 +431,7 @@ Calculemos então $$(f \circ g)(b)$$:
 $$(f \circ g)(b) = f(g(b)) = f(h(A_b)) = f(a_{b, h}) = b$$
 
 Como $$b$$ é um elemento qualquer de $$B$$, $$f \circ g$$ é a própria função
-identidade $$\textrm{id}_B$$.
+identidade $$\text{id}_B$$.
 
 ## Exercício 2.3
 
@@ -435,14 +439,12 @@ identidade $$\textrm{id}_B$$.
 
 Sejam $$f: A \rightarrow B$$ uma função bijetora e $$g: B \rightarrow A$$ a sua
 inversa. Se $$g$$ é a inversa de $$f$$, então $$g$$ é a inversa de $$f$$ pela
-esquerda ($$g \circ f = \textrm{id}_A$$) e pela direita ($$f \circ g =
-\textrm{id}_B$$). Mas notemos também as seguinte implicações:
+esquerda ($$g \circ f = \text{id}_A$$) e pela direita ($$f \circ g =
+\text{id}_B$$). Mas notemos também as seguinte implicações:
 
-* Se $$g \circ f = \textrm{id}_A$$ então $$f$$ é a inversa de $$g$$ pela
-direita
+* Se $$g \circ f = \text{id}_A$$ então $$f$$ é a inversa de $$g$$ pela direita
 
-* Se $$f \circ g = \textrm{id}_B$$ então $$f$$ é a inversa de $$g$$ pela
-esquerda
+* Se $$f \circ g = \text{id}_B$$ então $$f$$ é a inversa de $$g$$ pela esquerda
 
 Pelo Corolário 2.2, $$g$$ é bijetora pois tem uma inversa ($$f$$) pela direita e
 pela esquerda.
@@ -459,7 +461,7 @@ temos que $$g(f(a_1)) \neq g(f(a_2))$$.
 * $$h$$ é sobrejetora: seja $$c \in C$$. Como $$g$$ é sobrejetora, existe $$b
 \in B$$ tal que $$g(b) = c$$. Como $$f$$ é sobrejetora, existe $$a \in A$$ tal
 que $$f(a) = b$$. Então $$c = g(b) = g(f(a)) = h(a)$$ e, portanto, $$c \in
-\textrm{im}_h$$.
+\text{im}_h$$.
 
 ## Exercício 2.4
 
@@ -470,12 +472,12 @@ um conjunto $$B$$, e denotamos esta relação por $$A \cong B$$, se, e somente s
 existe uma função bijetora de $$A$$ para $$B$$.
 
 * Isomorfismo é uma relação reflexiva: Seja $$A$$ um conjunto qualquer.
-*Proposição*: A função identidade $$\textrm{id}_A$$ é bijetora. *Prova*: A
-função identidade é injetora porque para todos $$a_1, a_2 \in A$$ tais que
-$$a_1 \neq a_2$$, $$\textrm{id}_A(a_1) \neq \textrm{id}_A(a_2)$$ (fazendo
-$$a_1 = \textrm{id}_A(a_1)$$ e $$a_2 = \textrm{id}_A(a_2)$$). A função
-identidade $$\textrm{id}_A$$ é sobrejetora porque todo elemento de $$A$$ é a
-imagem de um elemento: ele próprio. Assim, $$A \cong A$$.
+*Proposição*: A função identidade $$\text{id}_A$$ é bijetora. *Prova*: A função
+identidade é injetora porque para todos $$a_1, a_2 \in A$$ tais que $$a_1 \neq
+a_2$$, $$\text{id}_A(a_1) \neq \text{id}_A(a_2)$$ (fazendo $$a_1 =
+\text{id}_A(a_1)$$ e $$a_2 = \text{id}_A(a_2)$$). A função identidade
+$$\text{id}_A$$ é sobrejetora porque todo elemento de $$A$$ é a imagem de um
+elemento: ele próprio. Assim, $$A \cong A$$.
 
 * Isomorfismo é uma relação simétrica: Sejam $$A$$ e $$B$$ conjuntos tais que
 $$A \cong B$$ e $$f: A \rightarrow B$$ uma bijeção. Como demonstrado na questão
@@ -513,20 +515,20 @@ $$(\mu \circ f) \circ g = (\nu \circ f) \circ g$$
 
 $$\mu \circ (f \circ g) = \nu \circ (f \circ g)$$
 
-$$\mu \circ \textrm{id}_B = \nu \circ \textrm{id}_B$$
+$$\mu \circ \text{id}_B = \nu \circ \text{id}_B$$
 
 $$\mu = \nu$$
 
 ### Se uma função é um epimorfismo, então ela é sobrejetora
 
 Seja $$f: A \rightarrow B$$ um epimorfismo. Suponhamos que $$f$$ não seja
-sobrejetora, ou seja, $$\exists b \in B | b \notin \textrm{im}_f$$.
+sobrejetora, ou seja, $$\exists b \in B | b \notin \text{im}_f$$.
 
 Definamos $$\mu, \nu: B \rightarrow \mathcal{P}(B)$$ de modo que:
 
 $$\mu(b) = \{b\}$$
 
-$$\nu(b) = \{b\} \cap \textrm{im}_f$$
+$$\nu(b) = \{b\} \cap \text{im}_f$$
 
 Desenvolvendo $$(\mu \circ f)(a)$$ para todo $$a \in A$$:
 
@@ -534,13 +536,13 @@ $$(\mu \circ f)(a) = \mu(f(a)) = \{f(a)\}$$
 
 Agora desenvolvendo $$(\nu \circ f)(a)$$ para todo $$a \in A$$:
 
-$$(\nu \circ f)(a) = \nu(f(a)) = \{f(a)\} \cap \textrm{im}_f = \{f(a)\}$$
+$$(\nu \circ f)(a) = \nu(f(a)) = \{f(a)\} \cap \text{im}_f = \{f(a)\}$$
 
 Como $$\mu \circ f = \nu \circ f$$ e $$f$$ é um epimorfismo, então $$\mu = \nu$$
 e $$\mu(b) = \nu(b)$$.
 
-Mas, substituindo, $$\{b\} = \{b\} \cap \textrm{im}_f$$ implica que $$b \in
-\textrm{im}_f$$. Contradição.
+Mas, substituindo, $$\{b\} = \{b\} \cap \text{im}_f$$ implica que $$b \in
+\text{im}_f$$. Contradição.
 
 ## Exercício 2.6
 
@@ -560,17 +562,14 @@ inversa à direita de $$\pi_A$$.
 
 $$(\pi_A \circ s_f)(a) = \pi_A(s_f(a)) = \pi_A((a, f(a))) = a$$
 
-Portanto $$\pi_A \circ s_f = \textrm{id}_A$$.
+Portanto $$\pi_A \circ s_f = \text{id}_A$$.
 
 ## Exercício 2.7
 
 > Seja $$f: A \rightarrow B$$ uma função. Prove que o grafo $$\Gamma_f$$ de
 $$f$$ é isomorfo a $$A$$.
 
-Não que "isomorfismo" tenha sido formalmente definido até então no texto, mas,
-pela palavra, eu diria que mostrar que dois conjuntos são isomorfos é mostrar
-que existe uma bijeção entre eles. Assim sendo, mostraremos que existe uma
-bijeção entre $$A$$ e $$\Gamma_f$$.
+Mostraremos que existe uma bijeção entre $$A$$ e $$\Gamma_f$$.
 
 Seja $$g: A \rightarrow \Gamma_f$$ a função definida como $$g(a) = (a, f(a))$$.
 
@@ -580,7 +579,7 @@ $$g(a_1) = (a_1, f(a_1)) \neq (a_2, f(a_2)) = g(a_2)$$.
 Suponhamos que $$g$$ não seja sobrejetora. Então existe $$(a^*, f(a^*)) \in
 \Gamma_f$$ e que não pertence ao conjunto imagem de $$g$$. No entanto, $$a^* \in
 A$$ e, como $$g$$ é uma função, $$a^*$$ tem imagem: $$g(a^*) = (a^*, f(a^*))$$.
-Logo, $$(a^*, f(a^*)) \in \textrm{im}_g$$. Contradição.
+Logo, $$(a^*, f(a^*)) \in \text{im}_g$$. Contradição.
 
 ## Exercício 2.8
 
@@ -601,15 +600,78 @@ forma:
 
 $$f_1(x) := \{x^* \in \mathbb{R} | x - x^* \in \mathbb{Z}\}$$
 
-Para a função seguinte, $$f_2: \mathbb{R}/\sim \rightarrow \mathbb{R}$$, faremos uso do axioma da escolha para
-selecionarmos um representante de cada classe de equivalência de forma
-determinística: o mais próximo de zero dentre seus elementos não negativos.
+Para a função seguinte, $$f_2: \mathbb{R}/\sim \rightarrow \mathbb{R}$$, faremos
+uso do axioma da escolha para selecionarmos um representante de cada classe de
+equivalência de forma determinística: o mais próximo de zero dentre seus
+elementos não negativos.
 
-$$f_2(X) := \textrm{arg min}_{x \in (X_{\geq 0})}(x)$$
+$$f_2(X) := \text{arg min}_{x \in (X_{\geq 0})}(x)$$
 
 E para o último passo definamos $$f_3: \mathbb{R} \rightarrow \mathbb{C}$$:
 
 $$f_3(x) := e^{2 \pi i x}$$
 
 Sendo $$f = f_1 \circ f_2 \circ f_3$$.
+
+## Exercício 2.9
+
+> Mostre que se $$A' \cong A''$$, $$B' \cong B''$$, $$A' \cap B' = \emptyset$$ e
+$$A'' \cap B'' = \emptyset$$, então $$A' \cup B' \cong A'' \cup B''$$.
+
+Sejam $$f_A: A' \rightarrow A''$$ e $$f_B: B' \rightarrow B''$$ bijeções, que
+existem devido aos isomorfismos pressupostos.
+
+Definamos $$g: A' \cup B' \rightarrow A'' \cup B''$$ como:
+
+$$
+g(n) =
+\begin{cases}
+f_A(n) \leftarrow n \in A'\\
+f_B(n) \leftarrow n \in B'
+\end{cases}
+$$
+
+Primeiramente, $$g$$ é uma função porque:
+
+1. Todo elemento de $$A' \cup B'$$ é elemento de $$A'$$ ou de $$B'$$, portanto
+todo elemento de $$A' \cup B'$$ tem uma imagem segunfo $$g$$;
+2. Além disso, como $$A' \cap B' = \emptyset$$, a imagem de todo elemento de
+$$A' \cup B'$$ segundo $$g$$ é única.
+
+Agora mostraremos que $$g$$ é bijetora.
+
+### $$g$$ é injetora
+
+Sejam $$n_1, n_2 \in A' \cup B'$$ tais que $$n_1 \neq n_2$$.
+
+* Se $$n_1, n_2 \in A'$$ então $$g(n_1) \neq g(n_2)$$ pois $$f_A(n_1) \neq
+f_B(n_2)$$ já que $$f_A$$ é injetora;
+* Se $$n_1, n_2 \in B'$$ segue que $$g(n_1) \neq g(n_2)$$ analogamente;
+* Se $$n_1 \in A'$$ e $$n_2 \in B'$$, suponhamos que $$g(n_1) = g(n_2)$$, ou
+seja, $$f_A(n_1) = f_B(n_2) = n^*$$. Como $$n^* \in A''$$ e $$n^* \in B''$$,
+então $$n^* \in A'' \cap B''$$. Contradição;
+* Se $$n_1 \in B'$$ e $$n_2 \in A'$$ segue que $$g(n_1) \neq g(n_2)$$
+analogamente.
+
+Em todo caso, $$g(n_1) \neq g(n_2)$$.
+
+### $$g$$ é sobrejetora
+
+Seja $$m \in A'' \cup B''$$. Mostraremos que $$m \in \text{im}_g$$.
+
+* Se $$m \in A''$$, então $$m \in \text{im}_{f_A}$$ pois $$f_A$$ é sobrejetora e
+portanto $$m \in \text{im}_g$$;
+* Se $$m \in A''$$ segue que $$m \in \text{im}_g$$ analogamente.
+
+Como $$A'' \cap B'' = \emptyset$$, temos que em todo caso $$m \in \text{im}_g$$.
+
+> Conclua que $$A \amalg B$$ é bem definido segundo isomorfismo.
+
+Mesmo sem entrarmos nos detalhes de como $$A'$$ e $$A''$$ foram criados a partir
+de $$A$$ nem de como $$B'$$ e $$B''$$ foram criados a partir de $$B$$, ter que
+$$A' \cap B' = \emptyset$$ e $$A'' \cap B'' = \emptyset$$, tal qual demanda a
+definição de $$A \amalg B$$, foi suficiente para mostrar que as uniões
+(disjuntas) de $$A'$$ com $$B'$$ e de $$A''$$ com $$B''$$ geram conjuntos
+isomorfos entre si, ambos candidatos para $$A \amalg B$$.
+
 
