@@ -7,26 +7,25 @@ title: Quem sou
 
 <div class="text">
   <p>
-    Meu nome é Arthur Paulino e eu gosto de Matemática, principalmente quando
-    aplicada a problemas reais. No momento estou me aprofundando na área de Ciência
-    de Dados, por meio da qual percebo que minha expressividade e intuição matemática
-    fluem naturalmente. Acho bastante interessante como esta área atualmente reune
-    tantos blocos fundamentais como Probabilidade, Estatística, Cálculo, Álgebra
-    Linear, Lógica de Programação, Teoria da Complexidade e ainda possui uma
-    motivação prática tão forte.
+    Meu nome é Arthur Paulino e eu gosto de aprender e de pensar profundamente
+    sobre as coisas.
   </p>
 
-  <p>
-    Mas também gosto de outros temas. Gosto de pensar a respeito da vida e do
-    sentido das coisas. Eu considero a experiência humana algo incrível e de valor
-    inestimável. Meu desejo é trabalhar cada vez mais pela prosperidade do nosso
-    planeta.
-  </p>
+  <p> Temas de interesse: </p>
+  <ul>
+    <li>Matemática</li>
+    <li>Ciência da Computação</li>
+    <li>Música</li>
+    <li>Desenvolvimento de Jogos</li>
+    <li>Espiritualidade</li>
+  </ul>
 </div>
+
+<h1 class="text-title">Blog</h1>
 
 {% for post in site.posts %}
   <div style="margin-bottom:1rem;">
-    <a href="{{ post.url | prepend: site.baseurl }}"><h1 style="display:inline;">{{ post.title }}</h1></a>
+    <a href="{{ post.url | prepend: site.baseurl }}"><h2 style="display:inline;">{{ post.title }}</h2></a>
     {{ post.date | date: "%d/%m/%Y" }}
   </div>
 {% endfor %}
