@@ -3,7 +3,6 @@ layout: post
 title: Divisão e conquista para predição
 tags:
   - machine-learning
-  - k-means
 ---
 
 Quando praticamos aprendizagem de máquina, idealmente gostaríamos de encontrar uma

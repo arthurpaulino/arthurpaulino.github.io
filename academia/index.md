@@ -3,7 +3,7 @@ layout: page
 title: Academia
 ---
 
-# Graduação
+# Bacharelado
 
 Ciência da Computação na [Universidade Federal do Ceará](http://www.ufc.br/){:target="\_blank"}.
 

@@ -3,14 +3,14 @@ layout: post
 title: Meditações (Marcus Aurelius)
 subtitle: Do reconhecimento às virtudes
 tags:
-  - filosofia
+  - philosophy
 ---
 
-Eu quero começar esta série dizendo que estou bastante feliz por ter encontrado
-o trabalho de Marcus Aurelius. Não que seja difícil encontrar as coisas hoje em
-dia, mas pelo fato daquele ter passado pelo meu radar e me chamado a atenção o
-suficiente para que eu quisesse investigá-lo mais a fundo, para enfim chegar ao
-ponto de notar que queria de fato estudá-lo.
+Eu quero começar dizendo que estou bastante feliz por ter encontrado o trabalho
+de Marcus Aurelius. Não que seja difícil encontrar as coisas hoje em dia, mas
+pelo fato daquele ter passado pelo meu radar e me chamado a atenção o suficiente
+para que eu quisesse investigá-lo mais a fundo, para enfim chegar ao ponto de
+notar que queria de fato estudá-lo.
 
 Devo afirmar que me surpreendi bastante com a figura de Marcus Aurelius. Tal
 surpresa, em verdade, se desdobrou em fases, o que me fez me sentir como uma

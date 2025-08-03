@@ -3,8 +3,7 @@ layout: post
 title: Engenharia de Colunas
 subtitle: Uma Arte na Ciência de Dados
 tags:
-  - data-science
-  - feature-engineering
+  - machine-learning
 ---
 
 Vamos estudar um pouco sobre esse assunto tão raramente falado em cursos, tutoriais,

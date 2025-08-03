@@ -3,8 +3,6 @@ layout: post
 title: Backpropagation
 tags:
   - machine-learning
-  - neural-networks
-  - backpropagation
   - python
 ---
 

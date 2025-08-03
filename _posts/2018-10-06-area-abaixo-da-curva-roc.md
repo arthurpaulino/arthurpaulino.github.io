@@ -3,9 +3,8 @@ layout: post
 title: Área Abaixo da Curva ROC
 subtitle: Em busca de uma intuição
 tags:
-  - data-science
+  - machine-learning
   - metrics
-  - roc-auc-score
 ---
 
 Em todas as competições do [Kaggle](https://www.kaggle.com/){:target="\_blank"}
